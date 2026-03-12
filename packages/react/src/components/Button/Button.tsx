@@ -1,68 +1,113 @@
-import { forwardRef, ButtonHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './Button.module.css';
 
-export type ButtonLevel = 'primary' | 'secondary';
-export type ButtonSize = 'xs' | 's' | 'm' | 'l';
+// ─── Types ───────────────────────────────────────────────────────────────────
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Niveau visuel du bouton (Primary = plein, Secondary = contour) */
+export type ButtonLevel = 'primary' | 'secondary';
+export type ButtonSize  = 'xs' | 's' | 'm' | 'l';
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Hiérarchie visuelle */
   level?: ButtonLevel;
   /** Taille du bouton */
   size?: ButtonSize;
-  /** État de chargement — remplace le label par un spinner */
+  /** État de chargement — remplace le contenu par un spinner */
   loading?: boolean;
-  /** Texte affiché dans le bouton */
-  children: React.ReactNode;
+  /** Texte lu par les lecteurs d'écran en état loading */
+  loadingLabel?: string;
 }
 
+// ─── Spinner ─────────────────────────────────────────────────────────────────
+
 /**
- * Composant Button du Design System.
- *
- * Deux niveaux visuels : Primary (fond plein) et Secondary (contour).
- * Quatre tailles : XS (32px), S (40px), M (48px), L (56px).
- * États gérés : default, hover, active, focus, disabled, loading.
+ * SVG spinner animé.
+ * 16px pour XS, 24px pour S/M/L — fidèle Figma.
  */
+function Spinner({ size }: { size: number }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={styles.spinner}
+      focusable="false"
+      height={size}
+      viewBox="0 0 24 24"
+      width={size}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        className={styles.spinnerTrack}
+        cx="12"
+        cy="12"
+        fill="none"
+        r="10"
+        strokeWidth="2.5"
+      />
+      <path
+        className={styles.spinnerArc}
+        d="M12 2a10 10 0 0 1 10 10"
+        fill="none"
+        strokeLinecap="round"
+        strokeWidth="2.5"
+      />
+    </svg>
+  );
+}
+
+// ─── Composant ───────────────────────────────────────────────────────────────
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      level = 'primary',
-      size = 'm',
-      loading = false,
-      disabled = false,
       children,
+      level        = 'primary',
+      size         = 'm',
+      loading      = false,
+      loadingLabel = 'Chargement en cours',
+      disabled,
       className,
-      ...props
+      ...rest
     },
     ref,
   ) => {
-    const isDisabled = disabled || loading;
+    const isDisabled  = disabled;
+    const spinnerSize = size === 'xs' ? 16 : 24;
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (loading) return;
+      rest.onClick?.(e);
+    };
+
+    const classes = [
+      styles.button,
+      styles[`level-${level}`],
+      styles[`size-${size}`],
+      loading && styles['is-loading'],
+      className,
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     return (
       <button
         ref={ref}
-        className={[
-          styles.button,
-          styles[`level-${level}`],
-          styles[`size-${size}`],
-          loading ? styles.loading : '',
-          className ?? '',
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        disabled={isDisabled}
         aria-busy={loading || undefined}
-        aria-disabled={isDisabled || undefined}
+        aria-disabled={loading || isDisabled || undefined}
+        className={classes}
         data-level={level}
         data-size={size}
-        {...props}
+        disabled={isDisabled}
+        type="button"
+        {...rest}
+        onClick={handleClick}
       >
         {loading ? (
-          <span className={styles.spinner} aria-hidden="true" />
+          <>
+            <Spinner size={spinnerSize} />
+            <span className={styles.srOnly}>{loadingLabel}</span>
+          </>
         ) : (
           <span className={styles.label}>{children}</span>
-        )}
-        {loading && (
-          <span className="sr-only">Chargement en cours</span>
         )}
       </button>
     );

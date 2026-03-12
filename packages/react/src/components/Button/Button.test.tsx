@@ -86,9 +86,11 @@ describe('Button — disabled', () => {
 // ============================================================
 
 describe('Button — loading', () => {
-  it('est désactivé quand loading=true', () => {
+  it('expose aria-disabled quand loading=true', () => {
+    // En état loading, le bouton n'est pas disabled nativement (le rendu visuel est préservé).
+    // Il expose aria-disabled="true" pour les technologies d'assistance.
     render(<Button loading>Label</Button>);
-    expect(screen.getByRole('button')).toBeDisabled();
+    expect(screen.getByRole('button')).toHaveAttribute('aria-disabled', 'true');
   });
 
   it('expose aria-busy quand loading', () => {

@@ -1,198 +1,183 @@
-/* ============================================================
-   Button — styles basés exclusivement sur les design tokens
-   Source Figma : node 18:797 (Component Set)
-   ============================================================ */
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
 
 .button {
   /* Layout */
-  display: inline-flex;
-  align-items: center;
+  display:         inline-flex;
+  align-items:     center;
   justify-content: center;
-  gap: var(--spacing-04); /* 8px */
+  gap:             var(--spacing-04);
+  position:        relative;
 
-  /* Forme */
-  border-radius: var(--radius-03); /* 8px */
-  border-style: solid;
-  border-width: var(--border-width-03); /* 2px */
-
-  /* Typographie */
-  font-family: var(--font-family-text);
-  font-size: var(--font-size-16);
-  font-weight: var(--font-weight-medium);
-  line-height: 1;
-  white-space: nowrap;
-
-  /* Comportement */
-  cursor: pointer;
+  /* Reset */
+  border:          none;
+  padding:         0;
+  cursor:          pointer;
   text-decoration: none;
-  outline: none;
-  box-sizing: border-box;
-  transition:
-    background-color 150ms ease,
-    border-color 150ms ease,
-    color 150ms ease;
+  -webkit-font-smoothing: antialiased;
 
-  /* Focus visible (WCAG 2.1 AA) */
-  &:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-  }
+  /* Pas de border-radius par défaut — chaque level définit le sien */
+  border-radius:   0;
+  transition:      background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+
+  /* Focus visible — outline natif désactivé, on gère manuellement */
+  outline: none;
 }
 
-/* ============================================================
-   Label interne
-   ============================================================ */
+/* Focus visible — le radius du focus ring s'adapte au level */
+.button:focus-visible {
+  outline:        var(--border-width-03) solid var(--focus);
+  outline-offset: 4px;
+  /* Le border-radius du focus ring est surchargé par level ci-dessous */
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
+/* ─── Label ─────────────────────────────────────────────────────────────────── */
 
 .label {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-04);
+  font-family:    var(--font-family-text);
+  font-weight:    var(--font-weight-medium);
+  font-size:      var(--font-size-16);
+  line-height:    1.5;
+  white-space:    nowrap;
+  /* Pas de pointer-events sur le texte pour éviter les bugs de cursor */
+  pointer-events: none;
 }
 
-/* ============================================================
-   Spinner (état loading)
-   ============================================================ */
+/* ─── Accessibilité — texte masqué visuellement ────────────────────────────── */
+
+.srOnly {
+  position:   absolute;
+  width:      1px;
+  height:     1px;
+  padding:    0;
+  margin:     -1px;
+  overflow:   hidden;
+  clip:       rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border:     0;
+}
+
+/* ─── État Loading ───────────────────────────────────────────────────────────── */
+
+/**
+ * En état loading, Primary conserve --background/accent/default (noir).
+ * Secondary conserve --background/accent/inverse-default.
+ * Le fond ne change pas — seul le contenu bascule sur le spinner.
+ * L'attribut HTML disabled natif bloque les interactions, pas besoin de pointer-events.
+ */
+.is-loading {
+  /* Maintient la largeur du bouton stable pendant le chargement */
+  min-width: 0;
+}
+
+/* ─── Spinner ────────────────────────────────────────────────────────────────── */
 
 .spinner {
-  display: block;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  border-width: var(--border-width-03); /* 2px */
-  border-style: solid;
-  border-color: transparent;
-  animation: spin 700ms linear infinite;
+  flex-shrink: 0;
+  animation:   button-spin 700ms linear infinite;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+.spinnerTrack {
+  stroke:   currentColor;
+  opacity:  0.25;
 }
 
-/* ============================================================
-   Tailles
-   ============================================================ */
+.spinnerArc {
+  stroke: currentColor;
+}
+
+@keyframes button-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Tailles ────────────────────────────────────────────────────────────────── */
 
 .size-xs {
-  padding-block: var(--spacing-02);  /* 4px */
+  height:     var(--sizes-09);      /* 32px */
+  min-height: var(--sizes-09);
+  max-height: var(--sizes-09);
   padding-inline: var(--spacing-06); /* 16px */
-  min-height: 32px;
-  max-height: 32px;
+  padding-block:  var(--spacing-02); /* 4px  */
 }
 
 .size-s {
-  padding-block: var(--spacing-04);  /* 8px */
+  height:     var(--sizes-10);      /* 40px */
+  min-height: var(--sizes-10);
+  max-height: var(--sizes-10);
   padding-inline: var(--spacing-06); /* 16px */
-  min-height: 40px;
-  max-height: 40px;
+  padding-block:  var(--spacing-04); /* 8px  */
 }
 
 .size-m {
-  padding-block: var(--spacing-05);  /* 12px */
+  height:     var(--sizes-11);      /* 48px */
+  min-height: var(--sizes-11);
+  max-height: var(--sizes-11);
   padding-inline: var(--spacing-06); /* 16px */
-  min-height: 48px;
-  max-height: 48px;
+  padding-block:  var(--spacing-05); /* 12px */
 }
 
 .size-l {
-  padding-block: var(--spacing-06);  /* 16px */
-  padding-inline: var(--spacing-06); /* 16px */
-  min-height: 56px;
-  max-height: 56px;
+  height:     var(--sizes-12);      /* 56px */
+  min-height: var(--sizes-12);
+  max-height: var(--sizes-12);
+  padding:    var(--spacing-06);    /* 16px */
 }
 
-/* ============================================================
-   Niveau Primary
-   ============================================================ */
+/* ─── Level Primary ──────────────────────────────────────────────────────────── */
 
 .level-primary {
-  background-color: var(--background-brand-primary-default);
-  border-color: transparent;
-  color: var(--text-brand-primary-on-default);
-
-  &:hover:not(:disabled) {
-    background-color: var(--background-brand-primary-hover);
-  }
-
-  &:active:not(:disabled) {
-    background-color: var(--background-brand-primary-active);
-  }
-
-  &:disabled {
-    background-color: var(--background-disabled);
-    border-color: transparent;
-    color: var(--text-disabled);
-    cursor: not-allowed;
-  }
-
-  & .spinner {
-    border-top-color: var(--text-brand-primary-on-default);
-    border-right-color: var(--text-brand-primary-on-default);
-  }
-
-  &:disabled .spinner {
-    border-top-color: var(--text-disabled);
-    border-right-color: var(--text-disabled);
-  }
+  background-color: var(--background-accent-default); /* noir    */
+  color:            var(--text-accent-on-default);    /* blanc   */
+  border-radius:    var(--radius-03);                 /* 8px     */
 }
 
-/* ============================================================
-   Niveau Secondary
-   ============================================================ */
+.level-primary:focus-visible {
+  border-radius: var(--radius-04); /* 10px pour le focus ring */
+}
+
+.level-primary:hover:not(:disabled):not([aria-disabled='true']) {
+  background-color: var(--background-accent-hover); /* #262626 */
+}
+
+.level-primary:active:not(:disabled):not([aria-disabled='true']) {
+  background-color: var(--background-accent-active); /* #3d3d3d */
+}
+
+.level-primary:disabled {
+  background-color: var(--background-disabled); /* #b0b0b0 */
+  color:            var(--text-disabled);        /* #262626 */
+}
+
+/* ─── Level Secondary ────────────────────────────────────────────────────────── */
 
 .level-secondary {
-  background-color: var(--background-brand-primary-inverse-default);
-  border-color: var(--border-brand-primary-default);
-  color: var(--text-brand-primary-default);
-
-  &:hover:not(:disabled) {
-    background-color: var(--background-brand-primary-default);
-    border-color: var(--border-brand-primary-default);
-    color: var(--text-brand-primary-on-default);
-  }
-
-  &:active:not(:disabled) {
-    background-color: var(--background-brand-primary-active);
-    border-color: var(--border-brand-primary-active);
-    color: var(--text-brand-primary-on-default);
-  }
-
-  &:disabled {
-    background-color: var(--background-disabled);
-    border-color: var(--border-disabled);
-    color: var(--text-disabled);
-    cursor: not-allowed;
-  }
-
-  & .spinner {
-    border-top-color: var(--text-brand-primary-default);
-    border-right-color: var(--text-brand-primary-default);
-  }
-
-  &:hover:not(:disabled) .spinner {
-    border-top-color: var(--text-brand-primary-on-default);
-    border-right-color: var(--text-brand-primary-on-default);
-  }
-
-  &:disabled .spinner {
-    border-top-color: var(--text-disabled);
-    border-right-color: var(--text-disabled);
-  }
+  background-color: var(--background-accent-inverse-default); /* #e7e7e7 */
+  color:            var(--text-accent-default);               /* noir    */
+  border:           var(--border-width-03) solid var(--border-accent-default);
+  border-radius:    var(--radius-03); /* 8px — uniquement sur Secondary */
 }
 
-/* ============================================================
-   Accessibilité — classe utilitaire sr-only
-   ============================================================ */
+.level-secondary:focus-visible {
+  border-radius: var(--radius-04); /* 10px pour le focus ring Secondary */
+}
 
-:global(.sr-only) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+.level-secondary:hover:not(:disabled):not([aria-disabled='true']) {
+  background-color: var(--background-accent-default); /* noir  */
+  color:            var(--text-accent-on-default);    /* blanc */
+}
+
+.level-secondary:active:not(:disabled):not([aria-disabled='true']) {
+  background-color: var(--background-accent-active); /* #3d3d3d */
+  color:            var(--text-accent-on-default);   /* blanc   */
+}
+
+.level-secondary:disabled {
+  background-color: var(--background-disabled);
+  border-color:     var(--border-disabled);
+  color:            var(--text-disabled);
 }
