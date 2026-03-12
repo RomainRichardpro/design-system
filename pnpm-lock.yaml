@@ -70,15 +70,16 @@ importers:
         version: 0.34.6
 
   packages/storybook:
-    devDependencies:
+    dependencies:
       '@romainrichardpro/react':
         specifier: workspace:*
         version: link:../react
       '@romainrichardpro/tokens':
         specifier: workspace:*
         version: link:../tokens
+    devDependencies:
       '@storybook/addon-a11y':
-        specifier: ^8.6.0
+        specifier: ^8.6.18
         version: 8.6.18(storybook@8.6.18)
       '@storybook/addon-essentials':
         specifier: ^8.6.18
@@ -86,35 +87,23 @@ importers:
       '@storybook/addon-interactions':
         specifier: ^8.6.18
         version: 8.6.18(storybook@8.6.18)
-      '@storybook/addon-links':
-        specifier: ^8.6.0
-        version: 8.6.18(react@18.3.1)(storybook@8.6.18)
+      '@storybook/blocks':
+        specifier: ^8.6.18
+        version: 8.6.18(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)
       '@storybook/react':
-        specifier: ^8.6.0
-        version: 8.6.18(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)(typescript@5.9.3)
+        specifier: ^8.6.18
+        version: 8.6.18(@storybook/test@8.6.18)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)(typescript@5.9.3)
       '@storybook/react-vite':
-        specifier: ^8.6.0
-        version: 8.6.18(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)(typescript@5.9.3)(vite@5.4.21)
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.11.0
-        version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.1)(typescript@5.9.3)
-      '@typescript-eslint/parser':
-        specifier: ^6.11.0
-        version: 6.21.0(eslint@8.57.1)(typescript@5.9.3)
-      eslint:
-        specifier: ^8.54.0
-        version: 8.57.1
-      react:
-        specifier: ^18.2.0
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.3.1(react@18.3.1)
+        specifier: ^8.6.18
+        version: 8.6.18(@storybook/test@8.6.18)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)(typescript@5.9.3)(vite@5.4.21)
+      '@storybook/test':
+        specifier: ^8.6.18
+        version: 8.6.18(storybook@8.6.18)
       storybook:
-        specifier: ^8.6.0
+        specifier: ^8.6.18
         version: 8.6.18(prettier@3.8.1)
       typescript:
-        specifier: ^5.2.2
+        specifier: ^5.4.5
         version: 5.9.3
       vite:
         specifier: ^5.0.0
@@ -1483,21 +1472,6 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
-  /@storybook/addon-links@8.6.18(react@18.3.1)(storybook@8.6.18):
-    resolution: {integrity: sha512-FFlQcPRTgXoFZr2uawtf7lNc/ceIVRhU13BkJbJZKlil3+C8ORFDO1vnREzHje9JzeOWm/rzI0ay0RVetCcXzg==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.6.18
-    peerDependenciesMeta:
-      react:
-        optional: true
-    dependencies:
-      '@storybook/global': 5.0.0
-      react: 18.3.1
-      storybook: 8.6.18(prettier@3.8.1)
-      ts-dedent: 2.2.0
-    dev: true
-
   /@storybook/addon-measure@8.6.18(storybook@8.6.18):
     resolution: {integrity: sha512-fMEOJXgPrTm6qHlWoRM+WTLE7Mr1QBIf2ei+pujBQFcWkD6Gjc2pV8zKzvh93d+EA13wD8AmwOq1DEw9J+XH+g==}
     peerDependencies:
@@ -1664,7 +1638,7 @@ packages:
       storybook: 8.6.18(prettier@3.8.1)
     dev: true
 
-  /@storybook/react-vite@8.6.18(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)(typescript@5.9.3)(vite@5.4.21):
+  /@storybook/react-vite@8.6.18(@storybook/test@8.6.18)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)(typescript@5.9.3)(vite@5.4.21):
     resolution: {integrity: sha512-qpSYyH2IizlEsI95MJTdIL6xpLSgiNCMoJpHu+IEqLnyvmecRR/YEZvcHalgdtawuXlimH0bAYuwIu3l8Vo6FQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -1680,7 +1654,8 @@ packages:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.5.0(typescript@5.9.3)(vite@5.4.21)
       '@rollup/pluginutils': 5.3.0
       '@storybook/builder-vite': 8.6.18(storybook@8.6.18)(vite@5.4.21)
-      '@storybook/react': 8.6.18(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)(typescript@5.9.3)
+      '@storybook/react': 8.6.18(@storybook/test@8.6.18)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)(typescript@5.9.3)
+      '@storybook/test': 8.6.18(storybook@8.6.18)
       find-up: 5.0.0
       magic-string: 0.30.21
       react: 18.3.1
@@ -1696,7 +1671,7 @@ packages:
       - typescript
     dev: true
 
-  /@storybook/react@8.6.18(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)(typescript@5.9.3):
+  /@storybook/react@8.6.18(@storybook/test@8.6.18)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)(typescript@5.9.3):
     resolution: {integrity: sha512-BuLpzMkKtF+UCQCbi+lYVX9cdcAMG86Lu2dDn7UFkPi5HRNFq/zHPSvlz1XDgL0OYMtcqB1aoVzFzcyzUBhhjw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -1716,6 +1691,7 @@ packages:
       '@storybook/manager-api': 8.6.18(storybook@8.6.18)
       '@storybook/preview-api': 8.6.18(storybook@8.6.18)
       '@storybook/react-dom-shim': 8.6.18(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.18)
+      '@storybook/test': 8.6.18(storybook@8.6.18)
       '@storybook/theming': 8.6.18(storybook@8.6.18)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)

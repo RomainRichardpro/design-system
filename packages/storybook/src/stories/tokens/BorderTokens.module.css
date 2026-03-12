@@ -1,0 +1,67 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table thead tr {
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.table th {
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.thName { width: 220px; }
+.thPreview {}
+.thValue { width: 80px; }
+
+.row {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.cellName {
+  padding: 16px 12px;
+  vertical-align: middle;
+}
+
+.cellPreview {
+  padding: 16px 12px;
+  vertical-align: middle;
+}
+
+.cellValue {
+  padding: 16px 12px;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.line {
+  width: 120px;
+  display: block;
+}
+
+.varName {
+  font-family: monospace;
+  font-size: 12px;
+  color: #333;
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.valueText {
+  font-family: monospace;
+  font-size: 12px;
+  color: #666;
+}

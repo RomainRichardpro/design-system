@@ -1,11 +1,27 @@
 import type { Preview } from '@storybook/react';
 
+// Import des CSS variables générées depuis le package tokens
+import '@romainrichardpro/tokens/css/colors-light';
+import '@romainrichardpro/tokens/css/numbers';
+import '@romainrichardpro/tokens/css/typography';
+
 const preview: Preview = {
   parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
+      },
+    },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: true,
+          },
+        ],
       },
     },
   },

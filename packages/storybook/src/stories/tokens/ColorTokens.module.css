@@ -1,0 +1,109 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.focusRow {
+  display: flex;
+}
+
+/* Section */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table thead tr {
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.table th {
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.row {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+/* Cells */
+.cellSwatch {
+  padding: 8px 12px;
+  width: 56px;
+}
+
+.cellName {
+  padding: 8px 12px;
+}
+
+.cellValue {
+  padding: 8px 12px;
+  width: 120px;
+}
+
+.thSwatch { width: 56px; }
+.thName {}
+.thValue { width: 120px; }
+
+/* Swatch */
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+/* Text */
+.varName {
+  font-family: monospace;
+  font-size: 12px;
+  color: #333;
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.hexValue {
+  font-family: monospace;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Ligne de groupe */
+.groupRow {
+  background: #f8f8f8;
+}
+
+.groupLabel {
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
