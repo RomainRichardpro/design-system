@@ -1,0 +1,198 @@
+/* ============================================================
+   Button — styles basés exclusivement sur les design tokens
+   Source Figma : node 18:797 (Component Set)
+   ============================================================ */
+
+.button {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-04); /* 8px */
+
+  /* Forme */
+  border-radius: var(--radius-03); /* 8px */
+  border-style: solid;
+  border-width: var(--border-width-03); /* 2px */
+
+  /* Typographie */
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+
+  /* Comportement */
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  box-sizing: border-box;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+
+  /* Focus visible (WCAG 2.1 AA) */
+  &:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================================
+   Label interne
+   ============================================================ */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-04);
+}
+
+/* ============================================================
+   Spinner (état loading)
+   ============================================================ */
+
+.spinner {
+  display: block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border-width: var(--border-width-03); /* 2px */
+  border-style: solid;
+  border-color: transparent;
+  animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   Tailles
+   ============================================================ */
+
+.size-xs {
+  padding-block: var(--spacing-02);  /* 4px */
+  padding-inline: var(--spacing-06); /* 16px */
+  min-height: 32px;
+  max-height: 32px;
+}
+
+.size-s {
+  padding-block: var(--spacing-04);  /* 8px */
+  padding-inline: var(--spacing-06); /* 16px */
+  min-height: 40px;
+  max-height: 40px;
+}
+
+.size-m {
+  padding-block: var(--spacing-05);  /* 12px */
+  padding-inline: var(--spacing-06); /* 16px */
+  min-height: 48px;
+  max-height: 48px;
+}
+
+.size-l {
+  padding-block: var(--spacing-06);  /* 16px */
+  padding-inline: var(--spacing-06); /* 16px */
+  min-height: 56px;
+  max-height: 56px;
+}
+
+/* ============================================================
+   Niveau Primary
+   ============================================================ */
+
+.level-primary {
+  background-color: var(--background-brand-primary-default);
+  border-color: transparent;
+  color: var(--text-brand-primary-on-default);
+
+  &:hover:not(:disabled) {
+    background-color: var(--background-brand-primary-hover);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--background-brand-primary-active);
+  }
+
+  &:disabled {
+    background-color: var(--background-disabled);
+    border-color: transparent;
+    color: var(--text-disabled);
+    cursor: not-allowed;
+  }
+
+  & .spinner {
+    border-top-color: var(--text-brand-primary-on-default);
+    border-right-color: var(--text-brand-primary-on-default);
+  }
+
+  &:disabled .spinner {
+    border-top-color: var(--text-disabled);
+    border-right-color: var(--text-disabled);
+  }
+}
+
+/* ============================================================
+   Niveau Secondary
+   ============================================================ */
+
+.level-secondary {
+  background-color: var(--background-brand-primary-inverse-default);
+  border-color: var(--border-brand-primary-default);
+  color: var(--text-brand-primary-default);
+
+  &:hover:not(:disabled) {
+    background-color: var(--background-brand-primary-default);
+    border-color: var(--border-brand-primary-default);
+    color: var(--text-brand-primary-on-default);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--background-brand-primary-active);
+    border-color: var(--border-brand-primary-active);
+    color: var(--text-brand-primary-on-default);
+  }
+
+  &:disabled {
+    background-color: var(--background-disabled);
+    border-color: var(--border-disabled);
+    color: var(--text-disabled);
+    cursor: not-allowed;
+  }
+
+  & .spinner {
+    border-top-color: var(--text-brand-primary-default);
+    border-right-color: var(--text-brand-primary-default);
+  }
+
+  &:hover:not(:disabled) .spinner {
+    border-top-color: var(--text-brand-primary-on-default);
+    border-right-color: var(--text-brand-primary-on-default);
+  }
+
+  &:disabled .spinner {
+    border-top-color: var(--text-disabled);
+    border-right-color: var(--text-disabled);
+  }
+}
+
+/* ============================================================
+   Accessibilité — classe utilitaire sr-only
+   ============================================================ */
+
+:global(.sr-only) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
