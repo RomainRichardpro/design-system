@@ -1,0 +1,25 @@
+{
+  "name": "@romainrichardpro/tokens",
+  "version": "0.1.0",
+  "description": "Design tokens du Design System de Romain Richard",
+  "type": "module",
+  "main": "./build/tokens.json",
+  "exports": {
+    ".": "./build/tokens.json",
+    "./css/primitives": "./build/css/primitives.css",
+    "./css/numbers": "./build/css/numbers.css",
+    "./css/typography": "./build/css/typography.css",
+    "./css/colors-light": "./build/css/colors-light.css",
+    "./css/colors-dark": "./build/css/colors-dark.css"
+  },
+  "scripts": {
+    "build": "tsx sd.config.ts",
+    "dev": "tsx sd.config.ts --watch"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.4.5"
+  }
+}
+
