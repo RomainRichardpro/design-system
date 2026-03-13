@@ -105,16 +105,14 @@
 
 /* ── Focus visible — halo ── */
 
-.root:not(.disabled):has(.input:focus-visible)::before {
+.root:not(.disabled):has(.input:focus-visible) .control::before {
   content: '';
   position: absolute;
-  left: var(--spacing-01);
-  top: var(--spacing-01);
-  width: var(--sizes-08);
-  height: var(--sizes-08);
+  inset: -2px;
   border-radius: var(--radius-02);
   border: var(--border-width-03) solid var(--focus);
   pointer-events: none;
+  z-index: 2;
 }
 
 /* ── Disabled — unselected ── */
@@ -136,4 +134,10 @@
 
 .disabled .label {
   color: var(--text-disabled);
+}
+
+/* ── Disabled — icône ── */
+
+.disabled .icon {
+  color: var(--icon-disabled);
 }
