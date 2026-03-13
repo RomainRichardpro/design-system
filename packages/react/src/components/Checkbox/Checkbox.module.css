@@ -107,6 +107,7 @@
 
 .root:not(.disabled):has(.input:focus-visible)::before {
   content: '';
+  box-sizing: border-box;
   position: absolute;
   left: 0;
   top: var(--spacing-01);
