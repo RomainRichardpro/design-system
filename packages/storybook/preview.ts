@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/react';
 
-// Import des CSS variables générées depuis le package tokens
 import '@romainrichardpro/tokens/css/colors-light';
 import '@romainrichardpro/tokens/css/numbers';
 import '@romainrichardpro/tokens/css/typography';
