@@ -291,3 +291,11 @@ Ces décisions sont prises et ne se remettent pas en question sauf demande expli
 - Utiliser `any` en TypeScript
 - Utiliser `dangerouslySetInnerHTML`
 - Utiliser Tailwind
+---
+
+## 16. Règles Git
+
+- Toujours travailler directement sur `main`
+- Ne jamais créer de branche feature ou de PR
+- Chaque session se termine par `git push origin main`
+- Ce repo est un projet solo sans process de review
