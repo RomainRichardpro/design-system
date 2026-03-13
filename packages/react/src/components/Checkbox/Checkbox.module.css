@@ -1,0 +1,123 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-04);
+  padding: var(--spacing-01);
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--radius-02);
+}
+
+.root.disabled {
+  cursor: not-allowed;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  margin: 0;
+  cursor: inherit;
+  z-index: 1;
+}
+
+.control {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--size-07);
+  height: var(--size-07);
+}
+
+.box {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-01);
+  border: var(--border-width-02) solid var(--color-border-accent-default);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.1s ease, border-color 0.1s ease;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-06);
+  height: var(--size-06);
+  color: var(--color-icon-accent-on-default);
+}
+
+.label {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--color-text-neutral-default);
+  max-width: 520px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: inherit;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.input:checked ~ .control .box,
+.input:indeterminate ~ .control .box {
+  background-color: var(--color-background-accent-default);
+  border-color: var(--color-background-accent-default);
+}
+
+.root:not(.disabled):hover .input:not(:checked):not(:indeterminate) ~ .control .box {
+  border-color: var(--color-border-accent-hover);
+}
+
+.root:not(.disabled):hover .input:checked ~ .control .box,
+.root:not(.disabled):hover .input:indeterminate ~ .control .box {
+  background-color: var(--color-background-accent-hover);
+  border-color: var(--color-background-accent-hover);
+}
+
+.root:not(.disabled):hover .label {
+  color: var(--color-text-accent-default);
+}
+
+.root:not(.disabled):has(.input:focus-visible)::before {
+  content: '';
+  position: absolute;
+  left: var(--spacing-01);
+  top: var(--spacing-01);
+  width: var(--size-08);
+  height: var(--size-08);
+  border-radius: var(--radius-02);
+  border: var(--border-width-03) solid var(--color-focus);
+  pointer-events: none;
+}
+
+.disabled .input:not(:checked):not(:indeterminate) ~ .control .box {
+  border-color: var(--color-border-disabled);
+  background: transparent;
+}
+
+.disabled .input:checked ~ .control .box,
+.disabled .input:indeterminate ~ .control .box {
+  background-color: var(--color-background-disabled);
+  border-color: var(--color-background-disabled);
+}
+
+.disabled .label {
+  color: var(--color-text-disabled);
+}
