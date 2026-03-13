@@ -1,181 +1,130 @@
-/* ─── Base ──────────────────────────────────────────────────────────────────── */
-
+/* ─── Base ───────────────────────────────────────────────────────────────────── */
 .button {
-  /* Layout */
   display:         inline-flex;
   align-items:     center;
   justify-content: center;
   gap:             var(--spacing-04);
   position:        relative;
-
   /* Reset */
   border:          none;
   padding:         0;
   cursor:          pointer;
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
-
-  /* Pas de border-radius par défaut — chaque level définit le sien */
-  border-radius:   0;
-  transition:      background-color 120ms ease, color 120ms ease, border-color 120ms ease;
-
-  /* Focus visible — outline natif désactivé, on gère manuellement */
+  /* Chaque level définit son propre border-radius */
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
   outline: none;
 }
-
-/* Focus visible — le radius du focus ring s'adapte au level */
 .button:focus-visible {
   outline:        var(--border-width-03) solid var(--focus);
   outline-offset: 4px;
-  /* Le border-radius du focus ring est surchargé par level ci-dessous */
 }
-
 .button:disabled,
 .button[aria-disabled='true'] {
   cursor: not-allowed;
 }
-
-/* ─── Label ─────────────────────────────────────────────────────────────────── */
-
+/* ─── Label ──────────────────────────────────────────────────────────────────── */
 .label {
   font-family:    var(--font-family-text);
   font-weight:    var(--font-weight-medium);
   font-size:      var(--font-size-16);
   line-height:    1.5;
   white-space:    nowrap;
-  /* Pas de pointer-events sur le texte pour éviter les bugs de cursor */
   pointer-events: none;
 }
-
-/* ─── Accessibilité — texte masqué visuellement ────────────────────────────── */
-
+/* ─── Accessibilité — texte masqué visuellement ──────────────────────────────── */
 .srOnly {
-  position:   absolute;
-  width:      1px;
-  height:     1px;
-  padding:    0;
-  margin:     -1px;
-  overflow:   hidden;
-  clip:       rect(0, 0, 0, 0);
+  position:    absolute;
+  width:       1px;
+  height:      1px;
+  padding:     0;
+  margin:      -1px;
+  overflow:    hidden;
+  clip:        rect(0, 0, 0, 0);
   white-space: nowrap;
-  border:     0;
+  border:      0;
 }
-
-/* ─── État Loading ───────────────────────────────────────────────────────────── */
-
-/**
- * En état loading, Primary conserve --background/accent/default (noir).
- * Secondary conserve --background/accent/inverse-default.
- * Le fond ne change pas — seul le contenu bascule sur le spinner.
- * L'attribut HTML disabled natif bloque les interactions, pas besoin de pointer-events.
- */
-.is-loading {
-  /* Maintient la largeur du bouton stable pendant le chargement */
-  min-width: 0;
-}
-
 /* ─── Spinner ────────────────────────────────────────────────────────────────── */
-
 .spinner {
   flex-shrink: 0;
   animation:   button-spin 700ms linear infinite;
 }
-
 .spinnerTrack {
-  stroke:   currentColor;
-  opacity:  0.25;
+  stroke:  currentColor;
+  opacity: 0.25;
 }
-
 .spinnerArc {
   stroke: currentColor;
 }
-
 @keyframes button-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
-
 /* ─── Tailles ────────────────────────────────────────────────────────────────── */
-
 .size-xs {
-  height:     var(--sizes-09);      /* 32px */
-  min-height: var(--sizes-09);
-  max-height: var(--sizes-09);
+  height:         var(--sizes-09);   /* 32px */
+  min-height:     var(--sizes-09);
+  max-height:     var(--sizes-09);
   padding-inline: var(--spacing-06); /* 16px */
   padding-block:  var(--spacing-02); /* 4px  */
 }
-
 .size-s {
-  height:     var(--sizes-10);      /* 40px */
-  min-height: var(--sizes-10);
-  max-height: var(--sizes-10);
+  height:         var(--sizes-10);   /* 40px */
+  min-height:     var(--sizes-10);
+  max-height:     var(--sizes-10);
   padding-inline: var(--spacing-06); /* 16px */
   padding-block:  var(--spacing-04); /* 8px  */
 }
-
 .size-m {
-  height:     var(--sizes-11);      /* 48px */
-  min-height: var(--sizes-11);
-  max-height: var(--sizes-11);
+  height:         var(--sizes-11);   /* 48px */
+  min-height:     var(--sizes-11);
+  max-height:     var(--sizes-11);
   padding-inline: var(--spacing-06); /* 16px */
   padding-block:  var(--spacing-05); /* 12px */
 }
-
 .size-l {
-  height:     var(--sizes-12);      /* 56px */
-  min-height: var(--sizes-12);
-  max-height: var(--sizes-12);
-  padding:    var(--spacing-06);    /* 16px */
+  height:         var(--sizes-12);   /* 56px */
+  min-height:     var(--sizes-12);
+  max-height:     var(--sizes-12);
+  padding:        var(--spacing-06); /* 16px */
 }
-
 /* ─── Level Primary ──────────────────────────────────────────────────────────── */
-
 .level-primary {
-  background-color: var(--background-accent-default); /* noir    */
-  color:            var(--text-accent-on-default);    /* blanc   */
-  border-radius:    var(--radius-03);                 /* 8px     */
+  background-color: var(--background-accent-default); /* noir  */
+  color:            var(--text-accent-on-default);    /* blanc */
+  border-radius:    var(--radius-03);                 /* 8px   */
 }
-
 .level-primary:focus-visible {
-  border-radius: var(--radius-04); /* 10px pour le focus ring */
+  border-radius: var(--radius-04); /* 10px */
 }
-
 .level-primary:hover:not(:disabled):not([aria-disabled='true']) {
-  background-color: var(--background-accent-hover); /* #262626 */
+  background-color: var(--background-accent-hover);
 }
-
 .level-primary:active:not(:disabled):not([aria-disabled='true']) {
-  background-color: var(--background-accent-active); /* #3d3d3d */
+  background-color: var(--background-accent-active);
 }
-
 .level-primary:disabled {
-  background-color: var(--background-disabled); /* #b0b0b0 */
-  color:            var(--text-disabled);        /* #262626 */
+  background-color: var(--background-disabled);
+  color:            var(--text-disabled);
 }
-
 /* ─── Level Secondary ────────────────────────────────────────────────────────── */
-
 .level-secondary {
   background-color: var(--background-accent-inverse-default); /* #e7e7e7 */
   color:            var(--text-accent-default);               /* noir    */
   border:           var(--border-width-03) solid var(--border-accent-default);
-  border-radius:    var(--radius-03); /* 8px — uniquement sur Secondary */
+  border-radius:    var(--radius-03);                         /* 8px     */
 }
-
 .level-secondary:focus-visible {
-  border-radius: var(--radius-04); /* 10px pour le focus ring Secondary */
+  border-radius: var(--radius-04); /* 10px */
 }
-
 .level-secondary:hover:not(:disabled):not([aria-disabled='true']) {
-  background-color: var(--background-accent-default); /* noir  */
-  color:            var(--text-accent-on-default);    /* blanc */
+  background-color: var(--background-accent-default);
+  color:            var(--text-accent-on-default);
 }
-
 .level-secondary:active:not(:disabled):not([aria-disabled='true']) {
-  background-color: var(--background-accent-active); /* #3d3d3d */
-  color:            var(--text-accent-on-default);   /* blanc   */
+  background-color: var(--background-accent-active);
+  color:            var(--text-accent-on-default);
 }
-
 .level-secondary:disabled {
   background-color: var(--background-disabled);
   border-color:     var(--border-disabled);
