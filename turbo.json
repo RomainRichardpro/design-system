@@ -1,6 +1,6 @@
 {
-  "globalDependencies": ["**/.env"],
-  "pipeline": {
+  "globalDependencies": [".env"],
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]

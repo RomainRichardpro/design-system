@@ -1,11 +1,8 @@
 import { forwardRef } from 'react';
 import styles from './Button.module.css';
-
 // ─── Types ───────────────────────────────────────────────────────────────────
-
 export type ButtonLevel = 'primary' | 'secondary';
 export type ButtonSize  = 'xs' | 's' | 'm' | 'l';
-
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Hiérarchie visuelle */
@@ -17,9 +14,7 @@ export interface ButtonProps
   /** Texte lu par les lecteurs d'écran en état loading */
   loadingLabel?: string;
 }
-
 // ─── Spinner ─────────────────────────────────────────────────────────────────
-
 /**
  * SVG spinner animé.
  * 16px pour XS, 24px pour S/M/L — fidèle Figma.
@@ -29,7 +24,7 @@ function Spinner({ size }: { size: number }) {
     <svg
       aria-hidden="true"
       className={styles.spinner}
-      focusable="false"
+      focusable={false}
       height={size}
       viewBox="0 0 24 24"
       width={size}
@@ -53,9 +48,7 @@ function Spinner({ size }: { size: number }) {
     </svg>
   );
 }
-
 // ─── Composant ───────────────────────────────────────────────────────────────
-
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -70,14 +63,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const isDisabled  = disabled;
     const spinnerSize = size === 'xs' ? 16 : 24;
-
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (loading) return;
       rest.onClick?.(e);
     };
-
     const classes = [
       styles.button,
       styles[`level-${level}`],
@@ -87,16 +77,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ]
       .filter(Boolean)
       .join(' ');
-
     return (
       <button
         ref={ref}
         aria-busy={loading || undefined}
-        aria-disabled={loading || isDisabled || undefined}
+        aria-disabled={loading || disabled || undefined}
         className={classes}
         data-level={level}
         data-size={size}
-        disabled={isDisabled}
+        disabled={disabled}
         type="button"
         {...rest}
         onClick={handleClick}
@@ -113,5 +102,4 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
-
 Button.displayName = 'Button';
