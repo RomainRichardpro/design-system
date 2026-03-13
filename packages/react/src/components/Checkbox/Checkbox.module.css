@@ -105,10 +105,13 @@
 
 /* ── Focus visible — halo ── */
 
-.root:not(.disabled):has(.input:focus-visible) .control::before {
+.root:not(.disabled):has(.input:focus-visible)::before {
   content: '';
   position: absolute;
-  inset: -2px;
+  left: 0;
+  top: var(--spacing-01);
+  width: var(--sizes-08);
+  height: var(--sizes-08);
   border-radius: var(--radius-02);
   border: var(--border-width-03) solid var(--focus);
   pointer-events: none;
