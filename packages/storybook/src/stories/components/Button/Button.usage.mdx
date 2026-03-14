@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/blocks';
+import * as PlaygroundStories from './Button.playground.stories';
+
+<Meta of={PlaygroundStories} name="Usage" />
+
+# Usage — Button
+
+## ✅ À faire
+
+**Utiliser `primary` pour une seule action principale par vue**
+Le bouton Primary représente l'action la plus importante d'un écran ou d'une section. Plusieurs Primary en compétition détruisent la hiérarchie visuelle — un seul suffit.
+
+**Toujours renseigner `loadingLabel` quand `loading` est actif**
+Le spinner est invisible pour les lecteurs d'écran. Sans `loadingLabel`, l'état de chargement n'est pas communiqué.
+
+```tsx
+// ✅ Correct
+<Button loading loadingLabel="Enregistrement en cours">
+  Enregistrer
+</Button>
+```
+
+**Choisir la taille selon le contexte d'usage**
+
+| Taille | Hauteur | Usage recommandé |
+|---|---|---|
+| `xs` | 32px | Espaces contraints — tableaux, listes, toolbars |
+| `s` | 40px | Interfaces denses — sidebars, formulaires secondaires |
+| `m` | 48px | Usage standard — défaut recommandé |
+| `l` | 56px | CTA proéminents — pages de destination, modales |
+
+---
+
+## ❌ À éviter
+
+**Ne pas empiler plusieurs boutons `primary` côte à côte**
+Si deux actions ont la même priorité, utiliser `primary` + `secondary`, jamais deux `primary`.
+
+**Ne pas utiliser `disabled` comme remplaçant d'une validation**
+Un bouton désactivé sans explication laisse l'utilisateur sans recours. Préférer la validation inline avec message d'erreur et bouton actif.
+
+**Ne pas laisser un libellé ambigu**
+Le texte doit décrire l'action, pas l'état. Préférer "Enregistrer les modifications" à "OK", "Valider" ou "Oui".

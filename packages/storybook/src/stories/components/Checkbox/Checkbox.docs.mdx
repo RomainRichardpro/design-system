@@ -1,0 +1,75 @@
+import { Meta, Primary, Controls } from '@storybook/blocks';
+import * as PlaygroundStories from './Checkbox.playground.stories';
+
+<Meta of={PlaygroundStories} name="Docs" />
+
+<div className="sb-docs-header">
+  <div className="sb-docs-header__meta">
+    <span className="sb-docs-badge sb-docs-badge--stable">Stable</span>
+    <a
+      href="https://www.figma.com/design/skRy27piDeBGQwD8Bi0EAU"
+      target="_blank"
+      rel="noreferrer"
+      className="sb-docs-figma-link"
+    >
+      ↗ Ouvrir dans Figma
+    </a>
+  </div>
+  <h1 className="sb-docs-title">Checkbox</h1>
+  <p className="sb-docs-description">
+    Composant de sélection binaire ou indéterminée — trois états (non coché, coché, indéterminé) et un mode désactivé.
+  </p>
+</div>
+
+---
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+---
+
+## Accessibilité
+
+| Critère | Détail |
+|---|---|
+| **Élément natif** | `<input type="checkbox">` — compatibilité maximale avec les technologies d'assistance |
+| **État indéterminé** | Propriété DOM `.indeterminate` + `aria-checked="mixed"` lu par les lecteurs d'écran |
+| **Label masqué** | `hideLabel` conserve le label dans le DOM via `.srOnly` — jamais supprimé du DOM |
+| **Identifiant** | `id` auto-généré via `useId()` si absent — association `<label for>` toujours garantie |
+| **Focus visible** | Halo `:focus-visible` — `var(--focus)` · `var(--border-width-03)` · conforme WCAG 2.1 AA |
+| **Navigation clavier** | `Tab` pour atteindre · `Space` pour basculer |
+| **Contraste** | Testé WCAG 2.1 AA sur les états default et disabled |
+
+---
+
+## Tokens utilisés
+
+| Token CSS | Rôle |
+|---|---|
+| `--background-accent-default` | Fond de la box cochée / indéterminée |
+| `--background-accent-hover` | Fond de la box au survol (état coché / indéterminé) |
+| `--background-disabled` | Fond de la box désactivée cochée / indéterminée |
+| `--border-accent-default` | Bordure de la box non cochée default |
+| `--border-accent-hover` | Bordure de la box non cochée au survol |
+| `--border-disabled` | Bordure de la box désactivée non cochée |
+| `--text-neutral-default` | Couleur du label default |
+| `--text-accent-default` | Couleur du label au survol |
+| `--text-disabled` | Couleur du label désactivé |
+| `--icon-accent-on-default` | Couleur de l'icône (check / tiret) |
+| `--icon-disabled` | Couleur de l'icône désactivée |
+| `--sizes-07` | Taille de la box (width + height) |
+| `--sizes-06` | Taille de l'icône interne |
+| `--sizes-08` | Taille du halo focus |
+| `--spacing-01` | Padding du container racine |
+| `--spacing-04` | Gap entre la box et le label |
+| `--radius-01` | Border-radius de la box |
+| `--radius-02` | Border-radius du container racine (focus) |
+| `--border-width-02` | Épaisseur de la bordure de la box |
+| `--border-width-03` | Épaisseur du halo focus |
+| `--font-family-text` | Famille typographique du label |
+| `--font-size-16` | Taille du label |
+| `--font-weight-regular` | Graisse du label |
+| `--focus` | Couleur du halo focus |

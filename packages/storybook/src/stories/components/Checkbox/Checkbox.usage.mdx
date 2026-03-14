@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/blocks';
+import * as PlaygroundStories from './Checkbox.playground.stories';
+
+<Meta of={PlaygroundStories} name="Usage" />
+
+# Usage — Checkbox
+
+## ✅ À faire
+
+**Toujours fournir un `label` explicite**
+Le label est obligatoire pour l'accessibilité. Même en utilisant `hideLabel`, le texte doit être présent et descriptif — il sera lu par les lecteurs d'écran.
+
+```tsx
+// ✅ Correct — label visible
+<Checkbox label="Recevoir la newsletter" checked={checked} onChange={setChecked} />
+
+// ✅ Correct — label masqué mais présent pour les SR
+<Checkbox label="Sélectionner cet élément" hideLabel checked={checked} onChange={setChecked} />
+```
+
+**Utiliser `indeterminate` pour représenter une sélection partielle dans un groupe**
+L'état indéterminé est conçu pour les cas où une checkbox "parent" représente un groupe partiellement sélectionné. Ne pas l'utiliser comme état d'incertitude générique.
+
+**Toujours contrôler l'état via `checked` + `onChange`**
+La Checkbox est un composant contrôlé. L'état doit être géré par le composant parent.
+
+```tsx
+const [checked, setChecked] = useState(false);
+<Checkbox label="Option" checked={checked} onChange={setChecked} />
+```
+
+---
+
+## ❌ À éviter
+
+**Ne pas omettre le `label` pour gagner de la place**
+Utiliser `hideLabel` plutôt que de passer une chaîne vide ou de ne pas passer de label. Une checkbox sans label accessible n'est pas conforme WCAG.
+
+```tsx
+// ❌ Incorrect
+<Checkbox label="" checked={checked} onChange={setChecked} />
+
+// ✅ Correct
+<Checkbox label="Sélectionner" hideLabel checked={checked} onChange={setChecked} />
+```
+
+**Ne pas utiliser `indeterminate` et `checked` simultanément**
+Ces deux états sont exclusifs. Si `indeterminate` est vrai, l'état visuel indéterminé prend le dessus indépendamment de `checked`.
+
+**Ne pas utiliser la Checkbox pour des choix mutuellement exclusifs**
+Pour des options mutuellement exclusives (un seul choix possible), utiliser des boutons radio. La Checkbox est réservée aux sélections indépendantes.
