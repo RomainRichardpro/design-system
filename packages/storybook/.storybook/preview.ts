@@ -11,6 +11,10 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
+          'Introduction',
+          ['Bienvenue', 'Installation', 'Contribuer'],
+          'Fondations',
+          ['Couleurs', 'Typographie', 'Espacements', 'Tailles', 'Radius', 'Bordures'],
           'Composants',
           [
             'Button',
@@ -19,7 +23,6 @@ const preview: Preview = {
             ['Docs', 'Playground', 'Variants', 'States', 'Usage'],
             '*',
           ],
-          'Fondations',
           '*',
         ],
       },

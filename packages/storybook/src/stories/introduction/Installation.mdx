@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction/Installation" />
+
+# Installation
+
+## Prérequis
+
+- Node.js 18+
+- pnpm 8+
+
+---
+
+## Cloner le repo
+
+```bash
+git clone https://github.com/RomainRichardpro/design-system.git
+cd design-system
+pnpm install
+```
+
+---
+
+## Lancer le Storybook
+
+```bash
+pnpm --filter @romainrichardpro/storybook dev
+```
+
+Storybook est accessible sur [http://localhost:6006](http://localhost:6006).
+
+---
+
+## Builder les tokens
+
+```bash
+pnpm --filter @romainrichardpro/tokens build
+```
+
+Les fichiers CSS sont générés dans `packages/tokens/build/css/`.
+
+---
+
+## Utiliser les tokens dans un projet
+
+```css
+/* Importer les tokens dans ton CSS */
+@import '@romainrichardpro/tokens/css/colors-light';
+@import '@romainrichardpro/tokens/css/numbers';
+@import '@romainrichardpro/tokens/css/typography';
+```
+
+---
+
+## Lancer les tests
+
+```bash
+pnpm --filter @romainrichardpro/react test
+```

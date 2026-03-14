@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction/Contribuer" />
+
+# Contribuer
+
+## Workflow général
+
+Le Design System suit un workflow **Figma → Code → GitHub → Storybook**.
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Étape</th>
+      <th align="left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Design</strong></td>
+      <td>Le composant est conçu dans Figma — variants, états, tailles, tokens</td>
+    </tr>
+    <tr>
+      <td><strong>2. Implémentation</strong></td>
+      <td>Le composant est codé en React en suivant fidèlement les specs Figma</td>
+    </tr>
+    <tr>
+      <td><strong>3. Tests</strong></td>
+      <td>Tests unitaires, d'interaction et d'accessibilité (jest-axe)</td>
+    </tr>
+    <tr>
+      <td><strong>4. Documentation</strong></td>
+      <td>Stories Storybook : Docs, Playground, Variants, States, Sizes, Usage</td>
+    </tr>
+    <tr>
+      <td><strong>5. Push</strong></td>
+      <td>Commit sur <code>main</code> — pas de branches</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Conventions
+
+- **Langue** — documentation et commentaires en français
+- **Branche** — toujours travailler sur `main` directement
+- **Commits** — format `type(scope): description` en français
+- **Accessibilité** — WCAG 2.1 AA obligatoire sur chaque composant
+- **Tests** — couverture minimum 80%
+
+---
+
+## Ajouter un composant
+
+1. Créer le composant dans `packages/react/src/components/NomComposant/`
+2. Exporter depuis `packages/react/src/index.ts`
+3. Créer le dossier de stories dans `packages/storybook/src/stories/components/NomComposant/`
+4. Ajouter les 5 fichiers : `Docs.mdx`, `playground.stories.tsx`, `variants.stories.tsx`, `states.stories.tsx`, `usage.mdx`
+5. Mettre à jour le `storySort` dans `.storybook/preview.ts`
