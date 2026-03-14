@@ -8,9 +8,11 @@ import * as PlaygroundStories from './Button.playground.stories';
 ## ✅ À faire
 
 **Utiliser `primary` pour une seule action principale par vue**
+
 Le bouton Primary représente l'action la plus importante d'un écran ou d'une section. Plusieurs Primary en compétition détruisent la hiérarchie visuelle — un seul suffit.
 
 **Toujours renseigner `loadingLabel` quand `loading` est actif**
+
 Le spinner est invisible pour les lecteurs d'écran. Sans `loadingLabel`, l'état de chargement n'est pas communiqué.
 
 ```tsx
@@ -22,22 +24,50 @@ Le spinner est invisible pour les lecteurs d'écran. Sans `loadingLabel`, l'éta
 
 **Choisir la taille selon le contexte d'usage**
 
-| Taille | Hauteur | Usage recommandé |
-|---|---|---|
-| `xs` | 32px | Espaces contraints — tableaux, listes, toolbars |
-| `s` | 40px | Interfaces denses — sidebars, formulaires secondaires |
-| `m` | 48px | Usage standard — défaut recommandé |
-| `l` | 56px | CTA proéminents — pages de destination, modales |
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Taille</th>
+      <th align="left">Hauteur</th>
+      <th align="left">Usage recommandé</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>xs</code></td>
+      <td>32px</td>
+      <td>Espaces contraints — tableaux, listes, toolbars</td>
+    </tr>
+    <tr>
+      <td><code>s</code></td>
+      <td>40px</td>
+      <td>Interfaces denses — sidebars, formulaires secondaires</td>
+    </tr>
+    <tr>
+      <td><code>m</code></td>
+      <td>48px</td>
+      <td>Usage standard — défaut recommandé</td>
+    </tr>
+    <tr>
+      <td><code>l</code></td>
+      <td>56px</td>
+      <td>CTA proéminents — pages de destination, modales</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
 ## ❌ À éviter
 
 **Ne pas empiler plusieurs boutons `primary` côte à côte**
+
 Si deux actions ont la même priorité, utiliser `primary` + `secondary`, jamais deux `primary`.
 
 **Ne pas utiliser `disabled` comme remplaçant d'une validation**
+
 Un bouton désactivé sans explication laisse l'utilisateur sans recours. Préférer la validation inline avec message d'erreur et bouton actif.
 
 **Ne pas laisser un libellé ambigu**
+
 Le texte doit décrire l'action, pas l'état. Préférer "Enregistrer les modifications" à "OK", "Valider" ou "Oui".

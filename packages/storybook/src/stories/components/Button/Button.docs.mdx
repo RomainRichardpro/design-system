@@ -97,9 +97,9 @@ Le composant `Button` utilise un élément `<button>` natif, ce qui garantit une
     <tr><td><code>--text-accent-default</code></td><td>Texte Secondary default</td></tr>
     <tr><td><code>--text-disabled</code></td><td>Texte disabled</td></tr>
     <tr><td><code>--icon-accent-on-default</code></td><td>Couleur du spinner</td></tr>
-    <tr><td><code>--sizes-09</code> · <code>--sizes-10</code> · <code>--sizes-11</code> · <code>--sizes-12</code></td><td>Hauteur selon taille XS / S / M / L</td></tr>
+    <tr><td><code>--sizes-09</code> / <code>--sizes-10</code> / <code>--sizes-11</code> / <code>--sizes-12</code></td><td>Hauteur selon taille XS / S / M / L</td></tr>
     <tr><td><code>--spacing-06</code></td><td>Padding horizontal</td></tr>
-    <tr><td><code>--spacing-02</code> · <code>--spacing-04</code> · <code>--spacing-05</code></td><td>Padding vertical selon taille</td></tr>
+    <tr><td><code>--spacing-02</code> / <code>--spacing-04</code> / <code>--spacing-05</code></td><td>Padding vertical selon taille</td></tr>
     <tr><td><code>--spacing-04</code></td><td>Gap entre spinner et label</td></tr>
     <tr><td><code>--radius-03</code></td><td>Border-radius du bouton (8px)</td></tr>
     <tr><td><code>--radius-04</code></td><td>Border-radius au focus (10px)</td></tr>
@@ -110,71 +110,3 @@ Le composant `Button` utilise un élément `<button>` natif, ce qui garantit une
     <tr><td><code>--focus</code></td><td>Couleur du halo focus</td></tr>
   </tbody>
 </table>
-
-<div className="sb-docs-header">
-  <div className="sb-docs-header__meta">
-    <span className="sb-docs-badge sb-docs-badge--stable">Stable</span>
-    <a
-      href="https://www.figma.com/design/skRy27piDeBGQwD8Bi0EAU"
-      target="_blank"
-      rel="noreferrer"
-      className="sb-docs-figma-link"
-    >
-      ↗ Ouvrir dans Figma
-    </a>
-  </div>
-  <h1 className="sb-docs-title">Button</h1>
-  <p className="sb-docs-description">
-    Déclencheur d'action principal du Design System — deux niveaux visuels, quatre tailles et un état de chargement.
-  </p>
-</div>
-
----
-
-## Playground
-
-<Primary />
-
-<Controls />
-
----
-
-## Accessibilité
-
-| Critère | Détail |
-|---|---|
-| **Rôle ARIA** | `<button>` natif — rôle `button` implicite |
-| **État chargement** | `aria-busy="true"` + label masqué visuellement via `.srOnly` |
-| **État désactivé** | Attribut natif `disabled` — exclu du focus, non interactif |
-| **Focus visible** | Halo `:focus-visible` — `var(--focus)` · `var(--border-width-03)` · offset 4px |
-| **Navigation clavier** | `Tab` pour atteindre · `Enter` ou `Space` pour déclencher |
-| **Contraste** | Testé WCAG 2.1 AA sur `primary` et `secondary` |
-
----
-
-## Tokens utilisés
-
-| Token CSS | Rôle |
-|---|---|
-| `--background-accent-default` | Fond Primary default |
-| `--background-accent-hover` | Fond Primary hover + Secondary hover/active |
-| `--background-accent-active` | Fond Primary active |
-| `--background-accent-inverse-default` | Fond Secondary default |
-| `--background-disabled` | Fond disabled (primary + secondary) |
-| `--border-accent-default` | Bordure Secondary default |
-| `--border-disabled` | Bordure Secondary disabled |
-| `--text-accent-on-default` | Texte sur fond Primary |
-| `--text-accent-default` | Texte Secondary default |
-| `--text-disabled` | Texte disabled |
-| `--icon-accent-on-default` | Couleur du spinner |
-| `--sizes-09` · `--sizes-10` · `--sizes-11` · `--sizes-12` | Hauteur selon taille XS/S/M/L |
-| `--spacing-06` | Padding horizontal |
-| `--spacing-02` · `--spacing-04` · `--spacing-05` | Padding vertical selon taille |
-| `--spacing-04` | Gap entre spinner et label |
-| `--radius-03` | Border-radius du bouton (8px) |
-| `--radius-04` | Border-radius au focus (10px) |
-| `--border-width-03` | Épaisseur bordure Secondary + halo focus |
-| `--font-family-text` | Famille typographique |
-| `--font-weight-medium` | Graisse du label |
-| `--font-size-16` | Taille du texte |
-| `--focus` | Couleur du halo focus |
