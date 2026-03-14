@@ -6,7 +6,6 @@ import DocsPage from './Checkbox.docs.mdx';
 const meta = {
   title: 'Composants/Checkbox',
   component: Checkbox,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {

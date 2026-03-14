@@ -5,7 +5,6 @@ import DocsPage from './Button.docs.mdx';
 const meta = {
   title: 'Composants/Button',
   component: Button,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {
