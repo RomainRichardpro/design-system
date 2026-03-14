@@ -8,6 +8,22 @@ import '@romainrichardpro/tokens/css/typography';
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
+    options: {
+      storySort: {
+        order: [
+          'Composants',
+          [
+            'Button',
+            ['Docs', 'Playground', 'Variants', 'States', 'Sizes', 'Usage'],
+            'Checkbox',
+            ['Docs', 'Playground', 'Variants', 'States', 'Usage'],
+            '*',
+          ],
+          'Fondations',
+          '*',
+        ],
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

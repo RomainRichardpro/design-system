@@ -33,6 +33,114 @@ import * as PlaygroundStories from './Button.playground.stories';
 
 ## Accessibilité
 
+Le composant `Button` utilise un élément `<button>` natif, ce qui garantit une compatibilité maximale avec les technologies d'assistance sans configuration supplémentaire.
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Critère</th>
+      <th align="left">Détail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Élément natif</strong></td>
+      <td>Utilise <code>&lt;button type="button"&gt;</code> — rôle <code>button</code> implicite, pas besoin de <code>role</code> ARIA explicite.</td>
+    </tr>
+    <tr>
+      <td><strong>État chargement</strong></td>
+      <td><code>aria-busy="true"</code> est ajouté quand <code>loading</code> est actif. Le contenu visible est remplacé par un spinner muet (<code>aria-hidden</code>). Le prop <code>loadingLabel</code> est rendu via une <code>span</code> visuellement masquée (<code>.srOnly</code>) et lu par les lecteurs d'écran à la place.</td>
+    </tr>
+    <tr>
+      <td><strong>État désactivé</strong></td>
+      <td>L'attribut natif <code>disabled</code> est utilisé. Le bouton est exclu du flux de focus (<code>tabIndex=-1</code> implicite) et les événements sont bloqués nativement par le navigateur.</td>
+    </tr>
+    <tr>
+      <td><strong>Focus visible</strong></td>
+      <td>Halo appliqué via <code>:focus-visible</code> uniquement — ne s'affiche pas lors d'un clic souris, uniquement lors de la navigation clavier. Couleur <code>var(--focus)</code>, épaisseur <code>var(--border-width-03)</code>, offset 4px. Conforme WCAG 2.1 AA critère 2.4.7.</td>
+    </tr>
+    <tr>
+      <td><strong>Navigation clavier</strong></td>
+      <td><code>Tab</code> pour atteindre le bouton · <code>Enter</code> ou <code>Space</code> pour déclencher l'action. Comportement natif garanti par l'élément <code>&lt;button&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td><strong>Contraste texte</strong></td>
+      <td>Ratio testé WCAG 2.1 AA (minimum 4.5:1) sur <code>primary</code> et <code>secondary</code>, états default et disabled inclus.</td>
+    </tr>
+    <tr>
+      <td><strong>Contenu minimal</strong></td>
+      <td>Le bouton doit toujours avoir un libellé explicite via <code>children</code>. Éviter les libellés ambigus comme "OK" ou "Valider" — préférer "Enregistrer les modifications".</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Tokens utilisés
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Token CSS</th>
+      <th align="left">Rôle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--background-accent-default</code></td><td>Fond Primary default</td></tr>
+    <tr><td><code>--background-accent-hover</code></td><td>Fond Primary hover + Secondary hover/active</td></tr>
+    <tr><td><code>--background-accent-active</code></td><td>Fond Primary active</td></tr>
+    <tr><td><code>--background-accent-inverse-default</code></td><td>Fond Secondary default</td></tr>
+    <tr><td><code>--background-disabled</code></td><td>Fond disabled (primary + secondary)</td></tr>
+    <tr><td><code>--border-accent-default</code></td><td>Bordure Secondary default</td></tr>
+    <tr><td><code>--border-disabled</code></td><td>Bordure Secondary disabled</td></tr>
+    <tr><td><code>--text-accent-on-default</code></td><td>Texte sur fond Primary</td></tr>
+    <tr><td><code>--text-accent-default</code></td><td>Texte Secondary default</td></tr>
+    <tr><td><code>--text-disabled</code></td><td>Texte disabled</td></tr>
+    <tr><td><code>--icon-accent-on-default</code></td><td>Couleur du spinner</td></tr>
+    <tr><td><code>--sizes-09</code> · <code>--sizes-10</code> · <code>--sizes-11</code> · <code>--sizes-12</code></td><td>Hauteur selon taille XS / S / M / L</td></tr>
+    <tr><td><code>--spacing-06</code></td><td>Padding horizontal</td></tr>
+    <tr><td><code>--spacing-02</code> · <code>--spacing-04</code> · <code>--spacing-05</code></td><td>Padding vertical selon taille</td></tr>
+    <tr><td><code>--spacing-04</code></td><td>Gap entre spinner et label</td></tr>
+    <tr><td><code>--radius-03</code></td><td>Border-radius du bouton (8px)</td></tr>
+    <tr><td><code>--radius-04</code></td><td>Border-radius au focus (10px)</td></tr>
+    <tr><td><code>--border-width-03</code></td><td>Épaisseur bordure Secondary + halo focus</td></tr>
+    <tr><td><code>--font-family-text</code></td><td>Famille typographique</td></tr>
+    <tr><td><code>--font-weight-medium</code></td><td>Graisse du label</td></tr>
+    <tr><td><code>--font-size-16</code></td><td>Taille du texte</td></tr>
+    <tr><td><code>--focus</code></td><td>Couleur du halo focus</td></tr>
+  </tbody>
+</table>
+
+<div className="sb-docs-header">
+  <div className="sb-docs-header__meta">
+    <span className="sb-docs-badge sb-docs-badge--stable">Stable</span>
+    <a
+      href="https://www.figma.com/design/skRy27piDeBGQwD8Bi0EAU"
+      target="_blank"
+      rel="noreferrer"
+      className="sb-docs-figma-link"
+    >
+      ↗ Ouvrir dans Figma
+    </a>
+  </div>
+  <h1 className="sb-docs-title">Button</h1>
+  <p className="sb-docs-description">
+    Déclencheur d'action principal du Design System — deux niveaux visuels, quatre tailles et un état de chargement.
+  </p>
+</div>
+
+---
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+---
+
+## Accessibilité
+
 | Critère | Détail |
 |---|---|
 | **Rôle ARIA** | `<button>` natif — rôle `button` implicite |
