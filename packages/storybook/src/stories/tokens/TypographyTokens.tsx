@@ -39,10 +39,7 @@ export function TypographyTokens() {
             const value = getValue(token);
             return (
               <div key={token} className={styles.familyRow}>
-                <span
-                  className={styles.familySample}
-                  style={{ fontFamily: `var(${token})` }}
-                >
+                <span className={styles.familySample} style={{ fontFamily: `var(${token})` }}>
                   Aa
                 </span>
                 <div className={styles.familyInfo}>

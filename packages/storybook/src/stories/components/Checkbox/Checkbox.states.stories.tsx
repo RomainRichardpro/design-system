@@ -36,7 +36,7 @@ export const Disabled: Story = {
 };
 
 export const Overview: Story = {
-  name: 'Vue d\'ensemble',
+  name: "Vue d'ensemble",
   render: () => (
     <div
       style={{
@@ -47,19 +47,71 @@ export const Overview: Story = {
       }}
     >
       {/* En-têtes */}
-      <span style={{ fontSize: '11px', color: 'var(--text-neutral-subtle, #888)', fontFamily: 'sans-serif', textTransform: 'uppercase', letterSpacing: '0.08em' }} />
-      <span style={{ fontSize: '11px', color: 'var(--text-neutral-subtle, #888)', fontFamily: 'sans-serif', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Default</span>
-      <span style={{ fontSize: '11px', color: 'var(--text-neutral-subtle, #888)', fontFamily: 'sans-serif', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Disabled</span>
+      <span
+        style={{
+          fontSize: '11px',
+          color: 'var(--text-neutral-subtle, #888)',
+          fontFamily: 'sans-serif',
+          textTransform: 'uppercase',
+          letterSpacing: '0.08em',
+        }}
+      />
+      <span
+        style={{
+          fontSize: '11px',
+          color: 'var(--text-neutral-subtle, #888)',
+          fontFamily: 'sans-serif',
+          textTransform: 'uppercase',
+          letterSpacing: '0.08em',
+        }}
+      >
+        Default
+      </span>
+      <span
+        style={{
+          fontSize: '11px',
+          color: 'var(--text-neutral-subtle, #888)',
+          fontFamily: 'sans-serif',
+          textTransform: 'uppercase',
+          letterSpacing: '0.08em',
+        }}
+      >
+        Disabled
+      </span>
       {/* Non coché */}
-      <span style={{ fontSize: '13px', fontFamily: 'sans-serif', color: 'var(--text-neutral-default, #222)' }}>Non coché</span>
+      <span
+        style={{
+          fontSize: '13px',
+          fontFamily: 'sans-serif',
+          color: 'var(--text-neutral-default, #222)',
+        }}
+      >
+        Non coché
+      </span>
       <Checkbox label="Option" checked={false} />
       <Checkbox label="Option" checked={false} disabled />
       {/* Coché */}
-      <span style={{ fontSize: '13px', fontFamily: 'sans-serif', color: 'var(--text-neutral-default, #222)' }}>Coché</span>
+      <span
+        style={{
+          fontSize: '13px',
+          fontFamily: 'sans-serif',
+          color: 'var(--text-neutral-default, #222)',
+        }}
+      >
+        Coché
+      </span>
       <Checkbox label="Option" checked={true} />
       <Checkbox label="Option" checked={true} disabled />
       {/* Indéterminé */}
-      <span style={{ fontSize: '13px', fontFamily: 'sans-serif', color: 'var(--text-neutral-default, #222)' }}>Indéterminé</span>
+      <span
+        style={{
+          fontSize: '13px',
+          fontFamily: 'sans-serif',
+          color: 'var(--text-neutral-default, #222)',
+        }}
+      >
+        Indéterminé
+      </span>
       <Checkbox label="Option" indeterminate={true} />
       <Checkbox label="Option" indeterminate={true} disabled />
     </div>

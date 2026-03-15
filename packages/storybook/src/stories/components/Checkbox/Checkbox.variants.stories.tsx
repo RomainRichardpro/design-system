@@ -31,14 +31,14 @@ export const Indeterminate: Story = {
 export const HiddenLabel: Story = {
   name: 'Label masqué',
   args: {
-    label: 'Option (label accessible uniquement par lecteur d\'écran)',
+    label: "Option (label accessible uniquement par lecteur d'écran)",
     hideLabel: true,
     checked: false,
   },
 };
 
 export const Overview: Story = {
-  name: 'Vue d\'ensemble',
+  name: "Vue d'ensemble",
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       <Checkbox label="Non coché" checked={false} />

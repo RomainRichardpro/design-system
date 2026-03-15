@@ -51,7 +51,7 @@ Actions secondaires, alternatives, ou actions en parallèle d'un Primary.
       control: 'boolean',
     },
     loadingLabel: {
-      description: 'Texte lu par les lecteurs d\'écran en état loading',
+      description: "Texte lu par les lecteurs d'écran en état loading",
       control: 'text',
     },
     disabled: {
@@ -104,7 +104,7 @@ export const Disabled: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Le bouton est désactivé via l\'attribut HTML natif `disabled`.',
+        story: "Le bouton est désactivé via l'attribut HTML natif `disabled`.",
       },
     },
   },
@@ -120,7 +120,8 @@ export const Loading: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Le contenu est remplacé par un spinner. `loadingLabel` ("Chargement en cours" par défaut) reste accessible aux lecteurs d\'écran via un span sr-only.',
+        story:
+          'Le contenu est remplacé par un spinner. `loadingLabel` ("Chargement en cours" par défaut) reste accessible aux lecteurs d\'écran via un span sr-only.',
       },
     },
   },
@@ -134,16 +135,25 @@ export const Tailles: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'XS (32px), S (40px), M (48px), L (56px). La taille M est la taille par défaut recommandée.',
+        story:
+          'XS (32px), S (40px), M (48px), L (56px). La taille M est la taille par défaut recommandée.',
       },
     },
   },
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-      <Button level="primary" size="xs">XS</Button>
-      <Button level="primary" size="s">S</Button>
-      <Button level="primary" size="m">M</Button>
-      <Button level="primary" size="l">L</Button>
+      <Button level="primary" size="xs">
+        XS
+      </Button>
+      <Button level="primary" size="s">
+        S
+      </Button>
+      <Button level="primary" size="m">
+        M
+      </Button>
+      <Button level="primary" size="l">
+        L
+      </Button>
     </div>
   ),
 };
@@ -153,10 +163,18 @@ export const TaillesSecondary: Story = {
   name: 'Tailles — Secondary',
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-      <Button level="secondary" size="xs">XS</Button>
-      <Button level="secondary" size="s">S</Button>
-      <Button level="secondary" size="m">M</Button>
-      <Button level="secondary" size="l">L</Button>
+      <Button level="secondary" size="xs">
+        XS
+      </Button>
+      <Button level="secondary" size="s">
+        S
+      </Button>
+      <Button level="secondary" size="m">
+        M
+      </Button>
+      <Button level="secondary" size="l">
+        L
+      </Button>
     </div>
   ),
 };
@@ -169,14 +187,19 @@ export const Niveaux: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Usage typique : un Primary pour l\'action principale, un Secondary pour l\'action alternative.',
+        story:
+          "Usage typique : un Primary pour l'action principale, un Secondary pour l'action alternative.",
       },
     },
   },
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-      <Button level="primary"   size="m">Confirmer</Button>
-      <Button level="secondary" size="m">Annuler</Button>
+      <Button level="primary" size="m">
+        Confirmer
+      </Button>
+      <Button level="secondary" size="m">
+        Annuler
+      </Button>
     </div>
   ),
 };
@@ -195,10 +218,18 @@ export const LoadingTailles: Story = {
   },
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-      <Button level="primary" size="xs" loading>XS</Button>
-      <Button level="primary" size="s"  loading>S</Button>
-      <Button level="primary" size="m"  loading>M</Button>
-      <Button level="primary" size="l"  loading>L</Button>
+      <Button level="primary" size="xs" loading>
+        XS
+      </Button>
+      <Button level="primary" size="s" loading>
+        S
+      </Button>
+      <Button level="primary" size="m" loading>
+        M
+      </Button>
+      <Button level="primary" size="l" loading>
+        L
+      </Button>
     </div>
   ),
 };

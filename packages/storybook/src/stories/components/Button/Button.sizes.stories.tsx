@@ -34,13 +34,21 @@ export const L: Story = {
 };
 
 export const Overview: Story = {
-  name: 'Vue d\'ensemble',
+  name: "Vue d'ensemble",
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-      <Button level="primary" size="xs">XS — 32px</Button>
-      <Button level="primary" size="s">S — 40px</Button>
-      <Button level="primary" size="m">M — 48px</Button>
-      <Button level="primary" size="l">L — 56px</Button>
+      <Button level="primary" size="xs">
+        XS — 32px
+      </Button>
+      <Button level="primary" size="s">
+        S — 40px
+      </Button>
+      <Button level="primary" size="m">
+        M — 48px
+      </Button>
+      <Button level="primary" size="l">
+        L — 56px
+      </Button>
     </div>
   ),
 };

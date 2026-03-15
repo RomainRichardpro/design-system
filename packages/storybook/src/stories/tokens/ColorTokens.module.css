@@ -66,9 +66,14 @@
   width: 120px;
 }
 
-.thSwatch { width: 56px; }
-.thName {}
-.thValue { width: 120px; }
+.thSwatch {
+  width: 56px;
+}
+.thName {
+}
+.thValue {
+  width: 120px;
+}
 
 /* Swatch */
 .swatch {

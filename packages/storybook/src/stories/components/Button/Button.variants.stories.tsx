@@ -32,11 +32,15 @@ export const Secondary: Story = {
 };
 
 export const Overview: Story = {
-  name: 'Vue d\'ensemble',
+  name: "Vue d'ensemble",
   render: () => (
     <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-      <Button level="primary" size="m">Primary</Button>
-      <Button level="secondary" size="m">Secondary</Button>
+      <Button level="primary" size="m">
+        Primary
+      </Button>
+      <Button level="secondary" size="m">
+        Secondary
+      </Button>
     </div>
   ),
 };

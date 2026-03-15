@@ -18,9 +18,14 @@
   letter-spacing: 0.05em;
 }
 
-.thName { width: 220px; }
-.thBar {}
-.thValue { width: 80px; }
+.thName {
+  width: 220px;
+}
+.thBar {
+}
+.thValue {
+  width: 80px;
+}
 
 .row {
   border-bottom: 1px solid #f0f0f0;

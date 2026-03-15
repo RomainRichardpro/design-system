@@ -1,22 +1,25 @@
 /* ─── Base ───────────────────────────────────────────────────────────────────── */
 .button {
-  display:         inline-flex;
-  align-items:     center;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap:             var(--spacing-04);
-  position:        relative;
+  gap: var(--spacing-04);
+  position: relative;
   /* Reset */
-  border:          none;
-  padding:         0;
-  cursor:          pointer;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
   /* Chaque level définit son propre border-radius */
-  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+  transition:
+    background-color 120ms ease,
+    color 120ms ease,
+    border-color 120ms ease;
   outline: none;
 }
 .button:focus-visible {
-  outline:        var(--border-width-03) solid var(--focus);
+  outline: var(--border-width-03) solid var(--focus);
   outline-offset: 4px;
 }
 .button:disabled,
@@ -25,74 +28,78 @@
 }
 /* ─── Label ──────────────────────────────────────────────────────────────────── */
 .label {
-  font-family:    var(--font-family-text);
-  font-weight:    var(--font-weight-medium);
-  font-size:      var(--font-size-16);
-  line-height:    1.5;
-  white-space:    nowrap;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-16);
+  line-height: 1.5;
+  white-space: nowrap;
   pointer-events: none;
 }
 /* ─── Accessibilité — texte masqué visuellement ──────────────────────────────── */
 .srOnly {
-  position:    absolute;
-  width:       1px;
-  height:      1px;
-  padding:     0;
-  margin:      -1px;
-  overflow:    hidden;
-  clip:        rect(0, 0, 0, 0);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  border:      0;
+  border: 0;
 }
 /* ─── Spinner ────────────────────────────────────────────────────────────────── */
 .spinner {
   flex-shrink: 0;
-  animation:   button-spin 700ms linear infinite;
+  animation: button-spin 700ms linear infinite;
 }
 .spinnerTrack {
-  stroke:  currentColor;
+  stroke: currentColor;
   opacity: 0.25;
 }
 .spinnerArc {
   stroke: currentColor;
 }
 @keyframes button-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 /* ─── Tailles ────────────────────────────────────────────────────────────────── */
 .size-xs {
-  height:         var(--sizes-09);   /* 32px */
-  min-height:     var(--sizes-09);
-  max-height:     var(--sizes-09);
+  height: var(--sizes-09); /* 32px */
+  min-height: var(--sizes-09);
+  max-height: var(--sizes-09);
   padding-inline: var(--spacing-06); /* 16px */
-  padding-block:  var(--spacing-02); /* 4px  */
+  padding-block: var(--spacing-02); /* 4px  */
 }
 .size-s {
-  height:         var(--sizes-10);   /* 40px */
-  min-height:     var(--sizes-10);
-  max-height:     var(--sizes-10);
+  height: var(--sizes-10); /* 40px */
+  min-height: var(--sizes-10);
+  max-height: var(--sizes-10);
   padding-inline: var(--spacing-06); /* 16px */
-  padding-block:  var(--spacing-04); /* 8px  */
+  padding-block: var(--spacing-04); /* 8px  */
 }
 .size-m {
-  height:         var(--sizes-11);   /* 48px */
-  min-height:     var(--sizes-11);
-  max-height:     var(--sizes-11);
+  height: var(--sizes-11); /* 48px */
+  min-height: var(--sizes-11);
+  max-height: var(--sizes-11);
   padding-inline: var(--spacing-06); /* 16px */
-  padding-block:  var(--spacing-05); /* 12px */
+  padding-block: var(--spacing-05); /* 12px */
 }
 .size-l {
-  height:         var(--sizes-12);   /* 56px */
-  min-height:     var(--sizes-12);
-  max-height:     var(--sizes-12);
-  padding:        var(--spacing-06); /* 16px */
+  height: var(--sizes-12); /* 56px */
+  min-height: var(--sizes-12);
+  max-height: var(--sizes-12);
+  padding: var(--spacing-06); /* 16px */
 }
 /* ─── Level Primary ──────────────────────────────────────────────────────────── */
 .level-primary {
   background-color: var(--background-accent-default); /* noir  */
-  color:            var(--text-accent-on-default);    /* blanc */
-  border-radius:    var(--radius-03);                 /* 8px   */
+  color: var(--text-accent-on-default); /* blanc */
+  border-radius: var(--radius-03); /* 8px   */
 }
 .level-primary:focus-visible {
   border-radius: var(--radius-04); /* 10px */
@@ -105,28 +112,28 @@
 }
 .level-primary:disabled {
   background-color: var(--background-disabled);
-  color:            var(--text-disabled);
+  color: var(--text-disabled);
 }
 /* ─── Level Secondary ────────────────────────────────────────────────────────── */
 .level-secondary {
   background-color: var(--background-accent-inverse-default); /* #e7e7e7 */
-  color:            var(--text-accent-default);               /* noir    */
-  border:           var(--border-width-03) solid var(--border-accent-default);
-  border-radius:    var(--radius-03);                         /* 8px     */
+  color: var(--text-accent-default); /* noir    */
+  border: var(--border-width-03) solid var(--border-accent-default);
+  border-radius: var(--radius-03); /* 8px     */
 }
 .level-secondary:focus-visible {
   border-radius: var(--radius-04); /* 10px */
 }
 .level-secondary:hover:not(:disabled):not([aria-disabled='true']) {
   background-color: var(--background-accent-default);
-  color:            var(--text-accent-on-default);
+  color: var(--text-accent-on-default);
 }
 .level-secondary:active:not(:disabled):not([aria-disabled='true']) {
   background-color: var(--background-accent-active);
-  color:            var(--text-accent-on-default);
+  color: var(--text-accent-on-default);
 }
 .level-secondary:disabled {
   background-color: var(--background-disabled);
-  border-color:     var(--border-disabled);
-  color:            var(--text-disabled);
+  border-color: var(--border-disabled);
+  color: var(--text-disabled);
 }

@@ -15,14 +15,16 @@ const meta = {
   argTypes: {
     label: {
       control: 'text',
-      description: "Texte du label — obligatoire pour l'accessibilité, même si masqué visuellement avec `hideLabel`.",
+      description:
+        "Texte du label — obligatoire pour l'accessibilité, même si masqué visuellement avec `hideLabel`.",
       table: {
         type: { summary: 'string' },
       },
     },
     hideLabel: {
       control: 'boolean',
-      description: "Masque le label visuellement. Le texte reste dans le DOM pour les technologies d'assistance.",
+      description:
+        "Masque le label visuellement. Le texte reste dans le DOM pour les technologies d'assistance.",
       table: {
         defaultValue: { summary: 'false' },
         type: { summary: 'boolean' },
@@ -30,7 +32,8 @@ const meta = {
     },
     checked: {
       control: 'boolean',
-      description: 'État coché — composant contrôlé. Toujours associer à `onChange` pour gérer les mises à jour.',
+      description:
+        'État coché — composant contrôlé. Toujours associer à `onChange` pour gérer les mises à jour.',
       table: {
         defaultValue: { summary: 'false' },
         type: { summary: 'boolean' },
@@ -38,7 +41,8 @@ const meta = {
     },
     indeterminate: {
       control: 'boolean',
-      description: "État indéterminé — utilisé typiquement pour représenter une sélection partielle dans un groupe de cases.",
+      description:
+        'État indéterminé — utilisé typiquement pour représenter une sélection partielle dans un groupe de cases.',
       table: {
         defaultValue: { summary: 'false' },
         type: { summary: 'boolean' },
@@ -46,7 +50,8 @@ const meta = {
     },
     disabled: {
       control: 'boolean',
-      description: "Désactive l'interaction. Tous les états visuels (coché, indéterminé) sont préservés.",
+      description:
+        "Désactive l'interaction. Tous les états visuels (coché, indéterminé) sont préservés.",
       table: {
         defaultValue: { summary: 'false' },
         type: { summary: 'boolean' },
@@ -60,7 +65,8 @@ const meta = {
     },
     id: {
       control: 'text',
-      description: "Identifiant HTML. Auto-généré via `useId()` si absent — l'association `<label for>` est toujours garantie.",
+      description:
+        "Identifiant HTML. Auto-généré via `useId()` si absent — l'association `<label for>` est toujours garantie.",
       table: {
         type: { summary: 'string' },
       },

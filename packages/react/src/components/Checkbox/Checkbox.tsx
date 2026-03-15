@@ -52,20 +52,14 @@ export function Checkbox({
 
   return (
     <div
-      className={[
-        styles.root,
-        disabled ? styles.disabled : '',
-        className ?? '',
-      ]
+      className={[styles.root, disabled ? styles.disabled : '', className ?? '']
         .filter(Boolean)
         .join(' ')}
     >
       <div className={styles.control} aria-hidden="true">
         <div className={styles.box}>
           {(checked || indeterminate) && (
-            <span className={styles.icon}>
-              {indeterminate ? <IconMinus /> : <IconCheck />}
-            </span>
+            <span className={styles.icon}>{indeterminate ? <IconMinus /> : <IconCheck />}</span>
           )}
         </div>
       </div>
@@ -83,9 +77,7 @@ export function Checkbox({
 
       <label
         htmlFor={id}
-        className={[styles.label, hideLabel ? styles.srOnly : '']
-          .filter(Boolean)
-          .join(' ')}
+        className={[styles.label, hideLabel ? styles.srOnly : ''].filter(Boolean).join(' ')}
       >
         {label}
       </label>
@@ -126,12 +118,7 @@ function IconMinus() {
       aria-hidden="true"
       focusable="false"
     >
-      <path
-        d="M1 1H9"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
+      <path d="M1 1H9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }

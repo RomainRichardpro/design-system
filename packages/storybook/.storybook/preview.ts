@@ -4,7 +4,6 @@ import '@romainrichardpro/tokens/css/colors-light';
 import '@romainrichardpro/tokens/css/numbers';
 import '@romainrichardpro/tokens/css/typography';
 
-
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },

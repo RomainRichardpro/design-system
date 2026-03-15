@@ -2,9 +2,8 @@ import { forwardRef } from 'react';
 import styles from './Button.module.css';
 // ─── Types ───────────────────────────────────────────────────────────────────
 export type ButtonLevel = 'primary' | 'secondary';
-export type ButtonSize  = 'xs' | 's' | 'm' | 'l';
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export type ButtonSize = 'xs' | 's' | 'm' | 'l';
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Hiérarchie visuelle */
   level?: ButtonLevel;
   /** Taille du bouton */
@@ -53,15 +52,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      level        = 'primary',
-      size         = 'm',
-      loading      = false,
+      level = 'primary',
+      size = 'm',
+      loading = false,
       loadingLabel = 'Chargement en cours',
       disabled,
       className,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const spinnerSize = size === 'xs' ? 16 : 24;
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -100,6 +99,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </button>
     );
-  },
+  }
 );
 Button.displayName = 'Button';

@@ -17,8 +17,12 @@ export const Default: Story = {
   name: 'Default',
   render: () => (
     <div style={{ display: 'flex', gap: '12px' }}>
-      <Button level="primary" size="m">Action</Button>
-      <Button level="secondary" size="m">Action</Button>
+      <Button level="primary" size="m">
+        Action
+      </Button>
+      <Button level="secondary" size="m">
+        Action
+      </Button>
     </div>
   ),
 };
@@ -27,8 +31,12 @@ export const Disabled: Story = {
   name: 'Disabled',
   render: () => (
     <div style={{ display: 'flex', gap: '12px' }}>
-      <Button level="primary" size="m" disabled>Action</Button>
-      <Button level="secondary" size="m" disabled>Action</Button>
+      <Button level="primary" size="m" disabled>
+        Action
+      </Button>
+      <Button level="secondary" size="m" disabled>
+        Action
+      </Button>
     </div>
   ),
 };
@@ -48,7 +56,7 @@ export const Loading: Story = {
 };
 
 export const Overview: Story = {
-  name: 'Vue d\'ensemble',
+  name: "Vue d'ensemble",
   render: () => (
     <div
       style={{
@@ -59,21 +67,85 @@ export const Overview: Story = {
       }}
     >
       {/* En-têtes */}
-      <span style={{ fontSize: '11px', color: 'var(--text-neutral-subtle, #888)', fontFamily: 'sans-serif', textTransform: 'uppercase', letterSpacing: '0.08em' }} />
-      <span style={{ fontSize: '11px', color: 'var(--text-neutral-subtle, #888)', fontFamily: 'sans-serif', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Primary</span>
-      <span style={{ fontSize: '11px', color: 'var(--text-neutral-subtle, #888)', fontFamily: 'sans-serif', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Secondary</span>
+      <span
+        style={{
+          fontSize: '11px',
+          color: 'var(--text-neutral-subtle, #888)',
+          fontFamily: 'sans-serif',
+          textTransform: 'uppercase',
+          letterSpacing: '0.08em',
+        }}
+      />
+      <span
+        style={{
+          fontSize: '11px',
+          color: 'var(--text-neutral-subtle, #888)',
+          fontFamily: 'sans-serif',
+          textTransform: 'uppercase',
+          letterSpacing: '0.08em',
+        }}
+      >
+        Primary
+      </span>
+      <span
+        style={{
+          fontSize: '11px',
+          color: 'var(--text-neutral-subtle, #888)',
+          fontFamily: 'sans-serif',
+          textTransform: 'uppercase',
+          letterSpacing: '0.08em',
+        }}
+      >
+        Secondary
+      </span>
       {/* Default */}
-      <span style={{ fontSize: '13px', fontFamily: 'sans-serif', color: 'var(--text-neutral-default, #222)' }}>Default</span>
-      <Button level="primary" size="m">Action</Button>
-      <Button level="secondary" size="m">Action</Button>
+      <span
+        style={{
+          fontSize: '13px',
+          fontFamily: 'sans-serif',
+          color: 'var(--text-neutral-default, #222)',
+        }}
+      >
+        Default
+      </span>
+      <Button level="primary" size="m">
+        Action
+      </Button>
+      <Button level="secondary" size="m">
+        Action
+      </Button>
       {/* Disabled */}
-      <span style={{ fontSize: '13px', fontFamily: 'sans-serif', color: 'var(--text-neutral-default, #222)' }}>Disabled</span>
-      <Button level="primary" size="m" disabled>Action</Button>
-      <Button level="secondary" size="m" disabled>Action</Button>
+      <span
+        style={{
+          fontSize: '13px',
+          fontFamily: 'sans-serif',
+          color: 'var(--text-neutral-default, #222)',
+        }}
+      >
+        Disabled
+      </span>
+      <Button level="primary" size="m" disabled>
+        Action
+      </Button>
+      <Button level="secondary" size="m" disabled>
+        Action
+      </Button>
       {/* Loading */}
-      <span style={{ fontSize: '13px', fontFamily: 'sans-serif', color: 'var(--text-neutral-default, #222)' }}>Loading</span>
-      <Button level="primary" size="m" loading loadingLabel="Chargement">Action</Button>
-      <Button level="secondary" size="m" loading loadingLabel="Chargement">Action</Button>
+      <span
+        style={{
+          fontSize: '13px',
+          fontFamily: 'sans-serif',
+          color: 'var(--text-neutral-default, #222)',
+        }}
+      >
+        Loading
+      </span>
+      <Button level="primary" size="m" loading loadingLabel="Chargement">
+        Action
+      </Button>
+      <Button level="secondary" size="m" loading loadingLabel="Chargement">
+        Action
+      </Button>
     </div>
   ),
 };

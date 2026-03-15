@@ -12,7 +12,7 @@ describe('Checkbox — rendu', () => {
     expect(screen.getByLabelText('Accepter les conditions')).toBeInTheDocument();
   });
 
-  it('associe le label à l\'input via htmlFor/id', () => {
+  it("associe le label à l'input via htmlFor/id", () => {
     render(<Checkbox label="Mon option" id="option-1" />);
     const input = screen.getByRole('checkbox', { name: 'Mon option' });
     expect(input).toHaveAttribute('id', 'option-1');
@@ -119,7 +119,7 @@ describe('Checkbox — interactions', () => {
     expect(screen.getByRole('checkbox')).toHaveFocus();
   });
 
-  it('n\'est pas atteignable au Tab quand disabled', async () => {
+  it("n'est pas atteignable au Tab quand disabled", async () => {
     const user = userEvent.setup();
     render(<Checkbox label="Option" disabled />);
     await user.tab();
@@ -128,31 +128,31 @@ describe('Checkbox — interactions', () => {
 });
 
 describe('Checkbox — accessibilité', () => {
-  it('n\'a aucune violation axe — état default', async () => {
+  it("n'a aucune violation axe — état default", async () => {
     const { container } = render(<Checkbox label="Option" />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
-  it('n\'a aucune violation axe — état checked', async () => {
+  it("n'a aucune violation axe — état checked", async () => {
     const { container } = render(<Checkbox label="Option" checked />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
-  it('n\'a aucune violation axe — état indeterminate', async () => {
+  it("n'a aucune violation axe — état indeterminate", async () => {
     const { container } = render(<Checkbox label="Option" indeterminate />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
-  it('n\'a aucune violation axe — état disabled', async () => {
+  it("n'a aucune violation axe — état disabled", async () => {
     const { container } = render(<Checkbox label="Option" disabled />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
-  it('n\'a aucune violation axe — label masqué', async () => {
+  it("n'a aucune violation axe — label masqué", async () => {
     const { container } = render(<Checkbox label="Label masqué" hideLabel />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();

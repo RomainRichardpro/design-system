@@ -30,7 +30,7 @@ describe('Button — rendu', () => {
     render(
       <Button level="secondary" size="s">
         Label
-      </Button>,
+      </Button>
     );
     const btn = screen.getByRole('button');
     expect(btn).toHaveAttribute('data-level', 'secondary');
@@ -46,7 +46,7 @@ describe('Button — rendu', () => {
     render(
       <Button type="submit" data-testid="btn">
         Label
-      </Button>,
+      </Button>
     );
     const btn = screen.getByTestId('btn');
     expect(btn).toHaveAttribute('type', 'submit');
@@ -69,7 +69,7 @@ describe('Button — disabled', () => {
     render(
       <Button disabled onClick={onClick}>
         Label
-      </Button>,
+      </Button>
     );
     await user.click(screen.getByRole('button'));
     expect(onClick).not.toHaveBeenCalled();
@@ -98,7 +98,7 @@ describe('Button — loading', () => {
     expect(screen.getByRole('button')).toHaveAttribute('aria-busy', 'true');
   });
 
-  it('affiche un texte accessible pour les lecteurs d\'écran', () => {
+  it("affiche un texte accessible pour les lecteurs d'écran", () => {
     render(<Button loading>Label</Button>);
     expect(screen.getByText('Chargement en cours')).toBeInTheDocument();
   });
@@ -109,7 +109,7 @@ describe('Button — loading', () => {
     render(
       <Button loading onClick={onClick}>
         Label
-      </Button>,
+      </Button>
     );
     await user.click(screen.getByRole('button'));
     expect(onClick).not.toHaveBeenCalled();
