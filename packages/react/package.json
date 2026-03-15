@@ -25,6 +25,7 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
+    "@figma/code-connect": "^1.4.1",
     "@romainrichardpro/tokens": "workspace:*",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.2",
