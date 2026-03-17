@@ -3,17 +3,17 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: var(--color-background-neutral-alt);
+  background: var(--color-background-neutral-alt);
   padding: var(--spacing-08);
 }
 
 .card {
   width: 100%;
   max-width: 400px;
-  background-color: var(--color-background-neutral-default);
-  border-radius: var(--radius-05);
-  border: var(--border-width-01) solid var(--color-border-neutral-raised);
+  background: var(--color-background-neutral-default);
+  border-radius: var(--radius-04);
   padding: var(--spacing-09);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   /* gap entre .header (sous-titre) et premier .field */
