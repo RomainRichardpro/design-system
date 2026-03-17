@@ -6,6 +6,27 @@ Ce fichier est le contrat de référence pour la génération d'interfaces par C
 
 ---
 
+## Convention d'identification
+
+Tous les composants du DS exposent un attribut `data-component` sur leur nœud racine.
+
+Format : `data-component="ds-rr-[nom]"`
+
+| Composant | Valeur |
+|---|---|
+| `<Button>` | `data-component="ds-rr-button"` |
+| `<Checkbox>` | `data-component="ds-rr-checkbox"` |
+
+Cet attribut est **toujours présent**, non configurable via props, et s'ajoute aux autres attributs `data-*` existants.
+
+Usages :
+- **Inspection** : DevTools → attribut `data-component` visible immédiatement sur n'importe quel élément
+- **Tests** : `document.querySelectorAll('[data-component^="ds-rr"]')` pour lister tous les composants DS dans une page
+- **Debugging** : identifier instantanément ce qui vient du DS vs ce qui est du code local
+- **Audit** : base pour des outils d'analyse automatique d'utilisation des composants
+
+---
+
 ## Fichier Figma
 
 - File key : `skRy27piDeBGQwD8Bi0EAU`

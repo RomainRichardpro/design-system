@@ -82,6 +82,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-busy={loading || undefined}
         aria-disabled={loading || disabled || undefined}
         className={classes}
+        data-component="ds-rr-button"
         data-level={level}
         data-size={size}
         disabled={disabled}
