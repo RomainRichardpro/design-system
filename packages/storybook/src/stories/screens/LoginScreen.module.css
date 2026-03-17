@@ -16,12 +16,14 @@
   padding: var(--spacing-09);
   display: flex;
   flex-direction: column;
+  /* gap entre .header (sous-titre) et premier .field */
   gap: var(--spacing-08);
 }
 
 .header {
   display: flex;
   flex-direction: column;
+  /* gap entre titre et sous-titre */
   gap: var(--spacing-02);
 }
 
@@ -45,13 +47,18 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-06);
+  gap: 0;
 }
 
 .field {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-02);
+}
+
+/* gap entre chaque champ : --spacing-06 (16px) */
+.field + .field {
+  margin-top: var(--spacing-06);
 }
 
 .label {
@@ -62,14 +69,13 @@
 }
 
 .input {
-  height: var(--size-10);
-  padding: 0 var(--spacing-05);
+  padding: var(--spacing-04) var(--spacing-05);
   font-family: var(--font-family-text);
-  font-size: var(--font-size-14);
+  font-size: var(--font-size-16);
   font-weight: var(--font-weight-regular);
   color: var(--color-text-neutral-default);
   background-color: var(--color-background-neutral-default);
-  border: var(--border-width-01) solid var(--color-border-neutral-raised);
+  border: var(--border-width-01) solid var(--color-border-neutral-inverse);
   border-radius: var(--radius-02);
   outline: none;
   width: 100%;
@@ -90,11 +96,13 @@
   box-shadow: 0 0 0 var(--border-width-03) var(--color-focus);
 }
 
+/* gap entre le dernier champ et la ligne checkbox/lien : --spacing-05 (12px) */
 .row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-04);
+  margin-top: var(--spacing-05);
 }
 
 .forgotLink {
@@ -117,6 +125,8 @@
   border-radius: var(--radius-01);
 }
 
+/* gap entre la ligne checkbox/lien et le bouton : --spacing-07 (20px) */
 .submitButton {
   width: 100%;
+  margin-top: var(--spacing-07);
 }
