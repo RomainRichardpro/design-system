@@ -75,7 +75,7 @@
   font-weight: var(--font-weight-regular);
   color: var(--color-text-neutral-default);
   background-color: var(--color-background-neutral-default);
-  border: var(--border-width-01) solid var(--color-border-neutral-inverse);
+  border: var(--border-width-01) solid var(--color-text-neutral-alt);
   border-radius: var(--radius-02);
   outline: none;
   width: 100%;
