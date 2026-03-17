@@ -3,14 +3,14 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: var(--color-background-neutral-alt);
+  background: var(--background-neutral-alt);
   padding: var(--spacing-08);
 }
 
 .card {
   width: 100%;
   max-width: 400px;
-  background: var(--color-background-neutral-default);
+  background: var(--background-neutral-default);
   border-radius: var(--radius-04);
   padding: var(--spacing-09);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -31,7 +31,7 @@
   font-family: var(--font-family-title);
   font-size: var(--font-size-32);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-neutral-default);
+  color: var(--text-neutral-default);
   margin: 0;
   line-height: 1.2;
 }
@@ -40,7 +40,7 @@
   font-family: var(--font-family-text);
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-regular);
-  color: var(--color-text-neutral-alt);
+  color: var(--text-neutral-alt);
   margin: 0;
 }
 
@@ -65,7 +65,7 @@
   font-family: var(--font-family-text);
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-neutral-default);
+  color: var(--text-neutral-default);
 }
 
 .input {
@@ -73,9 +73,9 @@
   font-family: var(--font-family-text);
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-regular);
-  color: var(--color-text-neutral-default);
-  background-color: var(--color-background-neutral-default);
-  border: var(--border-width-01) solid var(--color-text-neutral-alt);
+  color: var(--text-neutral-default);
+  background-color: var(--background-neutral-default);
+  border: var(--border-width-01) solid var(--text-neutral-alt);
   border-radius: var(--radius-02);
   outline: none;
   width: 100%;
@@ -84,16 +84,16 @@
 }
 
 .input::placeholder {
-  color: var(--color-text-neutral-alt);
+  color: var(--text-neutral-alt);
 }
 
 .input:hover {
-  border-color: var(--color-border-brand-primary-default);
+  border-color: var(--border-brand-primary-default);
 }
 
 .input:focus-visible {
-  border-color: var(--color-border-brand-primary-default);
-  box-shadow: 0 0 0 var(--border-width-03) var(--color-focus);
+  border-color: var(--border-brand-primary-default);
+  box-shadow: 0 0 0 var(--border-width-03) var(--focus);
 }
 
 /* gap entre le dernier champ et la ligne checkbox/lien : --spacing-05 (12px) */
@@ -109,7 +109,7 @@
   font-family: var(--font-family-text);
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-brand-secondary-default);
+  color: var(--text-brand-secondary-default);
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
@@ -120,7 +120,7 @@
 }
 
 .forgotLink:focus-visible {
-  outline: var(--border-width-03) solid var(--color-focus);
+  outline: var(--border-width-03) solid var(--focus);
   outline-offset: var(--spacing-01);
   border-radius: var(--radius-01);
 }
