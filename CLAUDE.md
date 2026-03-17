@@ -299,3 +299,16 @@ Ces décisions sont prises et ne se remettent pas en question sauf demande expli
 - Ne jamais créer de branche feature ou de PR
 - Chaque session se termine par `git push origin main`
 - Ce repo est un projet solo sans process de review
+
+---
+
+## 17. Génération d'interfaces
+
+Avant toute génération d'interface ou de maquette Figma, consulter `COMPONENTS.md`.
+
+Ce fichier liste :
+- les composants React disponibles avec leur API exacte
+- les node IDs Figma correspondants
+- l'ensemble des tokens CSS à utiliser
+
+Règle absolue : aucune valeur arbitraire (couleur hex, px hardcodé, etc.) si un token existe.
