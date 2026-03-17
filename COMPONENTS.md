@@ -35,8 +35,8 @@ import { Button } from '@romainrichardpro/react';
 |---|---|---|---|
 | children | `React.ReactNode` | — | Contenu du bouton (label) |
 | level | `'primary' \| 'secondary' \| 'tertiary' \| 'ghost' \| 'danger'` | `'primary'` | Niveau visuel du bouton |
-| size | `'sm' \| 'md' \| 'lg'` | `'md'` | Taille du bouton |
-| isLoading | `boolean` | `false` | État de chargement (aria-busy, bloque le clic) |
+| size | `'xs' \| 's' \| 'm' \| 'l'` | `'m'` | Taille du bouton |
+| loading | `boolean` | `false` | État de chargement (aria-busy, bloque le clic) |
 | loadingLabel | `string` | `'Chargement en cours'` | Label accessible pendant le chargement |
 | disabled | `boolean` | `false` | État désactivé natif |
 | onClick | `() => void` | — | Handler de clic |
@@ -51,19 +51,19 @@ import { Button } from '@romainrichardpro/react';
 
 ```tsx
 // Bouton primaire standard
-<Button level="primary" size="md">Confirmer</Button>
+<Button level="primary" size="m">Confirmer</Button>
 
 // Bouton secondaire petit
-<Button level="secondary" size="sm">Annuler</Button>
+<Button level="secondary" size="s">Annuler</Button>
 
 // Bouton en chargement
-<Button level="primary" isLoading>Enregistrer</Button>
+<Button level="primary" loading>Enregistrer</Button>
 
 // Bouton désactivé
 <Button level="primary" disabled>Non disponible</Button>
 
 // Bouton danger
-<Button level="danger" size="md">Supprimer</Button>
+<Button level="danger" size="m">Supprimer</Button>
 ```
 
 #### Tokens utilisés par ce composant
