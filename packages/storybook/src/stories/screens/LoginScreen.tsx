@@ -53,11 +53,7 @@ export function LoginScreen() {
           </div>
 
           <div className={styles.row}>
-            <Checkbox
-              label="Se souvenir de moi"
-              checked={rememberMe}
-              onChange={setRememberMe}
-            />
+            <Checkbox label="Se souvenir de moi" checked={rememberMe} onChange={setRememberMe} />
             <a href="#forgot" className={styles.forgotLink}>
               Mot de passe oublié ?
             </a>
