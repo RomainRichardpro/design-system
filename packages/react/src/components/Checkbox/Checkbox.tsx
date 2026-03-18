@@ -55,6 +55,7 @@ export function Checkbox({
       className={[styles.root, disabled ? styles.disabled : '', className ?? '']
         .filter(Boolean)
         .join(' ')}
+      data-component="ds-rr-checkbox"
     >
       <div className={styles.control} aria-hidden="true">
         <div className={styles.box}>

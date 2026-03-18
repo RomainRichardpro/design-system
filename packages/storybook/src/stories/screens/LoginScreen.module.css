@@ -1,0 +1,132 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--background-neutral-alt);
+  padding: var(--spacing-08);
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--background-neutral-default);
+  border-radius: var(--radius-04);
+  padding: var(--spacing-09);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  /* gap entre .header (sous-titre) et premier .field */
+  gap: var(--spacing-08);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  /* gap entre titre et sous-titre */
+  gap: var(--spacing-02);
+}
+
+.title {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-default);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-alt);
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-02);
+}
+
+/* gap entre chaque champ : --spacing-06 (16px) */
+.field + .field {
+  margin-top: var(--spacing-06);
+}
+
+.label {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-neutral-default);
+}
+
+.input {
+  padding: var(--spacing-04) var(--spacing-05);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-default);
+  background-color: var(--background-neutral-default);
+  border: var(--border-width-01) solid var(--text-neutral-alt);
+  border-radius: var(--radius-02);
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--text-neutral-alt);
+}
+
+.input:hover {
+  border-color: var(--border-brand-primary-default);
+}
+
+.input:focus-visible {
+  border-color: var(--border-brand-primary-default);
+  box-shadow: 0 0 0 var(--border-width-03) var(--focus);
+}
+
+/* gap entre le dernier champ et la ligne checkbox/lien : --spacing-05 (12px) */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-04);
+  margin-top: var(--spacing-05);
+}
+
+.forgotLink {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-brand-secondary-default);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.forgotLink:hover {
+  text-decoration: underline;
+}
+
+.forgotLink:focus-visible {
+  outline: var(--border-width-03) solid var(--focus);
+  outline-offset: var(--spacing-01);
+  border-radius: var(--radius-01);
+}
+
+/* gap entre la ligne checkbox/lien et le bouton : --spacing-07 (20px) */
+.submitButton {
+  width: 100%;
+  margin-top: var(--spacing-07);
+}
