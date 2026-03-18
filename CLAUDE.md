@@ -312,3 +312,68 @@ Ce fichier liste :
 - l'ensemble des tokens CSS à utiliser
 
 Règle absolue : aucune valeur arbitraire (couleur hex, px hardcodé, etc.) si un token existe.
+
+---
+
+## 18. Workflow — Génération d'interfaces et maquettes Figma
+
+Ce workflow permet de générer des interfaces codées conformes au DS,
+puis de les exporter comme maquettes Figma.
+
+### Étape 1 — Description (claude.ai)
+
+Décrire l'écran en langage naturel à Claude.
+Claude génère le prompt structuré pour Claude Code.
+
+### Étape 2 — Génération du code (Claude Code)
+
+Claude Code lit COMPONENTS.md comme référence unique et produit :
+- `packages/storybook/src/stories/screens/NomEcran.tsx`
+- `packages/storybook/src/stories/screens/NomEcran.module.css`
+- `packages/storybook/src/stories/screens/NomEcran.stories.tsx`
+
+Règles strictes :
+- Uniquement les composants de `@romainrichardpro/react`
+- Uniquement les tokens CSS de `@romainrichardpro/tokens` (variables CSS, aucune valeur arbitraire)
+- Accessibilité WCAG 2.1 AA obligatoire
+- Story sous `Screens/NomEcran`
+
+### Étape 3 — Itération design (localhost:6006)
+
+Valider le rendu dans Storybook.
+Itérer via des prompts de correction jusqu'à validation complète.
+Ne passer à l'étape suivante qu'une fois le rendu validé.
+
+### Étape 4 — Génération maquette Figma (Claude Code + figma-use)
+
+Une fois le rendu validé, utiliser figma-use (localhost:38451) pour générer
+la maquette dans le fichier Figma `skRy27piDeBGQwD8Bi0EAU`.
+
+Règles :
+- Page cible : "Screens" (créer si elle n'existe pas)
+- Vraies instances des composants DS obligatoires :
+  - Button → node ID `18:797`
+  - Checkbox → node ID `133:998`
+- Variables Figma à lier sur les éléments natifs via leur nom slash :
+  `background/neutral/default`, `background/neutral/alt`,
+  `text/neutral/default`, `text/neutral/alt`,
+  `text/brand/secondary/default`, `spacing/*`, `radius/*`, etc.
+- Si figma-use ne supporte pas la liaison de variables sur un node,
+  utiliser la valeur résolue et le documenter dans le rapport
+
+### Outils et leurs capacités
+
+| Outil | Lecture | Écriture nodes | Variables liées |
+|---|---|---|---|
+| MCP officiel Figma | ✅ | ❌ | ❌ |
+| figma-use (localhost:38451) | ✅ | ✅ | À confirmer par test |
+
+### Identification des composants DS dans le DOM
+
+Tous les composants portent `data-component="ds-rr-[nom]"` sur leur nœud racine.
+Vérification rapide dans DevTools Console :
+
+```js
+document.querySelectorAll('[data-component^="ds-rr"]')
+  .forEach(el => console.log(el.dataset.component))
+```
