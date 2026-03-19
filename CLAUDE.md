@@ -293,12 +293,21 @@ Ces décisions sont prises et ne se remettent pas en question sauf demande expli
 - Utiliser Tailwind
 ---
 
-## 16. Règles Git
+## 16. Workflow Git
 
-- Toujours travailler directement sur `main`
-- Ne jamais créer de branche feature ou de PR
-- Chaque session se termine par `git push origin main`
-- Ce repo est un projet solo sans process de review
+Le branch `main` est protégé. Toute modification passe obligatoirement par une PR.
+
+Workflow à suivre pour chaque tâche :
+
+1. Créer une branche : `feat/screens-settings` (convention `feat/component-[name]` ou `feat/screens-[name]`)
+2. Committer les fichiers sur cette branche
+3. Push la branche : `git push origin feat/screens-settings`
+4. Ouvrir une PR sur GitHub vers `main`
+5. Attendre que les 2 status checks CI passent (Tests + Lint)
+6. Merger la PR dans `main`
+
+Ne jamais push directement sur `main`.
+Ne jamais force push.
 
 ---
 
