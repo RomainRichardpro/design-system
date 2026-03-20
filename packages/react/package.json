@@ -18,6 +18,7 @@
     "dev": "tsup --watch",
     "test": "vitest",
     "test:a11y": "vitest run --reporter=verbose",
+    "test:coverage": "vitest run --coverage",
     "lint": "eslint src --ext .ts,.tsx"
   },
   "peerDependencies": {
@@ -42,6 +43,7 @@
     "react-dom": "^18.2.0",
     "tsup": "^8.5.1",
     "typescript": "^5.2.2",
+    "@vitest/coverage-v8": "^0.34.6",
     "vitest": "^0.34.6"
   }
 }
