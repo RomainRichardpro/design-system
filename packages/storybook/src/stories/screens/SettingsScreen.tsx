@@ -125,10 +125,7 @@ export function SettingsScreen() {
       <main className={styles.main}>
         {activeSection === 'profil' && <SectionProfil />}
         {activeSection === 'notifications' && (
-          <SectionNotifications
-            notifications={notifications}
-            onChange={handleNotificationChange}
-          />
+          <SectionNotifications notifications={notifications} onChange={handleNotificationChange} />
         )}
         {activeSection === 'securite' && <SectionSecurite />}
         {activeSection === 'apparence' && (
@@ -479,8 +476,8 @@ function SectionFacturation() {
       <div className={styles.dangerZone}>
         <h2 className={styles.dangerTitle}>Zone dangereuse</h2>
         <p className={styles.dangerDescription}>
-          La suppression de votre compte est irréversible. Toutes vos données seront
-          définitivement effacées.
+          La suppression de votre compte est irréversible. Toutes vos données seront définitivement
+          effacées.
         </p>
         <div>
           <Button level="secondary" size="s" className={styles.dangerButton}>

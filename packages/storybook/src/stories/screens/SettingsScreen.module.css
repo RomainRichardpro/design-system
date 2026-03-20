@@ -55,7 +55,9 @@
   color: var(--text-neutral-raised);
   text-align: left;
   cursor: pointer;
-  transition: background 0.1s ease, color 0.1s ease;
+  transition:
+    background 0.1s ease,
+    color 0.1s ease;
 }
 
 .navItem:hover {
@@ -92,7 +94,9 @@
   color: var(--text-neutral-alt);
   cursor: pointer;
   white-space: nowrap;
-  transition: color 0.1s ease, border-color 0.1s ease;
+  transition:
+    color 0.1s ease,
+    border-color 0.1s ease;
 }
 
 .tab:hover {
