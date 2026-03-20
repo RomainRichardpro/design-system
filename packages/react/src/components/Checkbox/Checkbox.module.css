@@ -107,17 +107,15 @@
 
 /* ── Focus visible — halo ── */
 
-.root:not(.disabled):has(.input:focus-visible)::before {
+/* Focus halo — ancré sur .control (la box), débord symétrique de 2px iso Figma */
+.root:not(.disabled):has(.input:focus-visible) .control::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: var(--spacing-01);
-  width: var(--sizes-08);
-  height: var(--sizes-08);
+  inset: -2px;
   border-radius: var(--radius-02);
-  border: var(--border-width-03) solid var(--focus);
+  border: var(--border-width-03) solid var(--color-focus);
   pointer-events: none;
-  z-index: 2;
+  z-index: 1;
 }
 
 /* ── Disabled — unselected ── */
