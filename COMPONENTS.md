@@ -114,14 +114,31 @@ import { Checkbox } from '@romainrichardpro/react';
 
 | Prop | Type | Défaut | Description |
 |---|---|---|---|
-| label | `string` | — | Label visible associé à la checkbox |
-| checked | `boolean` | `false` | État coché |
-| indeterminate | `boolean` | `false` | État indéterminé |
-| disabled | `boolean` | `false` | État désactivé |
-| onChange | `(checked: boolean) => void` | — | Handler de changement |
-| id | `string` | — | ID HTML (pour l'association label/input) |
-| name | `string` | — | Attribut name HTML |
-| value | `string` | — | Valeur HTML |
+| label | `string` | — | **Obligatoire.** Texte du label — toujours présent dans le DOM, même si masqué visuellement |
+| checked | `boolean` | `false` | État coché (composant contrôlé) |
+| indeterminate | `boolean` | `false` | État indéterminé — représente une sélection partielle dans un groupe |
+| disabled | `boolean` | `false` | Désactive l'interaction |
+| hideLabel | `boolean` | `false` | Masque le label visuellement (reste dans le DOM pour les lecteurs d'écran) |
+| onChange | `(checked: boolean) => void` | — | Callback déclenché au changement d'état — reçoit la nouvelle valeur booléenne |
+| id | `string` | — | ID HTML pour l'association `<label for>` — auto-généré via `useId()` si absent |
+| className | `string` | — | Classe CSS additionnelle sur l'élément racine |
+
+#### Attributs HTML générés
+
+- `data-component="ds-rr-checkbox"` — toujours présent sur le `<div>` racine
+
+#### États et variants
+
+| État | Description | Visuel |
+|---|---|---|
+| `unchecked` | État par défaut | Box vide, bordure neutre |
+| `checked` | Case cochée | Box fond noir, icône check blanc |
+| `indeterminate` | Sélection partielle | Box fond noir, icône minus blanc |
+| `hover` (unchecked) | Survol non coché | Bordure accent |
+| `hover` (checked/indeterminate) | Survol coché | Fond gris hover |
+| `focus-visible` | Focus clavier | Halo 2px autour de la box |
+| `disabled` (unchecked) | Désactivé non coché | Bordure gris disabled |
+| `disabled` (checked/indeterminate) | Désactivé coché | Fond gris disabled, icône gris |
 
 #### Exemples d'usage
 
@@ -137,15 +154,32 @@ import { Checkbox } from '@romainrichardpro/react';
 
 // Checkbox désactivée
 <Checkbox label="Option non disponible" disabled />
+
+// Label masqué visuellement (accessible uniquement aux lecteurs d'écran)
+<Checkbox label="Sélectionner cet élément" hideLabel onChange={(v) => console.log(v)} />
 ```
 
 #### Tokens utilisés par ce composant
 
-- Couleurs : `--color-background-brand-primary-*`, `--color-border-brand-primary-*`, `--color-background-disabled`, `--color-border-disabled`
-- Radius : `--radius-01` (4px)
-- Tailles : `--size-06` (16px — taille de la box)
-- Spacing : `--spacing-02` (4px gap interne)
+- Couleurs fond : `--color-background-accent-default`, `--color-background-accent-hover`, `--color-background-disabled`
+- Couleurs bordure : `--color-border-accent-default`, `--color-border-accent-hover`, `--color-border-disabled`
+- Couleurs icône : `--color-icon-accent-on-default`, `--color-icon-disabled`
+- Couleurs texte : `--color-text-neutral-default`, `--color-text-accent-default`, `--color-text-disabled`
 - Focus : `--color-focus`
+- Tailles : `--sizes-07` (24px — box), `--sizes-06` (16px — icône), `--sizes-08` (24px — halo focus)
+- Radius : `--radius-01` (4px — box), `--radius-02` (6px — racine + halo focus)
+- Bordures : `--border-width-02` (1.5px — bordure box), `--border-width-03` (2px — halo focus)
+- Espacements : `--spacing-01` (2px — padding racine), `--spacing-04` (8px — gap control/label)
+- Typographie : `--font-family-text`, `--font-size-16`, `--font-weight-regular`
+
+#### Accessibilité
+
+- Utilise `<input type="checkbox">` natif pour une compatibilité maximale avec les technologies d'assistance
+- `aria-checked="mixed"` exposé automatiquement quand `indeterminate={true}`
+- Le label est **toujours dans le DOM** — `hideLabel` le masque visuellement via une classe `.srOnly` sans le retirer de l'arbre d'accessibilité
+- L'ID de l'input est auto-généré via `useId()` si non fourni — l'association `<label htmlFor>` est systématiquement garantie
+- Focus visible géré en CSS via `:focus-visible` — conforme WCAG 2.1 AA
+- Tous les états visuels (coché, indéterminé, désactivé) sont différenciés par la couleur **et** la forme (icône), jamais par la couleur seule
 
 ---
 
