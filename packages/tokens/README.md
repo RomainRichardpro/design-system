@@ -13,10 +13,10 @@ pnpm add @romainrichardpro/tokens
 ## Imports CSS
 
 ```js
-import '@romainrichardpro/tokens/css/colors-light';   // Mode clair (défaut)
-import '@romainrichardpro/tokens/css/colors-dark';    // Mode sombre
-import '@romainrichardpro/tokens/css/numbers';        // Espacements, tailles, radius, bordures
-import '@romainrichardpro/tokens/css/typography';     // Typographie
+import '@romainrichardpro/tokens/css/colors-light'; // Mode clair (défaut)
+import '@romainrichardpro/tokens/css/colors-dark'; // Mode sombre
+import '@romainrichardpro/tokens/css/numbers'; // Espacements, tailles, radius, bordures
+import '@romainrichardpro/tokens/css/typography'; // Typographie
 ```
 
 ## Build
