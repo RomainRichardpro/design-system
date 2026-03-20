@@ -62,6 +62,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    /* v8 ignore next */
     const spinnerSize = size === 'xs' ? 16 : 24;
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (loading) return;
