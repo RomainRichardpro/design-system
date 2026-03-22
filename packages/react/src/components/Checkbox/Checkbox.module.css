@@ -111,8 +111,8 @@
 .root:not(.disabled):has(.input:focus-visible) .control::before {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: var(--radius-01);
+  inset: calc(-1 * var(--border-width-02));
+  border-radius: calc(var(--radius-01) + var(--border-width-02));
   border: var(--border-width-02) solid var(--focus);
   pointer-events: none;
   z-index: 1;
