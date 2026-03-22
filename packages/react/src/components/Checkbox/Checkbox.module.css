@@ -111,9 +111,9 @@
 .root:not(.disabled):has(.input:focus-visible) .control::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  border-radius: var(--radius-02);
-  border: var(--border-width-03) solid var(--color-focus);
+  inset: 0;
+  border-radius: var(--radius-01);
+  border: var(--border-width-02) solid var(--focus);
   pointer-events: none;
   z-index: 1;
 }

@@ -19,8 +19,13 @@
   outline: none;
 }
 .button:focus-visible {
-  outline: var(--border-width-03) solid var(--focus);
-  outline-offset: 4px;
+  outline: var(--border-width-02) solid var(--focus);
+}
+.level-primary:focus-visible {
+  outline-offset: 0;
+}
+.level-secondary:focus-visible {
+  outline-offset: 2px;
 }
 .button:disabled,
 .button[aria-disabled='true'] {
@@ -99,10 +104,7 @@
 .level-primary {
   background-color: var(--background-accent-default); /* noir  */
   color: var(--text-accent-on-default); /* blanc */
-  border-radius: var(--radius-03); /* 8px   */
-}
-.level-primary:focus-visible {
-  border-radius: var(--radius-04); /* 10px */
+  border-radius: var(--radius-01); /* 4px   */
 }
 .level-primary:hover:not(:disabled):not([aria-disabled='true']) {
   background-color: var(--background-accent-hover);
@@ -119,10 +121,7 @@
   background-color: var(--background-accent-inverse-default); /* #e7e7e7 */
   color: var(--text-accent-default); /* noir    */
   border: var(--border-width-03) solid var(--border-accent-default);
-  border-radius: var(--radius-03); /* 8px     */
-}
-.level-secondary:focus-visible {
-  border-radius: var(--radius-04); /* 10px */
+  border-radius: var(--radius-01); /* 4px     */
 }
 .level-secondary:hover:not(:disabled):not([aria-disabled='true']) {
   background-color: var(--background-accent-default);
