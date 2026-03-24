@@ -30,7 +30,7 @@ const meta = {
       control: 'select',
       options: ['Default', 'Disabled'],
       description:
-        "État du composant. `Disabled` applique la couleur désactivée quelle que soit la valeur de `status`.",
+        'État du composant. `Disabled` applique la couleur désactivée quelle que soit la valeur de `status`.',
       table: {
         defaultValue: { summary: 'Default' },
         type: { summary: 'SupportingTextState' },
@@ -57,7 +57,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   name: 'Information',
   args: {
-    text: "Saisissez votre adresse e-mail professionnelle.",
+    text: 'Saisissez votre adresse e-mail professionnelle.',
     status: 'Information',
     state: 'Default',
   },
@@ -75,7 +75,7 @@ export const Success: Story = {
 export const Error: Story = {
   name: 'Erreur',
   args: {
-    text: "Ce champ est obligatoire.",
+    text: 'Ce champ est obligatoire.',
     status: 'Error',
     state: 'Default',
   },
@@ -84,7 +84,7 @@ export const Error: Story = {
 export const Disabled: Story = {
   name: 'Désactivé',
   args: {
-    text: "Ce champ est désactivé.",
+    text: 'Ce champ est désactivé.',
     status: 'Information',
     state: 'Disabled',
   },
@@ -99,21 +99,9 @@ export const AllVariants: Story = {
         status="Information"
         state="Default"
       />
-      <SupportingText
-        text="Adresse e-mail valide."
-        status="Success"
-        state="Default"
-      />
-      <SupportingText
-        text="Ce champ est obligatoire."
-        status="Error"
-        state="Default"
-      />
-      <SupportingText
-        text="Ce champ est désactivé."
-        status="Information"
-        state="Disabled"
-      />
+      <SupportingText text="Adresse e-mail valide." status="Success" state="Default" />
+      <SupportingText text="Ce champ est obligatoire." status="Error" state="Default" />
+      <SupportingText text="Ce champ est désactivé." status="Information" state="Disabled" />
     </div>
   ),
 };

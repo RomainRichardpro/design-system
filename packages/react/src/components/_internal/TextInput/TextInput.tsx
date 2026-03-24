@@ -5,7 +5,10 @@ import styles from './TextInput.module.css';
 export type TextInputState = 'Default' | 'Hover' | 'Active' | 'Focus' | 'Disabled' | 'Read-only';
 export type TextInputStatus = 'Default' | 'Success' | 'Error';
 
-export interface TextInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+export interface TextInputProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'onChange'
+> {
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
@@ -61,9 +64,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           aria-invalid={status === 'Error' ? true : undefined}
           {...rest}
         />
-        {state === 'Focus' && (
-          <span className={styles.focusRing} aria-hidden="true" />
-        )}
+        {state === 'Focus' && <span className={styles.focusRing} aria-hidden="true" />}
       </div>
     );
   }

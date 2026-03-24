@@ -22,10 +22,7 @@ export function InputLabel({
   className,
 }: InputLabelProps) {
   return (
-    <div
-      className={[styles.wrapper, className].filter(Boolean).join(' ')}
-      data-state={state}
-    >
+    <div className={[styles.wrapper, className].filter(Boolean).join(' ')} data-state={state}>
       <div className={styles.labelRow}>
         <label htmlFor={htmlFor} className={styles.label}>
           {label}
@@ -36,9 +33,7 @@ export function InputLabel({
           </span>
         )}
       </div>
-      {withDescription && description && (
-        <p className={styles.description}>{description}</p>
-      )}
+      {withDescription && description && <p className={styles.description}>{description}</p>}
     </div>
   );
 }

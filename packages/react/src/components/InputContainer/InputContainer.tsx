@@ -6,7 +6,13 @@ import type { TextInputState, TextInputStatus } from '../_internal/TextInput/Tex
 import type { SupportingTextStatus, SupportingTextState } from '../SupportingText/SupportingText';
 import styles from './InputContainer.module.css';
 
-export type InputContainerState = 'Default' | 'Hover' | 'Active' | 'Focus' | 'Disabled' | 'Read-only';
+export type InputContainerState =
+  | 'Default'
+  | 'Hover'
+  | 'Active'
+  | 'Focus'
+  | 'Disabled'
+  | 'Read-only';
 export type InputContainerStatus = 'Default' | 'Success' | 'Error';
 
 export interface InputContainerProps {
@@ -75,9 +81,7 @@ export function InputContainer({
         state={toLabelState(state)}
         htmlFor={inputId}
       />
-      <div className={styles.inputSlot}>
-        {children ?? defaultInput}
-      </div>
+      <div className={styles.inputSlot}>{children ?? defaultInput}</div>
       {withSupportingText && (
         <div id={supportingId}>
           <SupportingText

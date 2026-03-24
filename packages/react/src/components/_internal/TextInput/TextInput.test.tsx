@@ -23,7 +23,7 @@ describe('TextInput — rendu', () => {
     expect(screen.getByRole('textbox')).toHaveValue('mon texte');
   });
 
-  it('transmet id et name à l\'input', () => {
+  it("transmet id et name à l'input", () => {
     render(<TextInput id="email" name="email" />);
     const input = screen.getByRole('textbox');
     expect(input).toHaveAttribute('id', 'email');
@@ -37,7 +37,7 @@ describe('TextInput — rendu', () => {
     expect(wrapper).toHaveAttribute('data-status', 'Error');
   });
 
-  it('affiche l\'icône quand icon est fournie', () => {
+  it("affiche l'icône quand icon est fournie", () => {
     const { container } = render(<TextInput icon={Search} />);
     const iconWrapper = container.querySelector('[aria-hidden="true"]');
     expect(iconWrapper).toBeInTheDocument();
@@ -45,14 +45,14 @@ describe('TextInput — rendu', () => {
 });
 
 describe('TextInput — état Disabled', () => {
-  it('ajoute l\'attribut disabled sur l\'<input>', () => {
+  it("ajoute l'attribut disabled sur l'<input>", () => {
     render(<TextInput state="Disabled" />);
     expect(screen.getByRole('textbox')).toBeDisabled();
   });
 });
 
 describe('TextInput — état Read-only', () => {
-  it('ajoute l\'attribut readOnly sur l\'<input>', () => {
+  it("ajoute l'attribut readOnly sur l'<input>", () => {
     render(<TextInput state="Read-only" />);
     expect(screen.getByRole('textbox')).toHaveAttribute('readonly');
   });
@@ -71,7 +71,7 @@ describe('TextInput — status Error', () => {
 });
 
 describe('TextInput — icône', () => {
-  it('l\'icône est aria-hidden', () => {
+  it("l'icône est aria-hidden", () => {
     const { container } = render(<TextInput icon={Search} />);
     const iconWrapper = container.querySelector('[aria-hidden="true"]');
     expect(iconWrapper).toBeInTheDocument();

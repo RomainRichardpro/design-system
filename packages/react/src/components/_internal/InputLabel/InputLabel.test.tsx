@@ -44,11 +44,7 @@ describe('InputLabel — isRequired', () => {
 describe('InputLabel — description', () => {
   it('affiche la description si withDescription=true ET description fournie', () => {
     render(
-      <InputLabel
-        label="Email"
-        description="Votre adresse professionnelle"
-        withDescription
-      />
+      <InputLabel label="Email" description="Votre adresse professionnelle" withDescription />
     );
     expect(screen.getByText('Votre adresse professionnelle')).toBeInTheDocument();
   });
@@ -65,9 +61,7 @@ describe('InputLabel — description', () => {
   });
 
   it("n'affiche pas la description si description est absente même si withDescription=true", () => {
-    const { container } = render(
-      <InputLabel label="Email" withDescription />
-    );
+    const { container } = render(<InputLabel label="Email" withDescription />);
     const p = container.querySelector('p');
     expect(p).not.toBeInTheDocument();
   });
@@ -108,12 +102,7 @@ describe('InputLabel — accessibilité', () => {
   it('ne présente pas de violation axe (avec description)', async () => {
     const { container } = render(
       <div>
-        <InputLabel
-          label="Email"
-          description="Aide"
-          withDescription
-          htmlFor="email-desc"
-        />
+        <InputLabel label="Email" description="Aide" withDescription htmlFor="email-desc" />
         <input id="email-desc" type="text" />
       </div>
     );

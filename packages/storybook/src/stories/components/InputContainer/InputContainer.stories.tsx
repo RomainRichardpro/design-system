@@ -42,7 +42,7 @@ const meta = {
     isRequired: {
       control: 'boolean',
       description:
-        "Affiche un astérisque rouge après le label pour indiquer que le champ est obligatoire.",
+        'Affiche un astérisque rouge après le label pour indiquer que le champ est obligatoire.',
       table: {
         defaultValue: { summary: 'false' },
         type: { summary: 'boolean' },
@@ -51,8 +51,7 @@ const meta = {
     state: {
       control: 'select',
       options: ['Default', 'Hover', 'Active', 'Focus', 'Disabled', 'Read-only'],
-      description:
-        "État visuel du champ. Propagé au label, à l'input et au message d'aide.",
+      description: "État visuel du champ. Propagé au label, à l'input et au message d'aide.",
       table: {
         defaultValue: { summary: 'Default' },
         type: { summary: 'InputContainerState' },
@@ -61,8 +60,7 @@ const meta = {
     status: {
       control: 'select',
       options: ['Default', 'Success', 'Error'],
-      description:
-        "Statut de validation du champ. Propagé à l'input et au message d'aide.",
+      description: "Statut de validation du champ. Propagé à l'input et au message d'aide.",
       table: {
         defaultValue: { summary: 'Default' },
         type: { summary: 'InputContainerStatus' },
@@ -107,7 +105,7 @@ const meta = {
     state: 'Default',
     status: 'Default',
     withSupportingText: true,
-    supportingText: "Saisissez votre adresse e-mail professionnelle.",
+    supportingText: 'Saisissez votre adresse e-mail professionnelle.',
   },
 } satisfies Meta<typeof InputContainer>;
 
@@ -178,7 +176,7 @@ export const StatusError: Story = {
   args: {
     status: 'Error',
     withSupportingText: true,
-    supportingText: "Ce champ est obligatoire.",
+    supportingText: 'Ce champ est obligatoire.',
   },
 };
 

@@ -45,25 +45,19 @@ describe('InputContainer — slot input', () => {
 
 describe('InputContainer — SupportingText', () => {
   it('affiche le SupportingText si withSupportingText=true', () => {
-    render(
-      <InputContainer withSupportingText supportingText="Ce champ est requis" />
-    );
+    render(<InputContainer withSupportingText supportingText="Ce champ est requis" />);
     expect(screen.getByText('Ce champ est requis')).toBeInTheDocument();
   });
 
   it("n'affiche pas le SupportingText si withSupportingText=false", () => {
-    render(
-      <InputContainer withSupportingText={false} supportingText="Ce champ est requis" />
-    );
+    render(<InputContainer withSupportingText={false} supportingText="Ce champ est requis" />);
     expect(screen.queryByText('Ce champ est requis')).not.toBeInTheDocument();
   });
 });
 
 describe('InputContainer — propagation état Disabled', () => {
   it('transmet state=Disabled au label', () => {
-    const { container } = render(
-      <InputContainer label="Email" state="Disabled" />
-    );
+    const { container } = render(<InputContainer label="Email" state="Disabled" />);
     const labelWrapper = container.querySelector('[data-state="Disabled"]');
     expect(labelWrapper).toBeInTheDocument();
   });
@@ -91,9 +85,7 @@ describe('InputContainer — propagation status Error', () => {
 
 describe('InputContainer — accessibilité', () => {
   it('ne présente pas de violation axe (Default)', async () => {
-    const { container } = render(
-      <InputContainer label="Nom" />
-    );
+    const { container } = render(<InputContainer label="Nom" />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
@@ -124,9 +116,7 @@ describe('InputContainer — accessibilité', () => {
   });
 
   it('ne présente pas de violation axe (Disabled)', async () => {
-    const { container } = render(
-      <InputContainer label="Email" state="Disabled" />
-    );
+    const { container } = render(<InputContainer label="Email" state="Disabled" />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
