@@ -1,0 +1,57 @@
+/* ─── Wrapper ─────────────────────────────────────────────────────────────── */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Label row ───────────────────────────────────────────────────────────── */
+.labelRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-02); /* 4px */
+}
+
+/* ─── Label ───────────────────────────────────────────────────────────────── */
+.label {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+/* ─── Required marker ─────────────────────────────────────────────────────── */
+.required {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  line-height: 1.4;
+  color: var(--text-status-error-default);
+}
+
+/* ─── Description ─────────────────────────────────────────────────────────── */
+.description {
+  margin: 0;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+}
+
+/* ─── État Default ────────────────────────────────────────────────────────── */
+.wrapper[data-state='Default'] .label {
+  color: var(--text-brand-primary-default);
+}
+
+.wrapper[data-state='Default'] .description {
+  color: var(--text-neutral-alt);
+}
+
+/* ─── État Disabled ───────────────────────────────────────────────────────── */
+.wrapper[data-state='Disabled'] .label {
+  color: var(--text-disabled);
+  cursor: default;
+}
+
+.wrapper[data-state='Disabled'] .description {
+  color: var(--text-disabled);
+}
