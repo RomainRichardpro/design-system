@@ -1,0 +1,16 @@
+.value {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.is-placeholder {
+  color: var(--text-neutral-alt);
+}
+
+.is-filled {
+  color: var(--text-neutral-default);
+}

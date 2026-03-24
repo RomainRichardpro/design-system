@@ -1,0 +1,18 @@
+/* ─── Wrapper ─────────────────────────────────────────────────────────────── */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-03); /* 6px — valeur Figma exacte. --spacing-03 = 6px */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ─── Input slot ──────────────────────────────────────────────────────────── */
+.inputSlot {
+  display: flex;
+  width: 100%;
+}
+
+.inputSlot > * {
+  width: 100%;
+}

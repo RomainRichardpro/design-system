@@ -1,0 +1,44 @@
+/* ─── Wrapper ─────────────────────────────────────────────────────────────── */
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-02); /* 4px */
+}
+
+/* ─── Icon ────────────────────────────────────────────────────────────────── */
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: calc(var(--font-size-14) * 1.4); /* 20px = line-height du texte */
+}
+
+/* ─── Text ────────────────────────────────────────────────────────────────── */
+.text {
+  margin: 0;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+}
+
+/* ─── Information / Default ───────────────────────────────────────────────── */
+.wrapper[data-status='Information'][data-state='Default'] {
+  color: var(--text-brand-primary-default);
+}
+
+/* ─── Success / Default ───────────────────────────────────────────────────── */
+.wrapper[data-status='Success'][data-state='Default'] {
+  color: var(--text-status-success-default);
+}
+
+/* ─── Error / Default ────────────────────────────────────────────────────── */
+.wrapper[data-status='Error'][data-state='Default'] {
+  color: var(--text-status-error-default);
+}
+
+/* ─── Disabled (tous statuts) ─────────────────────────────────────────────── */
+.wrapper[data-state='Disabled'] {
+  color: var(--text-disabled);
+}

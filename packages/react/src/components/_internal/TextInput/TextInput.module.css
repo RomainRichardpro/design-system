@@ -1,0 +1,135 @@
+/* ─── Wrapper ─────────────────────────────────────────────────────────────── */
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-04); /* 8px */
+  height: var(--sizes-09); /* 32px */
+  min-width: 40px;
+  padding: 0 var(--spacing-04); /* 0 8px */
+  border-radius: var(--radius-01); /* 4px */
+  border: var(--border-width-01) solid transparent;
+  box-sizing: border-box;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease;
+}
+
+/* ─── Input ───────────────────────────────────────────────────────────────── */
+.input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  line-height: 1.4;
+  color: var(--text-neutral-default);
+  padding: 0;
+}
+
+.input::placeholder {
+  color: var(--text-neutral-alt);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  color: var(--text-disabled);
+}
+
+/* ─── Icon ────────────────────────────────────────────────────────────────── */
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--text-neutral-alt);
+}
+
+/* ─── Focus ring ──────────────────────────────────────────────────────────── */
+.focusRing {
+  position: absolute;
+  inset: -1px;
+  border: var(--border-width-02) solid var(--focus); /* 1.5px */
+  border-radius: var(--radius-01); /* 4px */
+  pointer-events: none;
+}
+
+/* ─── État Default / Status Default ──────────────────────────────────────── */
+.wrapper[data-state='Default'][data-status='Default'] {
+  background: var(--background-neutral-default);
+  border-color: var(--border-brand-primary-default);
+}
+
+/* ─── État Hover / Status Default ────────────────────────────────────────── */
+.wrapper[data-state='Hover'][data-status='Default'] {
+  background: var(--background-neutral-default);
+  border-color: var(--border-brand-primary-hover);
+}
+
+/* ─── État Active / Status Default ───────────────────────────────────────── */
+.wrapper[data-state='Active'][data-status='Default'] {
+  background: var(--background-neutral-default);
+  border-color: var(--border-brand-primary-active);
+}
+
+/* ─── État Focus / Status Default ────────────────────────────────────────── */
+.wrapper[data-state='Focus'][data-status='Default'] {
+  background: var(--background-neutral-default);
+  border-color: var(--border-brand-primary-default);
+}
+
+/* ─── État Disabled ───────────────────────────────────────────────────────── */
+.wrapper[data-state='Disabled'] {
+  background: var(--background-disabled);
+  border-color: var(--border-disabled);
+  cursor: not-allowed;
+}
+
+/* ─── État Read-only ──────────────────────────────────────────────────────── */
+.wrapper[data-state='Read-only'] {
+  background: var(--background-neutral-alt);
+  border-color: var(--border-neutral-raised);
+}
+
+/* ─── Status Error ────────────────────────────────────────────────────────── */
+.wrapper[data-state='Default'][data-status='Error'] {
+  background: var(--background-status-error-inverse-default);
+  border-color: var(--border-status-error-default);
+}
+
+.wrapper[data-state='Hover'][data-status='Error'] {
+  background: var(--background-status-error-inverse-default);
+  border-color: var(--border-status-error-hover);
+}
+
+.wrapper[data-state='Active'][data-status='Error'] {
+  background: var(--background-status-error-inverse-default);
+  border-color: var(--border-status-error-active);
+}
+
+.wrapper[data-state='Focus'][data-status='Error'] {
+  background: var(--background-status-error-inverse-default);
+  border-color: var(--border-status-error-default);
+}
+
+/* ─── Status Success ──────────────────────────────────────────────────────── */
+.wrapper[data-state='Default'][data-status='Success'] {
+  background: var(--background-status-success-inverse-default);
+  border-color: var(--border-status-success-default);
+}
+
+.wrapper[data-state='Hover'][data-status='Success'] {
+  background: var(--background-status-success-inverse-default);
+  border-color: var(--border-status-success-hover);
+}
+
+.wrapper[data-state='Active'][data-status='Success'] {
+  background: var(--background-status-success-inverse-default);
+  border-color: var(--border-status-success-active);
+}
+
+.wrapper[data-state='Focus'][data-status='Success'] {
+  background: var(--background-status-success-inverse-default);
+  border-color: var(--border-status-success-default);
+}
