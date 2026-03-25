@@ -79,6 +79,16 @@
   border-color: var(--border-brand-primary-default);
 }
 
+/* ─── Hover natif / Status Default ───────────────────────────────────────── */
+.wrapper[data-state='Default'][data-status='Default']:hover {
+  border-color: var(--border-brand-primary-hover);
+}
+
+/* ─── Active natif / Status Default ──────────────────────────────────────── */
+.wrapper[data-state='Default'][data-status='Default']:active {
+  border-color: var(--border-brand-primary-active);
+}
+
 /* ─── État Disabled ───────────────────────────────────────────────────────── */
 .wrapper[data-state='Disabled'] {
   background: var(--background-disabled);
@@ -113,6 +123,16 @@
   border-color: var(--border-status-error-default);
 }
 
+/* ─── Hover natif / Status Error ─────────────────────────────────────────── */
+.wrapper[data-state='Default'][data-status='Error']:hover {
+  border-color: var(--border-status-error-hover);
+}
+
+/* ─── Active natif / Status Error ────────────────────────────────────────── */
+.wrapper[data-state='Default'][data-status='Error']:active {
+  border-color: var(--border-status-error-active);
+}
+
 /* ─── Status Success ──────────────────────────────────────────────────────── */
 .wrapper[data-state='Default'][data-status='Success'] {
   background: var(--background-status-success-inverse-default);
@@ -132,4 +152,14 @@
 .wrapper[data-state='Focus'][data-status='Success'] {
   background: var(--background-status-success-inverse-default);
   border-color: var(--border-status-success-default);
+}
+
+/* ─── Hover natif / Status Success ───────────────────────────────────────── */
+.wrapper[data-state='Default'][data-status='Success']:hover {
+  border-color: var(--border-status-success-hover);
+}
+
+/* ─── Active natif / Status Success ──────────────────────────────────────── */
+.wrapper[data-state='Default'][data-status='Success']:active {
+  border-color: var(--border-status-success-active);
 }
