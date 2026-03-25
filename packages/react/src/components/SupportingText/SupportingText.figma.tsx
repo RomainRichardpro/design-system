@@ -32,8 +32,6 @@ figma.connect(
         Error: 'Error',
       }),
     },
-    example: ({ text, status }) => (
-      <SupportingText text={text} status={status} state="Disabled" />
-    ),
+    example: ({ text, status }) => <SupportingText text={text} status={status} state="Disabled" />,
   }
 );
