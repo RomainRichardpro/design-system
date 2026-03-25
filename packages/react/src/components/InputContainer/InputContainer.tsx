@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import type { LucideIcon } from 'lucide-react';
 import { InputLabel } from '../_internal/InputLabel/InputLabel';
 import { TextInput } from '../_internal/TextInput/TextInput';
 import { SupportingText } from '../SupportingText/SupportingText';
@@ -24,6 +25,8 @@ export interface InputContainerProps {
   status?: InputContainerStatus;
   withSupportingText?: boolean;
   supportingText?: string;
+  placeholder?: string;
+  icon?: LucideIcon;
   children?: React.ReactNode;
   className?: string;
 }
@@ -51,6 +54,8 @@ export function InputContainer({
   status = 'Default',
   withSupportingText = false,
   supportingText,
+  placeholder,
+  icon,
   children,
   className,
 }: InputContainerProps) {
@@ -63,6 +68,8 @@ export function InputContainer({
       id={inputId}
       state={state as TextInputState}
       status={status as TextInputStatus}
+      placeholder={placeholder}
+      icon={icon}
       aria-required={isRequired || undefined}
       aria-describedby={withSupportingText ? supportingId : undefined}
     />

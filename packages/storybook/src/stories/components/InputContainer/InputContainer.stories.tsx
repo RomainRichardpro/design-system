@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Mail } from 'lucide-react';
 import { InputContainer } from '@romainrichardpro/react';
 
 const meta = {
@@ -81,6 +82,20 @@ const meta = {
         type: { summary: 'string' },
       },
     },
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder affiché dans le TextInput par défaut.',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    icon: {
+      control: false,
+      description: 'Icône Lucide affichée à gauche du TextInput par défaut.',
+      table: {
+        type: { summary: 'LucideIcon' },
+      },
+    },
     children: {
       control: false,
       description:
@@ -106,6 +121,8 @@ const meta = {
     status: 'Default',
     withSupportingText: true,
     supportingText: 'Saisissez votre adresse e-mail professionnelle.',
+    placeholder: 'exemple@domaine.fr',
+    icon: Mail,
   },
 } satisfies Meta<typeof InputContainer>;
 
@@ -214,36 +231,48 @@ export const AllStates: Story = {
       <InputContainer
         label="État par défaut"
         state="Default"
+        placeholder="exemple@domaine.fr"
+        icon={Mail}
         withSupportingText
         supportingText="Message d'aide."
       />
       <InputContainer
         label="État focus"
         state="Focus"
+        placeholder="exemple@domaine.fr"
+        icon={Mail}
         withSupportingText
         supportingText="Message d'aide."
       />
       <InputContainer
         label="État désactivé"
         state="Disabled"
+        placeholder="exemple@domaine.fr"
+        icon={Mail}
         withSupportingText
         supportingText="Ce champ est désactivé."
       />
       <InputContainer
         label="État lecture seule"
         state="Read-only"
+        placeholder="exemple@domaine.fr"
+        icon={Mail}
         withSupportingText
         supportingText="Ce champ est en lecture seule."
       />
       <InputContainer
         label="Statut succès"
         status="Success"
+        placeholder="exemple@domaine.fr"
+        icon={Mail}
         withSupportingText
         supportingText="Valeur valide."
       />
       <InputContainer
         label="Statut erreur"
         status="Error"
+        placeholder="exemple@domaine.fr"
+        icon={Mail}
         withSupportingText
         supportingText="Ce champ est obligatoire."
       />
