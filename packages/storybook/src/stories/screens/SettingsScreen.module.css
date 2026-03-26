@@ -20,7 +20,22 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-06);
+  gap: var(--spacing-07);
+}
+
+.sidebarBrand {
+  font-family: var(--font-family-tagline);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-default);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
 }
 
 .sidebarTitle {
@@ -167,8 +182,8 @@
 }
 
 .avatar {
-  width: var(--size-12);
-  height: var(--size-12);
+  width: var(--sizes-12);
+  height: var(--sizes-12);
   border-radius: 50%;
   background: var(--background-brand-primary-default);
   color: var(--text-neutral-inverse);
@@ -219,82 +234,75 @@
   gap: var(--spacing-05);
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-02);
-}
-
-.label {
-  font-family: var(--font-family-text);
-  font-size: var(--font-size-14);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-neutral-default);
-}
-
-.input {
-  padding: var(--spacing-03) var(--spacing-04);
-  font-family: var(--font-family-text);
-  font-size: var(--font-size-14);
-  font-weight: var(--font-weight-regular);
-  color: var(--text-neutral-default);
-  background: var(--background-neutral-default);
-  border: var(--border-width-01) solid var(--text-neutral-alt);
-  border-radius: var(--radius-02);
-  outline: none;
-  width: 100%;
-  box-sizing: border-box;
-  height: var(--size-10);
-  transition: border-color 0.15s ease;
-}
-
-.input::placeholder {
-  color: var(--text-neutral-alt);
-}
-
-.input:hover {
-  border-color: var(--border-brand-primary-default);
-}
-
-.input:focus-visible {
-  border-color: var(--border-brand-primary-default);
-  box-shadow: 0 0 0 var(--border-width-03) var(--focus);
-}
-
-.select {
-  padding: var(--spacing-03) var(--spacing-09) var(--spacing-03) var(--spacing-04);
-  font-family: var(--font-family-text);
-  font-size: var(--font-size-14);
-  font-weight: var(--font-weight-regular);
-  color: var(--text-neutral-default);
-  background-color: var(--background-neutral-default);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--spacing-04) center;
-  border: var(--border-width-01) solid var(--text-neutral-alt);
-  border-radius: var(--radius-02);
-  outline: none;
-  width: 100%;
-  box-sizing: border-box;
-  height: var(--size-10);
-  cursor: pointer;
-  appearance: none;
-  transition: border-color 0.15s ease;
-}
-
-.select:hover {
-  border-color: var(--border-brand-primary-default);
-}
-
-.select:focus-visible {
-  border-color: var(--border-brand-primary-default);
-  box-shadow: 0 0 0 var(--border-width-03) var(--focus);
-}
-
 .formActions {
   display: flex;
   gap: var(--spacing-04);
   align-items: center;
+}
+
+/* ─── Native input wrapper — mimics TextInput ─────────────────────────────── */
+
+.nativeInput {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  height: var(--sizes-09);
+  padding: 0 var(--spacing-04);
+  border-radius: var(--radius-01);
+  border: var(--border-width-01) solid var(--border-brand-primary-default);
+  background: var(--background-neutral-default);
+  box-sizing: border-box;
+  transition: border-color 120ms ease;
+}
+
+.nativeInput:hover {
+  border-color: var(--border-brand-primary-hover);
+}
+
+.nativeInput:focus-within {
+  box-shadow: 0 0 0 var(--border-width-02) var(--focus);
+}
+
+.nativeInputInner {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  line-height: 1.4;
+  color: var(--text-neutral-default);
+  padding: 0;
+}
+
+.nativeInputInner::placeholder {
+  color: var(--text-neutral-alt);
+}
+
+/* ─── Native select ───────────────────────────────────────────────────────── */
+
+.nativeSelectInner {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  color: var(--text-neutral-default);
+  padding: 0;
+  appearance: none;
+  cursor: pointer;
+}
+
+.nativeSelectArrow {
+  flex-shrink: 0;
+  color: var(--icon-neutral-alt);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
 }
 
 /* ─── E-mail ──────────────────────────────────────────────────────────────── */
@@ -346,7 +354,7 @@
   color: var(--text-neutral-alt);
   margin: 0;
   /* Indentation alignée avec le label de la checkbox (box 16px + gap 8px) */
-  padding-left: calc(var(--size-06) + var(--spacing-04));
+  padding-left: calc(var(--sizes-06) + var(--spacing-04));
 }
 
 /* ─── Sessions ────────────────────────────────────────────────────────────── */
@@ -533,12 +541,6 @@
   font-weight: var(--font-weight-regular);
   color: var(--text-neutral-raised);
   margin: 0;
-}
-
-/* Surcharge du bouton secondary pour la zone danger */
-.dangerButton {
-  border-color: var(--border-status-error-default) !important;
-  color: var(--text-status-error-default) !important;
 }
 
 /* ─── Responsive mobile (< 768px) ────────────────────────────────────────── */

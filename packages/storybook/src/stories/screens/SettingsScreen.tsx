@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Checkbox } from '@romainrichardpro/react';
+import { Button, Checkbox, InputContainer } from '@romainrichardpro/react';
 import styles from './SettingsScreen.module.css';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -84,23 +84,26 @@ export function SettingsScreen() {
     <div className={styles.page}>
       {/* Sidebar — visible sur desktop uniquement */}
       <nav className={styles.sidebar} aria-label="Navigation des paramètres">
-        <p className={styles.sidebarTitle}>Paramètres</p>
-        <ul className={styles.navList} role="list">
-          {SECTIONS.map(({ id, label }) => (
-            <li key={id}>
-              <button
-                type="button"
-                className={[styles.navItem, activeSection === id ? styles.navItemActive : '']
-                  .filter(Boolean)
-                  .join(' ')}
-                onClick={() => setActiveSection(id)}
-                aria-current={activeSection === id ? 'page' : undefined}
-              >
-                {label}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <span className={styles.sidebarBrand}>RR</span>
+        <div className={styles.sidebarNav}>
+          <p className={styles.sidebarTitle}>Paramètres</p>
+          <ul className={styles.navList} role="list">
+            {SECTIONS.map(({ id, label }) => (
+              <li key={id}>
+                <button
+                  type="button"
+                  className={[styles.navItem, activeSection === id ? styles.navItemActive : '']
+                    .filter(Boolean)
+                    .join(' ')}
+                  onClick={() => setActiveSection(id)}
+                  aria-current={activeSection === id ? 'page' : undefined}
+                >
+                  {label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </nav>
 
       {/* Onglets — visible sur mobile uniquement */}
@@ -165,69 +168,59 @@ function SectionProfil() {
         <h2 className={styles.cardTitle}>Informations générales</h2>
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
           <div className={styles.fieldRow}>
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="prenom">
-                Prénom
-              </label>
+            <InputContainer label="Prénom" isRequired>
+              <div className={styles.nativeInput}>
+                <input
+                  className={styles.nativeInputInner}
+                  type="text"
+                  defaultValue="Romain"
+                  autoComplete="given-name"
+                />
+              </div>
+            </InputContainer>
+            <InputContainer label="Nom" isRequired>
+              <div className={styles.nativeInput}>
+                <input
+                  className={styles.nativeInputInner}
+                  type="text"
+                  defaultValue="Richard"
+                  autoComplete="family-name"
+                />
+              </div>
+            </InputContainer>
+          </div>
+
+          <InputContainer label="Nom d'utilisateur">
+            <div className={styles.nativeInput}>
               <input
-                id="prenom"
+                className={styles.nativeInputInner}
                 type="text"
-                className={styles.input}
-                defaultValue="Romain"
-                autoComplete="given-name"
+                defaultValue="romainrichardpro"
+                autoComplete="username"
               />
             </div>
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="nom">
-                Nom
-              </label>
+          </InputContainer>
+
+          <InputContainer label="Bio">
+            <div className={styles.nativeInput}>
               <input
-                id="nom"
+                className={styles.nativeInputInner}
                 type="text"
-                className={styles.input}
-                defaultValue="Richard"
-                autoComplete="family-name"
+                placeholder="Parlez-nous de vous…"
               />
             </div>
-          </div>
+          </InputContainer>
 
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="username">
-              {"Nom d'utilisateur"}
-            </label>
-            <input
-              id="username"
-              type="text"
-              className={styles.input}
-              defaultValue="romainrichardpro"
-              autoComplete="username"
-            />
-          </div>
-
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="bio">
-              Bio
-            </label>
-            <input
-              id="bio"
-              type="text"
-              className={styles.input}
-              placeholder="Parlez-nous de vous..."
-            />
-          </div>
-
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="website">
-              Site web
-            </label>
-            <input
-              id="website"
-              type="url"
-              className={styles.input}
-              placeholder="https://"
-              autoComplete="url"
-            />
-          </div>
+          <InputContainer label="Site web">
+            <div className={styles.nativeInput}>
+              <input
+                className={styles.nativeInputInner}
+                type="url"
+                placeholder="https://"
+                autoComplete="url"
+              />
+            </div>
+          </InputContainer>
 
           <div className={styles.formActions}>
             <Button level="primary" size="s" type="submit">
@@ -297,41 +290,35 @@ function SectionSecurite() {
       <div className={styles.card}>
         <h2 className={styles.cardTitle}>Mot de passe</h2>
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="current-password">
-              Mot de passe actuel
-            </label>
-            <input
-              id="current-password"
-              type="password"
-              className={styles.input}
-              autoComplete="current-password"
-            />
-          </div>
+          <InputContainer label="Mot de passe actuel" isRequired>
+            <div className={styles.nativeInput}>
+              <input
+                className={styles.nativeInputInner}
+                type="password"
+                autoComplete="current-password"
+              />
+            </div>
+          </InputContainer>
 
           <div className={styles.fieldRow}>
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="new-password">
-                Nouveau mot de passe
-              </label>
-              <input
-                id="new-password"
-                type="password"
-                className={styles.input}
-                autoComplete="new-password"
-              />
-            </div>
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="confirm-password">
-                Confirmation
-              </label>
-              <input
-                id="confirm-password"
-                type="password"
-                className={styles.input}
-                autoComplete="new-password"
-              />
-            </div>
+            <InputContainer label="Nouveau mot de passe" isRequired>
+              <div className={styles.nativeInput}>
+                <input
+                  className={styles.nativeInputInner}
+                  type="password"
+                  autoComplete="new-password"
+                />
+              </div>
+            </InputContainer>
+            <InputContainer label="Confirmation" isRequired>
+              <div className={styles.nativeInput}>
+                <input
+                  className={styles.nativeInputInner}
+                  type="password"
+                  autoComplete="new-password"
+                />
+              </div>
+            </InputContainer>
           </div>
 
           <div className={styles.formActions}>
@@ -409,27 +396,53 @@ function SectionApparence({ theme, onThemeChange }: ApparenceSectionProps) {
       <div className={styles.card}>
         <h2 className={styles.cardTitle}>Langue et région</h2>
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="language">
-              Langue
-            </label>
-            <select id="language" className={styles.select} defaultValue="fr">
-              <option value="fr">Français</option>
-              <option value="en">English</option>
-              <option value="es">Español</option>
-            </select>
-          </div>
+          <InputContainer label="Langue">
+            <div className={styles.nativeInput}>
+              <select className={styles.nativeSelectInner} defaultValue="fr">
+                <option value="fr">Français</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+              </select>
+              <span className={styles.nativeSelectArrow} aria-hidden="true">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </span>
+            </div>
+          </InputContainer>
 
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="timezone">
-              Fuseau horaire
-            </label>
-            <select id="timezone" className={styles.select} defaultValue="Europe/Paris">
-              <option value="Europe/Paris">Europe/Paris (UTC+1)</option>
-              <option value="UTC">UTC</option>
-              <option value="America/New_York">America/New_York (UTC−5)</option>
-            </select>
-          </div>
+          <InputContainer label="Fuseau horaire">
+            <div className={styles.nativeInput}>
+              <select className={styles.nativeSelectInner} defaultValue="Europe/Paris">
+                <option value="Europe/Paris">Europe/Paris (UTC+1)</option>
+                <option value="UTC">UTC</option>
+                <option value="America/New_York">America/New_York (UTC−5)</option>
+              </select>
+              <span className={styles.nativeSelectArrow} aria-hidden="true">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </span>
+            </div>
+          </InputContainer>
 
           <div className={styles.formActions}>
             <Button level="primary" size="s" type="submit">
@@ -480,7 +493,7 @@ function SectionFacturation() {
           effacées.
         </p>
         <div>
-          <Button level="secondary" size="s" className={styles.dangerButton}>
+          <Button level="danger" size="s">
             Supprimer mon compte
           </Button>
         </div>
