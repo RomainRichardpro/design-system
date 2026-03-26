@@ -1,7 +1,11 @@
 # Contrat Composants & Tokens — Design System @romainrichardpro
 Ce fichier est le contrat de référence pour la génération d'interfaces par Claude Code. Il liste les composants React disponibles, leur API exacte, leur node Figma associé, ainsi que l'ensemble des tokens CSS à utiliser.
-**Règle absolue** : toute interface générée doit exclusivement utiliser les composants et tokens listés ici. Aucune valeur arbitraire (couleur hex, px hardcodé, etc.) n'est autorisée si un token équivalent existe.
-**Règle tokens critique** : les variables CSS ne portent PAS de préfixe `--color-`. Correct : `--background-neutral-default`, `--text-neutral-default`, `--border-brand-primary-default`, `--focus`. Jamais : `--color-background-*`, `--color-text-*`, `--color-border-*`, `--color-icon-*`.
+
+**Règle absolue** : 
+toute interface générée doit exclusivement utiliser les composants et tokens listés ici. Aucune valeur arbitraire (couleur hex, px hardcodé, etc.) n'est autorisée si un token équivalent existe.
+
+**Règle tokens critique** : 
+les variables CSS ne portent PAS de préfixe `--color-`. Correct : `--background-neutral-default`, `--text-neutral-default`, `--border-brand-primary-default`, `--focus`. Jamais : `--color-background-*`, `--color-text-*`, `--color-border-*`, `--color-icon-*`.
 ---
 ## Convention d'identification
 Tous les composants du DS exposent un attribut `data-component` sur leur nœud racine.
