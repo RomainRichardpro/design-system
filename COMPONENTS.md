@@ -1,298 +1,284 @@
 # Contrat Composants & Tokens — Design System @romainrichardpro
-
 Ce fichier est le contrat de référence pour la génération d'interfaces par Claude Code. Il liste les composants React disponibles, leur API exacte, leur node Figma associé, ainsi que l'ensemble des tokens CSS à utiliser.
 
-**Règle absolue** : toute interface générée doit exclusivement utiliser les composants et tokens listés ici. Aucune valeur arbitraire (couleur hex, px hardcodé, etc.) n'est autorisée si un token équivalent existe.
+**Règle absolue** : 
+toute interface générée doit exclusivement utiliser les composants et tokens listés ici. Aucune valeur arbitraire (couleur hex, px hardcodé, etc.) n'est autorisée si un token équivalent existe.
+
+**Règle tokens critique** : 
+les variables CSS ne portent PAS de préfixe `--color-`. Correct : `--background-neutral-default`, `--text-neutral-default`, `--border-brand-primary-default`, `--focus`. Jamais : `--color-background-*`, `--color-text-*`, `--color-border-*`, `--color-icon-*`.
 
 ---
-
 ## Convention d'identification
-
 Tous les composants du DS exposent un attribut `data-component` sur leur nœud racine.
-
 Format : `data-component="ds-rr-[nom]"`
-
 | Composant | Valeur |
 |---|---|
 | `<Button>` | `data-component="ds-rr-button"` |
 | `<Checkbox>` | `data-component="ds-rr-checkbox"` |
-
-Cet attribut est **toujours présent**, non configurable via props, et s'ajoute aux autres attributs `data-*` existants.
-
+| `<InputContainer>` | `data-component="ds-rr-input-container"` |
+| `<SupportingText>` | `data-component="ds-rr-supporting-text"` |
 Usages :
-- **Inspection** : DevTools → attribut `data-component` visible immédiatement sur n'importe quel élément
-- **Tests** : `document.querySelectorAll('[data-component^="ds-rr"]')` pour lister tous les composants DS dans une page
-- **Debugging** : identifier instantanément ce qui vient du DS vs ce qui est du code local
-- **Audit** : base pour des outils d'analyse automatique d'utilisation des composants
-
+- **Inspection** : DevTools → attribut `data-component` visible immédiatement
+- **Tests** : `document.querySelectorAll('[data-component^="ds-rr"]')`
+- **Debugging** : identifier ce qui vient du DS vs code local
+- **Audit** : base pour des outils d'analyse automatique
 ---
-
 ## Fichier Figma
-
 - File key : `skRy27piDeBGQwD8Bi0EAU`
 - Nom : POC-NEW-DS
 - URL : https://www.figma.com/design/skRy27piDeBGQwD8Bi0EAU
-
 ---
-
 ## Composants disponibles
-
 ### `<Button>`
-
 #### Import
-
 ```tsx
 import { Button } from '@romainrichardpro/react';
 ```
-
 #### Figma
-
 - Node ID : `18:797`
-- Composant Figma : Button
-
 #### Props
-
 | Prop | Type | Défaut | Description |
 |---|---|---|---|
 | children | `React.ReactNode` | — | Contenu du bouton (label) |
-| level | `'primary' \| 'secondary' \| 'tertiary' \| 'ghost' \| 'danger'` | `'primary'` | Niveau visuel du bouton |
-| size | `'xs' \| 's' \| 'm' \| 'l'` | `'m'` | Taille du bouton |
+| level | `'primary' \| 'secondary' \| 'tertiary' \| 'ghost' \| 'danger'` | `'primary'` | Niveau visuel |
+| size | `'xs' \| 's' \| 'm' \| 'l'` | `'m'` | Taille |
 | loading | `boolean` | `false` | État de chargement (aria-busy, bloque le clic) |
 | loadingLabel | `string` | `'Chargement en cours'` | Label accessible pendant le chargement |
 | disabled | `boolean` | `false` | État désactivé natif |
 | onClick | `() => void` | — | Handler de clic |
 | type | `'button' \| 'submit' \| 'reset'` | `'button'` | Type HTML |
-
 #### Attributs HTML générés
-
 - `data-level` : valeur de `level`
 - `data-size` : valeur de `size`
-
 #### Exemples d'usage
-
 ```tsx
-// Bouton primaire standard
 <Button level="primary" size="m">Confirmer</Button>
-
-// Bouton secondaire petit
 <Button level="secondary" size="s">Annuler</Button>
-
-// Bouton en chargement
 <Button level="primary" loading>Enregistrer</Button>
-
-// Bouton désactivé
 <Button level="primary" disabled>Non disponible</Button>
-
-// Bouton danger
 <Button level="danger" size="m">Supprimer</Button>
 ```
-
-#### Tokens utilisés par ce composant
-
-- Couleurs : `--color-background-brand-primary-*`, `--color-text-brand-primary-*`, `--color-border-brand-primary-*`
+#### Tokens utilisés
+- Couleurs : `--background-brand-primary-default`, `--text-brand-primary-on-default`, `--border-brand-primary-default`
 - Radius : `--radius-02` (6px)
 - Spacing : `--spacing-04` (8px), `--spacing-05` (12px), `--spacing-06` (16px)
-- Tailles : `--size-09` (32px sm), `--size-10` (40px md), `--size-11` (48px lg)
+- Tailles : `--size-09` (32px), `--size-10` (40px), `--size-11` (48px)
 - Typographie : `--font-size-14`, `--font-weight-medium`
-
 ---
-
 ### `<Checkbox>`
-
 #### Import
-
 ```tsx
 import { Checkbox } from '@romainrichardpro/react';
 ```
-
 #### Figma
-
 - Node ID : `133:998`
-- Composant Figma : Checkbox
-
 #### Props
-
 | Prop | Type | Défaut | Description |
 |---|---|---|---|
-| label | `string` | — | **Obligatoire.** Texte du label — toujours présent dans le DOM, même si masqué visuellement |
-| checked | `boolean` | `false` | État coché (composant contrôlé) |
-| indeterminate | `boolean` | `false` | État indéterminé — représente une sélection partielle dans un groupe |
+| label | `string` | — | **Obligatoire.** Texte du label |
+| checked | `boolean` | `false` | État coché |
+| indeterminate | `boolean` | `false` | État indéterminé |
 | disabled | `boolean` | `false` | Désactive l'interaction |
-| hideLabel | `boolean` | `false` | Masque le label visuellement (reste dans le DOM pour les lecteurs d'écran) |
-| onChange | `(checked: boolean) => void` | — | Callback déclenché au changement d'état — reçoit la nouvelle valeur booléenne |
-| id | `string` | — | ID HTML pour l'association `<label for>` — auto-généré via `useId()` si absent |
-| className | `string` | — | Classe CSS additionnelle sur l'élément racine |
-
-#### Attributs HTML générés
-
-- `data-component="ds-rr-checkbox"` — toujours présent sur le `<div>` racine
-
-#### États et variants
-
-| État | Description | Visuel |
-|---|---|---|
-| `unchecked` | État par défaut | Box vide, bordure neutre |
-| `checked` | Case cochée | Box fond noir, icône check blanc |
-| `indeterminate` | Sélection partielle | Box fond noir, icône minus blanc |
-| `hover` (unchecked) | Survol non coché | Bordure accent |
-| `hover` (checked/indeterminate) | Survol coché | Fond gris hover |
-| `focus-visible` | Focus clavier | Halo 2px autour de la box |
-| `disabled` (unchecked) | Désactivé non coché | Bordure gris disabled |
-| `disabled` (checked/indeterminate) | Désactivé coché | Fond gris disabled, icône gris |
-
+| hideLabel | `boolean` | `false` | Masque le label visuellement (reste dans le DOM) |
+| onChange | `(checked: boolean) => void` | — | Callback au changement d'état |
+| id | `string` | — | ID HTML — auto-généré via `useId()` si absent |
+| className | `string` | — | Classe CSS additionnelle |
 #### Exemples d'usage
-
 ```tsx
-// Checkbox non cochée
 <Checkbox label="Accepter les CGU" onChange={(v) => console.log(v)} />
-
-// Checkbox cochée par défaut
 <Checkbox label="Recevoir les notifications" checked onChange={(v) => console.log(v)} />
-
-// Checkbox indéterminée
 <Checkbox label="Tout sélectionner" indeterminate onChange={(v) => console.log(v)} />
-
-// Checkbox désactivée
 <Checkbox label="Option non disponible" disabled />
-
-// Label masqué visuellement (accessible uniquement aux lecteurs d'écran)
-<Checkbox label="Sélectionner cet élément" hideLabel onChange={(v) => console.log(v)} />
 ```
-
-#### Tokens utilisés par ce composant
-
-- Couleurs fond : `--color-background-accent-default`, `--color-background-accent-hover`, `--color-background-disabled`
-- Couleurs bordure : `--color-border-accent-default`, `--color-border-accent-hover`, `--color-border-disabled`
-- Couleurs icône : `--color-icon-accent-on-default`, `--color-icon-disabled`
-- Couleurs texte : `--color-text-neutral-default`, `--color-text-accent-default`, `--color-text-disabled`
-- Focus : `--color-focus`
-- Tailles : `--sizes-07` (24px — box), `--sizes-06` (16px — icône), `--sizes-08` (24px — halo focus)
-- Radius : `--radius-01` (4px — box), `--radius-02` (6px — racine + halo focus)
-- Bordures : `--border-width-02` (1.5px — bordure box), `--border-width-03` (2px — halo focus)
-- Espacements : `--spacing-01` (2px — padding racine), `--spacing-04` (8px — gap control/label)
+#### Tokens utilisés
+- Couleurs fond : `--background-accent-default`, `--background-disabled`
+- Couleurs bordure : `--border-accent-default`, `--border-disabled`
+- Couleurs icône : `--icon-accent-on-default`, `--icon-disabled`
+- Couleurs texte : `--text-neutral-default`, `--text-disabled`
+- Focus : `--focus`
+- Tailles : `--size-08` (24px — box), `--size-06` (16px — icône)
+- Radius : `--radius-01` (4px — box), `--radius-02` (6px — halo focus)
+- Bordures : `--border-width-02` (1.5px), `--border-width-03` (2px — halo focus)
+- Espacements : `--spacing-01` (2px), `--spacing-04` (8px)
 - Typographie : `--font-family-text`, `--font-size-16`, `--font-weight-regular`
-
-#### Accessibilité
-
-- Utilise `<input type="checkbox">` natif pour une compatibilité maximale avec les technologies d'assistance
-- `aria-checked="mixed"` exposé automatiquement quand `indeterminate={true}`
-- Le label est **toujours dans le DOM** — `hideLabel` le masque visuellement via une classe `.srOnly` sans le retirer de l'arbre d'accessibilité
-- L'ID de l'input est auto-généré via `useId()` si non fourni — l'association `<label htmlFor>` est systématiquement garantie
-- Focus visible géré en CSS via `:focus-visible` — conforme WCAG 2.1 AA
-- Tous les états visuels (coché, indéterminé, désactivé) sont différenciés par la couleur **et** la forme (icône), jamais par la couleur seule
-
 ---
-
+### `<InputContainer>`
+#### Import
+```tsx
+import { InputContainer } from '@romainrichardpro/react';
+```
+#### Figma
+- Node ID : à compléter
+#### Props
+| Prop | Type | Défaut | Description |
+|---|---|---|---|
+| label | `string` | — | Label du champ |
+| description | `string` | — | Description optionnelle sous le label |
+| withDescription | `boolean` | `false` | Affiche la description |
+| isRequired | `boolean` | `false` | Marque le champ comme obligatoire |
+| state | `'Default' \| 'Hover' \| 'Active' \| 'Focus' \| 'Disabled' \| 'Read-only'` | `'Default'` | État du champ |
+| status | `'Default' \| 'Success' \| 'Error'` | `'Default'` | Statut de validation |
+| withSupportingText | `boolean` | `false` | Affiche le SupportingText sous le champ |
+| supportingText | `string` | — | Texte d'aide ou d'erreur |
+| placeholder | `string` | — | Placeholder du champ texte |
+| icon | `LucideIcon` | — | Icône optionnelle (depuis `lucide-react`) |
+| children | `React.ReactNode` | — | Remplace le TextInput par défaut (slot) |
+| className | `string` | — | Classe CSS additionnelle |
+#### Notes d'usage
+- Par défaut, `InputContainer` rend un `TextInput` interne. Passer `children` le remplace.
+- L'`id` et l'`aria-describedby` sont gérés automatiquement via `useId()`.
+- Pattern d'erreur standard : `status="Error"` + `withSupportingText` + `supportingText`.
+#### Exemples d'usage
+```tsx
+// Champ simple obligatoire
+<InputContainer
+  label="Adresse email"
+  placeholder="jean.dupont@email.com"
+  isRequired
+/>
+// Champ avec description
+<InputContainer
+  label="Mot de passe"
+  placeholder="••••••••"
+  withDescription
+  description="8 caractères minimum"
+  isRequired
+/>
+// Champ en erreur
+<InputContainer
+  label="Adresse email"
+  placeholder="jean.dupont@email.com"
+  status="Error"
+  withSupportingText
+  supportingText="Cette adresse email est invalide."
+  isRequired
+/>
+// Champ désactivé
+<InputContainer
+  label="Nom d'utilisateur"
+  state="Disabled"
+  placeholder="jean.dupont"
+/>
+```
+---
+### `<SupportingText>`
+#### Import
+```tsx
+import { SupportingText } from '@romainrichardpro/react';
+```
+> ⚠️ Dans la majorité des cas, préférer `withSupportingText` + `supportingText` sur `<InputContainer>` — l'association ARIA est gérée automatiquement. Utiliser `<SupportingText>` directement uniquement hors du pattern `InputContainer`.
+#### Figma
+- Node ID : à compléter
+#### Props
+| Prop | Type | Défaut | Description |
+|---|---|---|---|
+| text | `string` | — | Texte affiché |
+| state | `'Default' \| 'Disabled'` | `'Default'` | État |
+| status | `'Information' \| 'Success' \| 'Error'` | `'Information'` | Détermine l'icône et la couleur |
+| className | `string` | — | Classe CSS additionnelle |
+#### Comportement
+- `status="Error"` + `state="Default"` → `role="alert"` ajouté automatiquement
+- Icône automatique : `Info` (Information), `CircleCheck` (Success), `XCircle` (Error)
+#### Exemples d'usage
+```tsx
+<SupportingText text="8 caractères minimum." status="Information" />
+<SupportingText text="Mot de passe enregistré." status="Success" />
+<SupportingText text="Ce champ est obligatoire." status="Error" />
+<SupportingText text="Option non disponible." state="Disabled" />
+```
+---
 ## Tokens disponibles
-
 Source : `@romainrichardpro/tokens`
-
-Imports CSS disponibles :
-
-- `@romainrichardpro/tokens/css/colors-light` — mode clair (défaut)
-- `@romainrichardpro/tokens/css/colors-dark` — mode sombre
-- `@romainrichardpro/tokens/css/numbers` — espacements, tailles, radius, bordures
-- `@romainrichardpro/tokens/css/typography` — typographie
-
+Imports CSS :
+- `@romainrichardpro/tokens/css/colors-light`
+- `@romainrichardpro/tokens/css/colors-dark`
+- `@romainrichardpro/tokens/css/numbers`
+- `@romainrichardpro/tokens/css/typography`
 ---
-
 ### Couleurs — Mode clair
-
+> ⚠️ Pas de préfixe `--color-`. Utiliser directement `--focus`, `--background-*`, `--text-*`, `--border-*`, `--icon-*`.
 #### Focus
-
 | Token | Valeur |
 |---|---|
-| `--color-focus` | `#000000` |
-
+| `--focus` | `#000000` |
 #### Background
-
 | Token | Valeur | Usage |
 |---|---|---|
-| `--color-background-disabled` | `#B0B0B0` | Fond désactivé |
-| `--color-background-brand-primary-default` | `#000000` | Fond brand primaire |
-| `--color-background-brand-primary-hover` | `#262626` | |
-| `--color-background-brand-primary-active` | `#3D3D3D` | |
-| `--color-background-brand-primary-inverse-default` | `#E7E7E7` | Fond brand primaire inversé |
-| `--color-background-brand-primary-inverse-hover` | `#D1D1D1` | |
-| `--color-background-brand-primary-inverse-active` | `#B0B0B0` | |
-| `--color-background-brand-secondary-default` | `#8546FF` | Fond brand secondaire (violet) |
-| `--color-background-brand-secondary-hover` | `#6E13F3` | |
-| `--color-background-brand-secondary-active` | `#590BCC` | |
-| `--color-background-brand-secondary-inverse-default` | `#F4F1FF` | |
-| `--color-background-brand-secondary-inverse-hover` | `#DAD0FF` | |
-| `--color-background-brand-secondary-inverse-active` | `#BFABFF` | |
-| `--color-background-accent-default` | `#000000` | |
-| `--color-background-accent-inverse-default` | `#E7E7E7` | |
-| `--color-background-status-success-default` | `#1E9B53` | Succès |
-| `--color-background-status-success-inverse-default` | `#F1FCF5` | |
-| `--color-background-status-info-default` | `#1F5BF1` | Info |
-| `--color-background-status-info-inverse-default` | `#EEF5FF` | |
-| `--color-background-status-warning-default` | `#DB7904` | Avertissement |
-| `--color-background-status-warning-inverse-default` | `#FFFBEB` | |
-| `--color-background-status-error-default` | `#E31F1F` | Erreur |
-| `--color-background-status-error-inverse-default` | `#FEF2F2` | |
-| `--color-background-neutral-default` | `#FFFFFF` | Fond neutre (page) |
-| `--color-background-neutral-alt` | `#F6F6F6` | Fond alternatif |
-| `--color-background-neutral-raised` | `#D1D1D1` | Fond surélevé |
-| `--color-background-neutral-inverse` | `#000000` | Fond inversé |
-
+| `--background-disabled` | `#B0B0B0` | Fond désactivé |
+| `--background-brand-primary-default` | `#000000` | Fond brand primaire |
+| `--background-brand-primary-hover` | `#262626` | |
+| `--background-brand-primary-active` | `#3D3D3D` | |
+| `--background-brand-primary-inverse-default` | `#E7E7E7` | |
+| `--background-brand-primary-inverse-hover` | `#D1D1D1` | |
+| `--background-brand-primary-inverse-active` | `#B0B0B0` | |
+| `--background-brand-secondary-default` | `#8546FF` | Violet |
+| `--background-brand-secondary-hover` | `#6E13F3` | |
+| `--background-brand-secondary-active` | `#590BCC` | |
+| `--background-brand-secondary-inverse-default` | `#F4F1FF` | |
+| `--background-brand-secondary-inverse-hover` | `#DAD0FF` | |
+| `--background-brand-secondary-inverse-active` | `#BFABFF` | |
+| `--background-accent-default` | `#000000` | |
+| `--background-accent-inverse-default` | `#E7E7E7` | |
+| `--background-status-success-default` | `#1E9B53` | |
+| `--background-status-success-inverse-default` | `#F1FCF5` | |
+| `--background-status-info-default` | `#1F5BF1` | |
+| `--background-status-info-inverse-default` | `#EEF5FF` | |
+| `--background-status-warning-default` | `#DB7904` | |
+| `--background-status-warning-inverse-default` | `#FFFBEB` | |
+| `--background-status-error-default` | `#E31F1F` | |
+| `--background-status-error-inverse-default` | `#FEF2F2` | |
+| `--background-neutral-default` | `#FFFFFF` | Fond page |
+| `--background-neutral-alt` | `#F6F6F6` | Fond alternatif |
+| `--background-neutral-raised` | `#D1D1D1` | Fond surélevé |
+| `--background-neutral-inverse` | `#000000` | Fond inversé |
 #### Border
-
 | Token | Valeur |
 |---|---|
-| `--color-border-disabled` | `#B0B0B0` |
-| `--color-border-brand-primary-default` | `#000000` |
-| `--color-border-brand-primary-inverse-default` | `#F6F6F6` |
-| `--color-border-brand-secondary-default` | `#8546FF` |
-| `--color-border-brand-secondary-inverse-default` | `#F4F1FF` |
-| `--color-border-accent-default` | `#000000` |
-| `--color-border-status-success-default` | `#2FCC71` |
-| `--color-border-status-info-default` | `#357BFC` |
-| `--color-border-status-warning-default` | `#F7A109` |
-| `--color-border-status-error-default` | `#F53E3E` |
-| `--color-border-neutral-default` | `#FFFFFF` |
-| `--color-border-neutral-alt` | `#F6F6F6` |
-| `--color-border-neutral-raised` | `#D1D1D1` |
-| `--color-border-neutral-inverse` | `#000000` |
-
+| `--border-disabled` | `#B0B0B0` |
+| `--border-brand-primary-default` | `#000000` |
+| `--border-brand-primary-inverse-default` | `#F6F6F6` |
+| `--border-brand-secondary-default` | `#8546FF` |
+| `--border-brand-secondary-inverse-default` | `#F4F1FF` |
+| `--border-accent-default` | `#000000` |
+| `--border-status-success-default` | `#2FCC71` |
+| `--border-status-info-default` | `#357BFC` |
+| `--border-status-warning-default` | `#F7A109` |
+| `--border-status-error-default` | `#F53E3E` |
+| `--border-neutral-default` | `#FFFFFF` |
+| `--border-neutral-alt` | `#F6F6F6` |
+| `--border-neutral-raised` | `#D1D1D1` |
+| `--border-neutral-inverse` | `#000000` |
 #### Text
-
 | Token | Valeur | Usage |
 |---|---|---|
-| `--color-text-disabled` | `#262626` | Texte désactivé |
-| `--color-text-brand-primary-default` | `#000000` | Texte brand primaire |
-| `--color-text-brand-primary-on-default` | `#FFFFFF` | Texte sur fond brand primaire |
-| `--color-text-brand-secondary-default` | `#8546FF` | Texte brand secondaire |
-| `--color-text-brand-secondary-on-default` | `#FFFFFF` | |
-| `--color-text-accent-default` | `#000000` | |
-| `--color-text-accent-on-default` | `#FFFFFF` | |
-| `--color-text-status-success-default` | `#1E9B53` | |
-| `--color-text-status-info-default` | `#1F5BF1` | |
-| `--color-text-status-warning-default` | `#DB7904` | |
-| `--color-text-status-error-default` | `#E31F1F` | |
-| `--color-text-neutral-default` | `#000000` | Texte courant |
-| `--color-text-neutral-alt` | `#888888` | Texte secondaire / placeholder |
-| `--color-text-neutral-raised` | `#262626` | Texte surélevé |
-| `--color-text-neutral-inverse` | `#FFFFFF` | Texte sur fond sombre |
-
+| `--text-disabled` | `#262626` | |
+| `--text-brand-primary-default` | `#000000` | |
+| `--text-brand-primary-on-default` | `#FFFFFF` | Texte sur fond brand primaire |
+| `--text-brand-secondary-default` | `#8546FF` | |
+| `--text-brand-secondary-on-default` | `#FFFFFF` | |
+| `--text-accent-default` | `#000000` | |
+| `--text-accent-on-default` | `#FFFFFF` | |
+| `--text-status-success-default` | `#1E9B53` | |
+| `--text-status-info-default` | `#1F5BF1` | |
+| `--text-status-warning-default` | `#DB7904` | |
+| `--text-status-error-default` | `#E31F1F` | |
+| `--text-neutral-default` | `#000000` | Texte courant |
+| `--text-neutral-alt` | `#888888` | Texte secondaire / placeholder |
+| `--text-neutral-raised` | `#262626` | |
+| `--text-neutral-inverse` | `#FFFFFF` | Texte sur fond sombre |
 #### Icon
-
 | Token | Valeur |
 |---|---|
-| `--color-icon-disabled` | `#262626` |
-| `--color-icon-brand-primary-default` | `#000000` |
-| `--color-icon-brand-primary-on-default` | `#FFFFFF` |
-| `--color-icon-brand-secondary-default` | `#8546FF` |
-| `--color-icon-neutral-default` | `#000000` |
-| `--color-icon-neutral-alt` | `#888888` |
-| `--color-icon-neutral-inverse` | `#FFFFFF` |
-
+| `--icon-disabled` | `#262626` |
+| `--icon-brand-primary-default` | `#000000` |
+| `--icon-brand-primary-on-default` | `#FFFFFF` |
+| `--icon-brand-secondary-default` | `#8546FF` |
+| `--icon-neutral-default` | `#000000` |
+| `--icon-neutral-alt` | `#888888` |
+| `--icon-neutral-inverse` | `#FFFFFF` |
 ---
-
 ### Numbers — Espacements, tailles, radius, bordures
-
 #### Border width
-
 | Token | Valeur |
 |---|---|
 | `--border-width-00` | `0px` |
@@ -300,9 +286,7 @@ Imports CSS disponibles :
 | `--border-width-02` | `1.5px` |
 | `--border-width-03` | `2px` |
 | `--border-width-04` | `3px` |
-
 #### Border radius
-
 | Token | Valeur |
 |---|---|
 | `--radius-00` | `0px` |
@@ -314,9 +298,7 @@ Imports CSS disponibles :
 | `--radius-06` | `16px` |
 | `--radius-07` | `24px` |
 | `--radius-08` | `32px` |
-
-#### Tailles (largeur / hauteur de composants)
-
+#### Tailles
 | Token | Valeur |
 |---|---|
 | `--size-00` | `0px` |
@@ -333,9 +315,7 @@ Imports CSS disponibles :
 | `--size-11` | `48px` |
 | `--size-12` | `56px` |
 | `--size-13` | `64px` |
-
 #### Espacements
-
 | Token | Valeur |
 |---|---|
 | `--spacing-00` | `0px` |
@@ -352,11 +332,8 @@ Imports CSS disponibles :
 | `--spacing-11` | `48px` |
 | `--spacing-12` | `56px` |
 | `--spacing-13` | `64px` |
-
 ---
-
 ### Typographie
-
 | Token | Valeur |
 |---|---|
 | `--font-family-tagline` | `vesterbro` |
@@ -376,27 +353,19 @@ Imports CSS disponibles :
 | `--font-size-32` | `32px` |
 | `--font-size-40` | `40px` |
 | `--font-size-72` | `72px` |
-
 ---
-
 ## Règles de génération d'interfaces
-
-1. **Composants uniquement** : n'utiliser que les composants listés dans ce fichier. Ne pas inventer de composants non existants dans le DS.
-2. **Tokens exclusivement** : toute valeur de couleur, espacement, taille ou radius doit référencer un token CSS variable. Aucune valeur arbitraire.
-3. **Pas de style inline** : les styles sont définis via CSS Modules + CSS Variables, jamais en `style={{}}` sauf cas exceptionnel documenté.
-4. **Accessibilité obligatoire** : chaque interface générée doit respecter WCAG 2.1 AA — navigation clavier, focus visible, ARIA correct, contrastes.
-5. **Figma en sortie** : lors de la génération d'une maquette Figma, utiliser les node IDs listés ici pour instancier les vrais composants de la librairie DS, pas des formes génériques.
-6. **Pas d'imports externes** : n'importer aucune librairie UI tierce (MUI, shadcn, Radix standalone, etc.). Le DS est la seule source.
-
+1. **Composants uniquement** : n'utiliser que les composants listés ici. Pas d'invention.
+2. **Tokens exclusivement** : toute couleur, espacement, taille ou radius référence un token. Aucune valeur arbitraire.
+3. **Pas de style inline** : CSS Modules + CSS Variables uniquement. Jamais `style={{}}`.
+4. **Accessibilité obligatoire** : WCAG 2.1 AA — navigation clavier, focus visible, ARIA, contrastes.
+5. **Pas d'imports externes** : aucune librairie UI tierce (MUI, shadcn, Radix standalone…).
+6. **Figma en sortie** : utiliser les node IDs listés pour instancier les vrais composants DS.
 ---
-
 ## Mise à jour de ce fichier
-
-Ce fichier doit être mis à jour à chaque nouveau composant ajouté au DS, selon ce cycle :
-
+Cycle obligatoire à chaque nouveau composant :
 1. Composant implémenté dans `packages/react`
 2. Testé et documenté dans Storybook
 3. Code Connect configuré (node ID Figma enregistré)
 4. Entrée ajoutée dans ce fichier
-
-**Dernière mise à jour** : Phase 4 — Button + Checkbox + Code Connect actifs.
+**Dernière mise à jour** : Phase 5 — Button + Checkbox + InputContainer + SupportingText documentés.
