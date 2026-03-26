@@ -19,4 +19,3 @@ storybook-static/
 .turbo/
 *.log
 packages/tokens/test.css
-.claude/
