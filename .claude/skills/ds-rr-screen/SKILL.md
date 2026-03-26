@@ -1,6 +1,6 @@
 ---
 name: ds-rr-screen
-description: Generate UI screens and interfaces using the @romainrichardpro Design System components and tokens. Use this skill whenever generating a screen, page, form, layout, or any UI that must use DS components (Button, Checkbox, InputContainer, SupportingText). Targets Linear/Vercel/Stripe-level UI quality: dense, typographic, precise — every detail intentional.
+description: "Generate UI screens using the @romainrichardpro Design System. Use for any screen, page, form or layout needing DS components (Button, Checkbox, InputContainer, SupportingText). Targets Linear/Vercel/Stripe-level UI quality: dense, typographic, precise."
 ---
 # Design System Screen Generator — @romainrichardpro
 This skill generates React screens using the @romainrichardpro Design System. The ambition is **Linear/Vercel/Stripe-level UI quality**: dense, typographic, precise — every spacing decision, every weight choice, every alignment intentional. The DS tokens and components are the vocabulary. How you compose them is the craft.
