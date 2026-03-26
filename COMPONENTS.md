@@ -6,6 +6,7 @@ toute interface générée doit exclusivement utiliser les composants et tokens 
 
 **Règle tokens critique** : 
 les variables CSS ne portent PAS de préfixe `--color-`. Correct : `--background-neutral-default`, `--text-neutral-default`, `--border-brand-primary-default`, `--focus`. Jamais : `--color-background-*`, `--color-text-*`, `--color-border-*`, `--color-icon-*`.
+
 ---
 ## Convention d'identification
 Tous les composants du DS exposent un attribut `data-component` sur leur nœud racine.
