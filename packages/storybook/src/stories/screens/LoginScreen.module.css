@@ -10,7 +10,6 @@
   position: relative;
   flex: 1;
   background-color: var(--background-neutral-inverse);
-  overflow: hidden;
 }
 
 /* Purple glow — bottom-right corner */
