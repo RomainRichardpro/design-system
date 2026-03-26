@@ -1,0 +1,192 @@
+/* ─── Page ────────────────────────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background: var(--background-neutral-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-11) var(--spacing-09);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow violet — coin supérieur gauche */
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 50% at -5% -5%,
+    var(--background-brand-secondary-default),
+    transparent
+  );
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+/* ─── Wrapper centré ──────────────────────────────────────────────────────── */
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-10);
+}
+
+/* ─── Brand ───────────────────────────────────────────────────────────────── */
+
+.brand {
+  font-family: var(--font-family-tagline);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-default);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* ─── Header ──────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
+}
+
+.headline {
+  font-family: var(--font-family-tagline);
+  font-size: var(--font-size-72);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-default);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0;
+}
+
+.sub {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-alt);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ─── Form ────────────────────────────────────────────────────────────────── */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-05);
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-05);
+}
+
+/* ─── Textarea — slot InputContainer ──────────────────────────────────────── */
+
+.textareaWrapper {
+  width: 100%;
+  padding: var(--spacing-03) var(--spacing-04);
+  border-radius: var(--radius-01);
+  border: var(--border-width-01) solid var(--border-brand-primary-default);
+  background: var(--background-neutral-default);
+  box-sizing: border-box;
+  transition: border-color 120ms ease;
+}
+
+.textareaWrapper:hover {
+  border-color: var(--border-brand-primary-hover);
+}
+
+.textareaWrapper:focus-within {
+  box-shadow: 0 0 0 var(--border-width-02) var(--focus);
+}
+
+.textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  line-height: 1.6;
+  color: var(--text-neutral-default);
+  resize: vertical;
+  min-height: 120px;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+}
+
+.textarea::placeholder {
+  color: var(--text-neutral-alt);
+}
+
+/* ─── Submit ──────────────────────────────────────────────────────────────── */
+
+.submit {
+  width: 100%;
+}
+
+/* ─── Footer ──────────────────────────────────────────────────────────────── */
+
+.footer {
+  margin-top: calc(var(--spacing-05) * -1);
+}
+
+.footerText {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-alt);
+  margin: 0;
+}
+
+.footerLink {
+  color: var(--text-brand-secondary-default);
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  text-decoration: underline;
+}
+
+.footerLink:focus-visible {
+  outline: var(--border-width-03) solid var(--focus);
+  outline-offset: var(--spacing-01);
+  border-radius: var(--radius-01);
+}
+
+/* ─── État confirmation ───────────────────────────────────────────────────── */
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-06);
+}
+
+.confirmationTitle {
+  font-family: var(--font-family-tagline);
+  font-size: var(--font-size-40);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-default);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0;
+}
+
+.confirmationSub {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-alt);
+  margin: 0;
+  line-height: 1.5;
+}
