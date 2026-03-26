@@ -54,15 +54,17 @@ export function LoginScreen() {
                   Mot de passe oublié ?
                 </a>
               </div>
-              <input
-                id="login-password"
-                type="password"
-                className={styles.passwordInput}
-                placeholder="••••••••"
-                autoComplete="current-password"
-                aria-required="true"
-                required
-              />
+              <div className={styles.passwordInputWrapper}>
+                <input
+                  id="login-password"
+                  type="password"
+                  className={styles.passwordInputInner}
+                  placeholder="••••••••"
+                  autoComplete="current-password"
+                  aria-required="true"
+                  required
+                />
+              </div>
             </div>
 
             <Checkbox label="Se souvenir de moi" checked={rememberMe} onChange={setRememberMe} />
