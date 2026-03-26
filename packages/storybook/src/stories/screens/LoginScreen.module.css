@@ -1,110 +1,123 @@
+/* ─── Page ────────────────────────────────────────────────────────────────── */
 .page {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   background: var(--background-neutral-alt);
   padding: var(--spacing-08);
+  gap: var(--spacing-06);
 }
 
+/* ─── Brand mark ──────────────────────────────────────────────────────────── */
+.brand {
+  font-family: var(--font-family-tagline);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-default);
+  letter-spacing: -0.02em;
+}
+
+/* ─── Card ────────────────────────────────────────────────────────────────── */
 .card {
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   background: var(--background-neutral-default);
-  border-radius: var(--radius-04);
+  border-radius: var(--radius-03);
+  border: var(--border-width-01) solid var(--border-neutral-raised);
   padding: var(--spacing-09);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  /* gap entre .header (sous-titre) et premier .field */
-  gap: var(--spacing-08);
+  gap: var(--spacing-07);
 }
 
+/* ─── Header ──────────────────────────────────────────────────────────────── */
 .header {
   display: flex;
   flex-direction: column;
-  /* gap entre titre et sous-titre */
-  gap: var(--spacing-02);
+  gap: var(--spacing-01);
 }
 
 .title {
   font-family: var(--font-family-title);
-  font-size: var(--font-size-32);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-semibold);
   color: var(--text-neutral-default);
   margin: 0;
-  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .subtitle {
   font-family: var(--font-family-text);
-  font-size: var(--font-size-16);
+  font-size: var(--font-size-14);
   font-weight: var(--font-weight-regular);
   color: var(--text-neutral-alt);
   margin: 0;
 }
 
+/* ─── Form ────────────────────────────────────────────────────────────────── */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: var(--spacing-05);
 }
 
-.field {
+/* ─── Password field ──────────────────────────────────────────────────────── */
+.passwordField {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-02);
+  gap: var(--spacing-03);
 }
 
-/* gap entre chaque champ : --spacing-06 (16px) */
-.field + .field {
-  margin-top: var(--spacing-06);
+.passwordLabelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.label {
+.fieldLabel {
   font-family: var(--font-family-text);
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-medium);
   color: var(--text-neutral-default);
 }
 
-.input {
-  padding: var(--spacing-04) var(--spacing-05);
-  font-family: var(--font-family-text);
-  font-size: var(--font-size-16);
-  font-weight: var(--font-weight-regular);
-  color: var(--text-neutral-default);
-  background-color: var(--background-neutral-default);
-  border: var(--border-width-01) solid var(--text-neutral-alt);
-  border-radius: var(--radius-02);
-  outline: none;
-  width: 100%;
-  box-sizing: border-box;
-  transition: border-color 0.15s ease;
+.required {
+  color: var(--text-status-error-default);
+  margin-left: var(--spacing-01);
 }
 
-.input::placeholder {
+/* ─── Password input — mirrors DS TextInput appearance ────────────────────── */
+.passwordInput {
+  width: 100%;
+  box-sizing: border-box;
+  height: var(--size-09);
+  padding: 0 var(--spacing-04);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-default);
+  background: var(--background-neutral-default);
+  border: var(--border-width-01) solid var(--border-brand-primary-default);
+  border-radius: var(--radius-01);
+  outline: none;
+  transition: border-color 120ms ease;
+}
+
+.passwordInput::placeholder {
   color: var(--text-neutral-alt);
 }
 
-.input:hover {
-  border-color: var(--border-brand-primary-default);
+.passwordInput:hover {
+  border-color: var(--border-brand-primary-hover);
 }
 
-.input:focus-visible {
-  border-color: var(--border-brand-primary-default);
-  box-shadow: 0 0 0 var(--border-width-03) var(--focus);
+.passwordInput:focus-visible {
+  box-shadow: 0 0 0 var(--border-width-02) var(--focus);
 }
 
-/* gap entre le dernier champ et la ligne checkbox/lien : --spacing-05 (12px) */
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-04);
-  margin-top: var(--spacing-05);
-}
-
+/* ─── Forgot link ─────────────────────────────────────────────────────────── */
 .forgotLink {
   font-family: var(--font-family-text);
   font-size: var(--font-size-14);
@@ -125,8 +138,7 @@
   border-radius: var(--radius-01);
 }
 
-/* gap entre la ligne checkbox/lien et le bouton : --spacing-07 (20px) */
-.submitButton {
+/* ─── Submit ──────────────────────────────────────────────────────────────── */
+.submit {
   width: 100%;
-  margin-top: var(--spacing-07);
 }

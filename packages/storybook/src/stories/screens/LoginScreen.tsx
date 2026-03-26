@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Button } from '@romainrichardpro/react';
-import { Checkbox } from '@romainrichardpro/react';
+import { Button, Checkbox, InputContainer } from '@romainrichardpro/react';
 import styles from './LoginScreen.module.css';
 
 export function LoginScreen() {
@@ -15,49 +14,43 @@ export function LoginScreen() {
 
   return (
     <main className={styles.page}>
+      <div className={styles.brand} aria-hidden="true">
+        RR
+      </div>
+
       <div className={styles.card}>
         <header className={styles.header}>
-          <h1 className={styles.title}>Connexion</h1>
-          <p className={styles.subtitle}>Bienvenue, connectez-vous à votre compte</p>
+          <h1 className={styles.title}>Se connecter</h1>
+          <p className={styles.subtitle}>Accédez à votre espace de travail.</p>
         </header>
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
-          <div className={styles.field}>
-            <label htmlFor="email" className={styles.label}>
-              Adresse e-mail
-            </label>
-            <input
-              id="email"
-              type="email"
-              className={styles.input}
-              placeholder="vous@exemple.com"
-              autoComplete="email"
-              required
-              aria-required="true"
-            />
-          </div>
+          <InputContainer label="Adresse e-mail" placeholder="jean.dupont@email.com" isRequired />
 
-          <div className={styles.field}>
-            <label htmlFor="password" className={styles.label}>
-              Mot de passe
-            </label>
+          <div className={styles.passwordField}>
+            <div className={styles.passwordLabelRow}>
+              <label htmlFor="login-password" className={styles.fieldLabel}>
+                Mot de passe{' '}
+                <span className={styles.required} aria-hidden="true">
+                  *
+                </span>
+              </label>
+              <a href="#forgot" className={styles.forgotLink}>
+                Mot de passe oublié ?
+              </a>
+            </div>
             <input
-              id="password"
+              id="login-password"
               type="password"
-              className={styles.input}
+              className={styles.passwordInput}
               placeholder="••••••••"
               autoComplete="current-password"
-              required
               aria-required="true"
+              required
             />
           </div>
 
-          <div className={styles.row}>
-            <Checkbox label="Se souvenir de moi" checked={rememberMe} onChange={setRememberMe} />
-            <a href="#forgot" className={styles.forgotLink}>
-              Mot de passe oublié ?
-            </a>
-          </div>
+          <Checkbox label="Se souvenir de moi" checked={rememberMe} onChange={setRememberMe} />
 
           <Button
             type="submit"
@@ -65,7 +58,7 @@ export function LoginScreen() {
             size="m"
             loading={isLoading}
             loadingLabel="Connexion en cours"
-            className={styles.submitButton}
+            className={styles.submit}
           >
             Se connecter
           </Button>
