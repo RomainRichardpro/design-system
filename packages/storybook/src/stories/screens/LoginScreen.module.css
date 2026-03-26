@@ -1,110 +1,192 @@
+/* ─── Page — split layout ─────────────────────────────────────────────────── */
 .page {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
   min-height: 100vh;
-  background: var(--background-neutral-alt);
-  padding: var(--spacing-08);
 }
 
-.card {
-  width: 100%;
-  max-width: 400px;
-  background: var(--background-neutral-default);
-  border-radius: var(--radius-04);
-  padding: var(--spacing-09);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+/* ─── Left panel ──────────────────────────────────────────────────────────── */
+.left {
+  position: relative;
+  flex: 1;
+  background-color: var(--background-neutral-inverse);
+}
+
+/* Purple glow — bottom-right corner */
+.left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 130% 100% at 110% 110%,
+    var(--background-brand-secondary-default),
+    transparent
+  );
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.leftContent {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  /* gap entre .header (sous-titre) et premier .field */
-  gap: var(--spacing-08);
+  justify-content: space-between;
+  height: 100%;
+  padding: var(--spacing-09) var(--spacing-09) var(--spacing-11);
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  /* gap entre titre et sous-titre */
-  gap: var(--spacing-02);
-}
-
-.title {
-  font-family: var(--font-family-title);
-  font-size: var(--font-size-32);
+/* Brand logotype */
+.brand {
+  font-family: var(--font-family-tagline);
+  font-size: var(--font-size-24);
   font-weight: var(--font-weight-bold);
-  color: var(--text-neutral-default);
-  margin: 0;
-  line-height: 1.2;
+  color: var(--text-neutral-inverse);
+  letter-spacing: -0.03em;
 }
 
-.subtitle {
+/* Headline block — anchored to bottom */
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-04);
+  margin-bottom: var(--spacing-12);
+}
+
+.headlineText {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-72);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-inverse);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.headlineSub {
   font-family: var(--font-family-text);
-  font-size: var(--font-size-16);
+  font-size: var(--font-size-14);
   font-weight: var(--font-weight-regular);
   color: var(--text-neutral-alt);
   margin: 0;
 }
 
+/* ─── Right panel ─────────────────────────────────────────────────────────── */
+.right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-neutral-default);
+  padding: var(--spacing-09);
+}
+
+/* ─── Form wrapper ────────────────────────────────────────────────────────── */
+.formWrapper {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-07);
+}
+
+/* ─── Header ──────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-01);
+}
+
+.title {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-neutral-default);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-alt);
+  margin: 0;
+}
+
+/* ─── Form ────────────────────────────────────────────────────────────────── */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: var(--spacing-05);
 }
 
-.field {
+/* ─── Password field ──────────────────────────────────────────────────────── */
+.passwordField {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-02);
+  gap: var(--spacing-03);
 }
 
-/* gap entre chaque champ : --spacing-06 (16px) */
-.field + .field {
-  margin-top: var(--spacing-06);
+.passwordLabelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.label {
+.fieldLabel {
   font-family: var(--font-family-text);
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-medium);
   color: var(--text-neutral-default);
 }
 
-.input {
-  padding: var(--spacing-04) var(--spacing-05);
-  font-family: var(--font-family-text);
-  font-size: var(--font-size-16);
-  font-weight: var(--font-weight-regular);
-  color: var(--text-neutral-default);
-  background-color: var(--background-neutral-default);
-  border: var(--border-width-01) solid var(--text-neutral-alt);
-  border-radius: var(--radius-02);
-  outline: none;
-  width: 100%;
-  box-sizing: border-box;
-  transition: border-color 0.15s ease;
+.required {
+  color: var(--text-status-error-default);
+  margin-left: var(--spacing-01);
 }
 
-.input::placeholder {
+/* ─── Password input — wrapper mirrors DS TextInput exactly ───────────────── */
+.passwordInputWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  height: var(--sizes-09);
+  padding: 0 var(--spacing-04);
+  border-radius: var(--radius-01);
+  border: var(--border-width-01) solid var(--border-brand-primary-default);
+  box-sizing: border-box;
+  background: var(--background-neutral-default);
+  transition: border-color 120ms ease;
+}
+
+.passwordInputWrapper:hover {
+  border-color: var(--border-brand-primary-hover);
+}
+
+.passwordInputWrapper:focus-within {
+  box-shadow: 0 0 0 var(--border-width-02) var(--focus);
+}
+
+.passwordInputInner {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  line-height: 1.4;
+  color: var(--text-neutral-default);
+  padding: 0;
+}
+
+.passwordInputInner::placeholder {
   color: var(--text-neutral-alt);
 }
 
-.input:hover {
-  border-color: var(--border-brand-primary-default);
-}
-
-.input:focus-visible {
-  border-color: var(--border-brand-primary-default);
-  box-shadow: 0 0 0 var(--border-width-03) var(--focus);
-}
-
-/* gap entre le dernier champ et la ligne checkbox/lien : --spacing-05 (12px) */
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-04);
-  margin-top: var(--spacing-05);
-}
-
+/* ─── Forgot link ─────────────────────────────────────────────────────────── */
 .forgotLink {
   font-family: var(--font-family-text);
   font-size: var(--font-size-14);
@@ -125,8 +207,7 @@
   border-radius: var(--radius-01);
 }
 
-/* gap entre la ligne checkbox/lien et le bouton : --spacing-07 (20px) */
-.submitButton {
+/* ─── Submit ──────────────────────────────────────────────────────────────── */
+.submit {
   width: 100%;
-  margin-top: var(--spacing-07);
 }
