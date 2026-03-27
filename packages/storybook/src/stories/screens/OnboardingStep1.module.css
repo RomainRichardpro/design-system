@@ -1,0 +1,303 @@
+/* ─── Animations d'entrée ─────────────────────────────────────────────────── */
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ─── Page ────────────────────────────────────────────────────────────────── */
+
+.page {
+  display: flex;
+  min-height: 100vh;
+  background: var(--background-neutral-default);
+  overflow: hidden;
+}
+
+/* ─── Panneau gauche — violet ─────────────────────────────────────────────── */
+
+.panel {
+  flex: 0 0 420px;
+  background: var(--background-brand-secondary-default);
+  position: relative;
+  overflow: hidden;
+  animation: slideInLeft 400ms ease-out both;
+}
+
+/* Texture subtile — cercle lumineux en haut à droite */
+.panel::after {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 65%);
+  pointer-events: none;
+}
+
+.panelInner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--spacing-10);
+}
+
+/* ─── Logo ────────────────────────────────────────────────────────────────── */
+
+.logo {
+  font-family: var(--font-family-tagline);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-inverse);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+/* ─── Contenu éditorial ───────────────────────────────────────────────────── */
+
+.panelContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-06);
+}
+
+.stepLabel {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-neutral-inverse);
+  opacity: 0.6;
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.headline {
+  font-family: var(--font-family-tagline);
+  font-size: var(--font-size-40);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-inverse);
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.tagline {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-inverse);
+  opacity: 0.72;
+  margin: 0;
+  line-height: 1.55;
+  max-width: 300px;
+}
+
+/* ─── Indicateur de progression ───────────────────────────────────────────── */
+
+.progressDots {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-03);
+}
+
+.dot {
+  display: block;
+  height: var(--size-02);
+  width: var(--size-08);
+  border-radius: var(--radius-08);
+  background: var(--background-neutral-inverse);
+  opacity: 0.28;
+  transition: opacity 250ms ease, width 250ms ease;
+}
+
+.dot[data-active='true'] {
+  width: var(--size-10);
+  opacity: 1;
+}
+
+/* ─── Panneau droit — formulaire ─────────────────────────────────────────── */
+
+.content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-10) var(--spacing-09);
+  background: var(--background-neutral-default);
+  animation: slideInRight 400ms ease-out 100ms both;
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08);
+}
+
+/* ─── En-tête formulaire ──────────────────────────────────────────────────── */
+
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-02);
+}
+
+.formTitle {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-neutral-default);
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.formSubtitle {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-alt);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ─── Formulaire ──────────────────────────────────────────────────────────── */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-06);
+}
+
+/* ─── Select natif dans InputContainer ───────────────────────────────────── */
+
+.select {
+  width: 100%;
+  height: 100%;
+  min-height: var(--size-09);
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-default);
+  padding: 0 var(--spacing-04);
+  cursor: pointer;
+  appearance: auto;
+}
+
+.select:focus {
+  outline: none;
+}
+
+.select option[value=''] {
+  color: var(--text-neutral-alt);
+}
+
+/* ─── CGU checkbox ────────────────────────────────────────────────────────── */
+
+.cguRow {
+  padding-top: var(--spacing-02);
+}
+
+/* ─── Submit ──────────────────────────────────────────────────────────────── */
+
+.submit {
+  width: 100%;
+  margin-top: var(--spacing-02);
+}
+
+/* ─── Lien connexion ──────────────────────────────────────────────────────── */
+
+.loginHint {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-alt);
+  margin: 0;
+  text-align: center;
+}
+
+.loginLink {
+  color: var(--text-brand-secondary-default);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: opacity 150ms ease;
+}
+
+.loginLink:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.loginLink:focus-visible {
+  outline: var(--border-width-03) solid var(--focus);
+  outline-offset: var(--spacing-01);
+  border-radius: var(--radius-01);
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .panel {
+    flex: 0 0 auto;
+    min-height: 240px;
+    animation: slideInLeft 400ms ease-out both;
+  }
+
+  .panelInner {
+    padding: var(--spacing-08);
+  }
+
+  .headline {
+    font-size: var(--font-size-32);
+  }
+
+  .content {
+    padding: var(--spacing-09) var(--spacing-07);
+    align-items: flex-start;
+  }
+}
+
+/* ─── Réduction de mouvement ──────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .content {
+    animation: none;
+  }
+
+  .dot {
+    transition: none;
+  }
+}
