@@ -65,8 +65,8 @@ export function LoginScreen() {
               label="Adresse e-mail"
               isRequired
               status={emailError ? 'Error' : undefined}
-              withSupportingText
-              supportingText={emailError || ''}
+              withSupportingText={!!emailError}
+              supportingText={emailError}
             >
               <input
                 name="email"
@@ -82,8 +82,8 @@ export function LoginScreen() {
                 label="Mot de passe"
                 isRequired
                 status={passwordError ? 'Error' : undefined}
-                withSupportingText
-                supportingText={passwordError || ''}
+                withSupportingText={!!passwordError}
+                supportingText={passwordError}
               >
                 <div
                   className={`${styles.passwordInputWrapper}${passwordError ? ` ${styles.passwordInputWrapperError}` : ''}`}
