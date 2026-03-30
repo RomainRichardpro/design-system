@@ -2,28 +2,16 @@
 .page {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* ─── Left panel ──────────────────────────────────────────────────────────── */
 .left {
   position: relative;
   flex: 1;
+  overflow: hidden;
   background-color: var(--background-neutral-inverse);
-}
-
-/* Purple glow — bottom-right corner */
-.left::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 130% 100% at 110% 110%,
-    var(--background-brand-secondary-default),
-    transparent
-  );
-  opacity: 0.5;
-  pointer-events: none;
 }
 
 .leftContent {
@@ -74,17 +62,19 @@
 /* ─── Right panel ─────────────────────────────────────────────────────────── */
 .right {
   flex: 1;
+  overflow-y: auto;
   display: flex;
-  align-items: center;
   justify-content: center;
   background: var(--background-neutral-default);
   padding: var(--spacing-09);
+  box-sizing: border-box;
 }
 
 /* ─── Form wrapper ────────────────────────────────────────────────────────── */
 .formWrapper {
   width: 100%;
   max-width: 360px;
+  margin: auto 0;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-07);
@@ -100,7 +90,7 @@
 .title {
   font-family: var(--font-family-title);
   font-size: var(--font-size-20);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semi-bold);
   color: var(--text-neutral-default);
   margin: 0;
   letter-spacing: -0.01em;
@@ -121,29 +111,44 @@
   gap: var(--spacing-05);
 }
 
+/* ─── Email input — mirrors DS TextInput ──────────────────────────────────── */
+.fieldInput {
+  width: 100%;
+  height: var(--sizes-09);
+  padding: 0 var(--spacing-04);
+  border-radius: var(--radius-01);
+  border: var(--border-width-01) solid var(--border-brand-primary-default);
+  box-sizing: border-box;
+  background: var(--background-neutral-default);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  line-height: 1.4;
+  color: var(--text-neutral-default);
+  outline: none;
+  transition: border-color 120ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fieldInput::placeholder {
+  color: var(--text-neutral-alt);
+}
+
+.fieldInput:hover {
+  border-color: var(--border-brand-primary-hover);
+}
+
+.fieldInput:focus-visible {
+  box-shadow: 0 0 0 var(--border-width-02) var(--focus);
+}
+
+.fieldInputError {
+  border-color: var(--border-status-error-default);
+}
+
 /* ─── Password field ──────────────────────────────────────────────────────── */
 .passwordField {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-03);
-}
-
-.passwordLabelRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.fieldLabel {
-  font-family: var(--font-family-text);
-  font-size: var(--font-size-14);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-neutral-default);
-}
-
-.required {
-  color: var(--text-status-error-default);
-  margin-left: var(--spacing-01);
+  gap: var(--spacing-02);
 }
 
 /* ─── Password input — wrapper mirrors DS TextInput exactly ───────────────── */
@@ -158,7 +163,7 @@
   border: var(--border-width-01) solid var(--border-brand-primary-default);
   box-sizing: border-box;
   background: var(--background-neutral-default);
-  transition: border-color 120ms ease;
+  transition: border-color 120ms cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .passwordInputWrapper:hover {
@@ -167,6 +172,10 @@
 
 .passwordInputWrapper:focus-within {
   box-shadow: 0 0 0 var(--border-width-02) var(--focus);
+}
+
+.passwordInputWrapperError {
+  border-color: var(--border-status-error-default);
 }
 
 .passwordInputInner {
@@ -193,8 +202,7 @@
   font-weight: var(--font-weight-medium);
   color: var(--text-brand-secondary-default);
   text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
+  align-self: flex-end;
 }
 
 .forgotLink:hover {
