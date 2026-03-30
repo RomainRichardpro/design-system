@@ -5,9 +5,30 @@ import styles from './LoginScreen.module.css';
 export function LoginScreen() {
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = (formData.get('email') as string)?.trim();
+    const password = formData.get('password') as string;
+
+    let hasError = false;
+    if (!email) {
+      setEmailError('Veuillez saisir votre adresse e-mail.');
+      hasError = true;
+    } else {
+      setEmailError('');
+    }
+    if (!password) {
+      setPasswordError('Veuillez saisir votre mot de passe.');
+      hasError = true;
+    } else {
+      setPasswordError('');
+    }
+    if (hasError) return;
+
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 2000);
   }
@@ -40,31 +61,45 @@ export function LoginScreen() {
           </header>
 
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            <InputContainer label="Adresse e-mail" placeholder="jean.dupont@email.com" isRequired />
+            <InputContainer
+              label="Adresse e-mail"
+              isRequired
+              status={emailError ? 'Error' : undefined}
+              withSupportingText
+              supportingText={emailError || ''}
+            >
+              <input
+                name="email"
+                type="email"
+                className={`${styles.fieldInput}${emailError ? ` ${styles.fieldInputError}` : ''}`}
+                placeholder="jean.dupont@email.com"
+                autoComplete="email"
+              />
+            </InputContainer>
 
             <div className={styles.passwordField}>
-              <div className={styles.passwordLabelRow}>
-                <label htmlFor="login-password" className={styles.fieldLabel}>
-                  Mot de passe{' '}
-                  <span className={styles.required} aria-hidden="true">
-                    *
-                  </span>
-                </label>
-                <a href="#forgot" className={styles.forgotLink}>
-                  Mot de passe oublié ?
-                </a>
-              </div>
-              <div className={styles.passwordInputWrapper}>
-                <input
-                  id="login-password"
-                  type="password"
-                  className={styles.passwordInputInner}
-                  placeholder="••••••••"
-                  autoComplete="current-password"
-                  aria-required="true"
-                  required
-                />
-              </div>
+              <InputContainer
+                label="Mot de passe"
+                isRequired
+                status={passwordError ? 'Error' : undefined}
+                withSupportingText
+                supportingText={passwordError || ''}
+              >
+                <div
+                  className={`${styles.passwordInputWrapper}${passwordError ? ` ${styles.passwordInputWrapperError}` : ''}`}
+                >
+                  <input
+                    name="password"
+                    type="password"
+                    className={styles.passwordInputInner}
+                    placeholder="••••••••"
+                    autoComplete="current-password"
+                  />
+                </div>
+              </InputContainer>
+              <a href="#forgot" className={styles.forgotLink}>
+                Mot de passe oublié ?
+              </a>
             </div>
 
             <Checkbox label="Se souvenir de moi" checked={rememberMe} onChange={setRememberMe} />
