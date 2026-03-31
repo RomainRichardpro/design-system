@@ -64,7 +64,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           aria-invalid={status === 'Error' ? true : undefined}
           {...rest}
         />
-        {state === 'Focus' && <span className={styles.focusRing} aria-hidden="true" />}
+        <span className={styles.focusRing} aria-hidden="true" />
       </div>
     );
   }

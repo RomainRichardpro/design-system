@@ -1,6 +1,7 @@
 .value {
   font-family: var(--font-family-text);
   font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
   line-height: 1.4;
   overflow: hidden;
   text-overflow: ellipsis;
