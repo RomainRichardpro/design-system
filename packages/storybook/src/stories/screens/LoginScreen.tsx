@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { Button, Checkbox, InputContainer } from '@romainrichardpro/react';
 import styles from './LoginScreen.module.css';
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export function LoginScreen() {
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
@@ -18,6 +21,9 @@ export function LoginScreen() {
     if (!email) {
       setEmailError('Veuillez saisir votre adresse e-mail.');
       hasError = true;
+    } else if (!EMAIL_REGEX.test(email)) {
+      setEmailError('Veuillez saisir une adresse e-mail valide.');
+      hasError = true;
     } else {
       setEmailError('');
     }
@@ -30,7 +36,10 @@ export function LoginScreen() {
     if (hasError) return;
 
     setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 2000);
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSuccess(true);
+    }, 2000);
   }
 
   return (
@@ -52,69 +61,87 @@ export function LoginScreen() {
         </div>
       </div>
 
-      {/* ── Right panel — form ─────────────────────────────────────── */}
+      {/* ── Right panel ────────────────────────────────────────────── */}
       <main className={styles.right}>
         <div className={styles.formWrapper}>
-          <header className={styles.header}>
-            <h1 className={styles.title}>Se connecter</h1>
-            <p className={styles.subtitle}>Accédez à votre espace de travail.</p>
-          </header>
+          {isSuccess ? (
+            /* ── Success state ───────────────────────────────────── */
+            <div className={styles.successState} role="status" aria-live="polite">
+              <span className={styles.successCheck} aria-hidden="true">✓</span>
+              <h1 className={styles.successTitle}>Connexion réussie</h1>
+              <p className={styles.successSub}>Vous êtes connecté à votre espace de travail.</p>
+            </div>
+          ) : (
+            /* ── Form ────────────────────────────────────────────── */
+            <>
+              <header className={styles.header}>
+                <h1 className={styles.title}>Se connecter</h1>
+                <p className={styles.subtitle}>Accédez à votre espace de travail.</p>
+              </header>
 
-          <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            <InputContainer
-              label="Adresse e-mail"
-              isRequired
-              status={emailError ? 'Error' : undefined}
-              withSupportingText={!!emailError}
-              supportingText={emailError}
-            >
-              <input
-                name="email"
-                type="email"
-                className={`${styles.fieldInput}${emailError ? ` ${styles.fieldInputError}` : ''}`}
-                placeholder="jean.dupont@email.com"
-                autoComplete="email"
-              />
-            </InputContainer>
-
-            <div className={styles.passwordField}>
-              <InputContainer
-                label="Mot de passe"
-                isRequired
-                status={passwordError ? 'Error' : undefined}
-                withSupportingText={!!passwordError}
-                supportingText={passwordError}
-              >
-                <div
-                  className={`${styles.passwordInputWrapper}${passwordError ? ` ${styles.passwordInputWrapperError}` : ''}`}
+              <form className={styles.form} onSubmit={handleSubmit} noValidate>
+                <InputContainer
+                  label="Adresse e-mail"
+                  isRequired
+                  status={emailError ? 'Error' : undefined}
+                  withSupportingText={!!emailError}
+                  supportingText={emailError}
                 >
                   <input
-                    name="password"
-                    type="password"
-                    className={styles.passwordInputInner}
-                    placeholder="••••••••"
-                    autoComplete="current-password"
+                    name="email"
+                    type="email"
+                    className={`${styles.fieldInput}${emailError ? ` ${styles.fieldInputError}` : ''}`}
+                    placeholder="jean.dupont@email.com"
+                    autoComplete="email"
+                    onChange={() => {
+                      if (emailError) setEmailError('');
+                    }}
                   />
+                </InputContainer>
+
+                <div className={styles.passwordField}>
+                  <InputContainer
+                    label="Mot de passe"
+                    isRequired
+                    status={passwordError ? 'Error' : undefined}
+                    withSupportingText={!!passwordError}
+                    supportingText={passwordError}
+                  >
+                    <div
+                      className={`${styles.passwordInputWrapper}${passwordError ? ` ${styles.passwordInputWrapperError}` : ''}`}
+                    >
+                      <input
+                        name="password"
+                        type="password"
+                        className={styles.passwordInputInner}
+                        placeholder="••••••••"
+                        autoComplete="current-password"
+                        onChange={() => {
+                          if (passwordError) setPasswordError('');
+                        }}
+                      />
+                    </div>
+                  </InputContainer>
+                  <a href="#forgot" className={styles.forgotLink}>
+                    Mot de passe oublié ?
+                  </a>
                 </div>
-              </InputContainer>
-              <a href="#forgot" className={styles.forgotLink}>
-                Mot de passe oublié ?
-              </a>
-            </div>
 
-            <Checkbox label="Se souvenir de moi" checked={rememberMe} onChange={setRememberMe} />
+                <Checkbox label="Se souvenir de moi" checked={rememberMe} onChange={setRememberMe} />
 
-            <Button
-              type="submit"
-              level="primary"
-              size="m"
-              loading={isLoading}
-              loadingLabel="Connexion en cours"
-              className={styles.submit}
-            >
-              Se connecter
-            </Button>
-          </form>
+                <Button
+                  type="submit"
+                  level="primary"
+                  size="m"
+                  loading={isLoading}
+                  loadingLabel="Connexion en cours"
+                  className={styles.submit}
+                >
+                  Se connecter
+                </Button>
+              </form>
+            </>
+          )}
         </div>
       </main>
     </div>

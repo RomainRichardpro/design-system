@@ -42,7 +42,7 @@
 }
 
 .headlineText {
-  font-family: var(--font-family-title);
+  font-family: var(--font-family-tagline);
   font-size: var(--font-size-72);
   font-weight: var(--font-weight-bold);
   color: var(--text-neutral-inverse);
@@ -89,11 +89,11 @@
 
 .title {
   font-family: var(--font-family-title);
-  font-size: var(--font-size-20);
-  font-weight: var(--font-weight-semi-bold);
+  font-size: var(--font-size-28);
+  font-weight: var(--font-weight-bold);
   color: var(--text-neutral-default);
   margin: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
@@ -218,4 +218,36 @@
 /* ─── Submit ──────────────────────────────────────────────────────────────── */
 .submit {
   width: 100%;
+}
+
+/* ─── Success state ───────────────────────────────────────────────────────── */
+.successState {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-03);
+}
+
+.successCheck {
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-status-success-default);
+  line-height: 1;
+  margin-bottom: var(--spacing-02);
+}
+
+.successTitle {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-28);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-neutral-default);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.successSub {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-neutral-alt);
+  margin: 0;
 }
