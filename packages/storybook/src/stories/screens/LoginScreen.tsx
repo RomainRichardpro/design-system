@@ -67,7 +67,9 @@ export function LoginScreen() {
           {isSuccess ? (
             /* ── Success state ───────────────────────────────────── */
             <div className={styles.successState} role="status" aria-live="polite">
-              <span className={styles.successCheck} aria-hidden="true">✓</span>
+              <span className={styles.successCheck} aria-hidden="true">
+                ✓
+              </span>
               <h1 className={styles.successTitle}>Connexion réussie</h1>
               <p className={styles.successSub}>Vous êtes connecté à votre espace de travail.</p>
             </div>
@@ -127,7 +129,11 @@ export function LoginScreen() {
                   </a>
                 </div>
 
-                <Checkbox label="Se souvenir de moi" checked={rememberMe} onChange={setRememberMe} />
+                <Checkbox
+                  label="Se souvenir de moi"
+                  checked={rememberMe}
+                  onChange={setRememberMe}
+                />
 
                 <Button
                   type="submit"
