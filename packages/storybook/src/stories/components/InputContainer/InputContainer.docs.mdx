@@ -1,0 +1,119 @@
+import { Meta, Primary, Controls } from '@storybook/blocks';
+import * as PlaygroundStories from './InputContainer.playground.stories';
+
+<Meta of={PlaygroundStories} name="Docs" />
+
+<div className="sb-docs-header">
+  <div className="sb-docs-header__meta">
+    <span className="sb-docs-badge sb-docs-badge--stable">Stable</span>
+    <a
+      href="https://www.figma.com/design/skRy27piDeBGQwD8Bi0EAU"
+      target="_blank"
+      rel="noreferrer"
+      className="sb-docs-figma-link"
+    >
+      ↗ Ouvrir dans Figma
+    </a>
+  </div>
+  <h1 className="sb-docs-title">InputContainer</h1>
+  <p className="sb-docs-description">
+    Composant de champ de saisie du Design System — orchestre un label, un TextInput et un message d'aide en une unité cohérente et accessible.
+  </p>
+</div>
+
+---
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+---
+
+## Accessibilité
+
+`InputContainer` assemble plusieurs sous-composants avec des liaisons ARIA automatiques garantissant une expérience correcte pour les technologies d'assistance.
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Critère</th>
+      <th align="left">Détail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Association label / input</strong></td>
+      <td>Le label est lié à l'input via <code>htmlFor</code> / <code>useId()</code> — navigation clavier et lecteurs d'écran corrects sans configuration supplémentaire.</td>
+    </tr>
+    <tr>
+      <td><strong>Champ obligatoire</strong></td>
+      <td><code>aria-required="true"</code> est posé sur l'input quand <code>isRequired={`{true}`}</code>. Un astérisque rouge est affiché visuellement après le label.</td>
+    </tr>
+    <tr>
+      <td><strong>Message d'aide</strong></td>
+      <td><code>aria-describedby</code> lie l'input au SupportingText quand <code>withSupportingText={`{true}`}</code> — le message est lu après le label par les lecteurs d'écran.</td>
+    </tr>
+    <tr>
+      <td><strong>Statut Error</strong></td>
+      <td><code>aria-invalid="true"</code> est propagé sur l'input. Le SupportingText passe en <code>role="alert"</code> pour être annoncé automatiquement sans action supplémentaire.</td>
+    </tr>
+    <tr>
+      <td><strong>État Disabled</strong></td>
+      <td>L'attribut natif <code>disabled</code> est utilisé sur l'input — exclu du flux de focus, non interactif. Le label et le SupportingText passent en couleur <code>--text-disabled</code>.</td>
+    </tr>
+    <tr>
+      <td><strong>État Read-only</strong></td>
+      <td><code>readOnly</code> est posé sur l'input — le champ reste focusable et lisible par les lecteurs d'écran, mais la saisie est bloquée.</td>
+    </tr>
+    <tr>
+      <td><strong>Focus visible</strong></td>
+      <td>Halo appliqué via <code>:focus-within</code> sur le wrapper du TextInput. Couleur <code>var(--focus)</code>, épaisseur <code>var(--border-width-02)</code>. Conforme WCAG 2.1 AA critère 2.4.7.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Tokens utilisés
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Token CSS</th>
+      <th align="left">Rôle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--spacing-03</code></td><td>Gap entre label, input et supporting text (6px)</td></tr>
+    <tr><td><code>--spacing-04</code></td><td>Padding horizontal de l'input (8px)</td></tr>
+    <tr><td><code>--spacing-02</code></td><td>Gap entre icône et texte dans le SupportingText</td></tr>
+    <tr><td><code>--sizes-09</code></td><td>Hauteur du TextInput (32px)</td></tr>
+    <tr><td><code>--border-width-01</code></td><td>Épaisseur de la bordure de l'input</td></tr>
+    <tr><td><code>--border-width-02</code></td><td>Épaisseur du halo focus</td></tr>
+    <tr><td><code>--radius-01</code></td><td>Border-radius de l'input (4px)</td></tr>
+    <tr><td><code>--background-neutral-default</code></td><td>Fond de l'input Default</td></tr>
+    <tr><td><code>--background-disabled</code></td><td>Fond de l'input Disabled</td></tr>
+    <tr><td><code>--background-neutral-alt</code></td><td>Fond de l'input Read-only</td></tr>
+    <tr><td><code>--background-status-error-inverse-default</code></td><td>Fond de l'input en statut Error</td></tr>
+    <tr><td><code>--background-status-success-inverse-default</code></td><td>Fond de l'input en statut Success</td></tr>
+    <tr><td><code>--border-brand-primary-default</code></td><td>Bordure input Default</td></tr>
+    <tr><td><code>--border-brand-primary-hover</code></td><td>Bordure input Hover</td></tr>
+    <tr><td><code>--border-status-error-default</code></td><td>Bordure input Error</td></tr>
+    <tr><td><code>--border-status-success-default</code></td><td>Bordure input Success</td></tr>
+    <tr><td><code>--border-neutral-raised</code></td><td>Bordure input Read-only</td></tr>
+    <tr><td><code>--border-disabled</code></td><td>Bordure input Disabled</td></tr>
+    <tr><td><code>--text-neutral-default</code></td><td>Texte saisi</td></tr>
+    <tr><td><code>--text-neutral-alt</code></td><td>Placeholder + icône</td></tr>
+    <tr><td><code>--text-disabled</code></td><td>Texte Disabled</td></tr>
+    <tr><td><code>--text-brand-primary-default</code></td><td>Label Default + SupportingText Information</td></tr>
+    <tr><td><code>--text-status-error-default</code></td><td>Astérisque obligatoire + SupportingText Error</td></tr>
+    <tr><td><code>--text-status-success-default</code></td><td>SupportingText Success</td></tr>
+    <tr><td><code>--focus</code></td><td>Couleur du halo focus</td></tr>
+    <tr><td><code>--font-family-text</code></td><td>Famille typographique</td></tr>
+    <tr><td><code>--font-size-14</code></td><td>Taille du texte</td></tr>
+    <tr><td><code>--font-weight-medium</code></td><td>Graisse du label</td></tr>
+    <tr><td><code>--font-weight-regular</code></td><td>Graisse du texte saisi et du SupportingText</td></tr>
+  </tbody>
+</table>

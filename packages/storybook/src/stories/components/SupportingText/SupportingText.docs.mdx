@@ -1,0 +1,88 @@
+import { Meta, Primary, Controls } from '@storybook/blocks';
+import * as PlaygroundStories from './SupportingText.playground.stories';
+
+<Meta of={PlaygroundStories} name="Docs" />
+
+<div className="sb-docs-header">
+  <div className="sb-docs-header__meta">
+    <span className="sb-docs-badge sb-docs-badge--stable">Stable</span>
+    <a
+      href="https://www.figma.com/design/skRy27piDeBGQwD8Bi0EAU"
+      target="_blank"
+      rel="noreferrer"
+      className="sb-docs-figma-link"
+    >
+      ↗ Ouvrir dans Figma
+    </a>
+  </div>
+  <h1 className="sb-docs-title">SupportingText</h1>
+  <p className="sb-docs-description">
+    Message d'aide ou de validation affiché sous un champ de saisie — trois statuts (Information, Success, Error) et un état désactivé.
+  </p>
+</div>
+
+---
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+---
+
+## Accessibilité
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Critère</th>
+      <th align="left">Détail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Annonce automatique des erreurs</strong></td>
+      <td><code>role="alert"</code> est posé <strong>uniquement</strong> quand <code>status="Error"</code> et <code>state !== "Disabled"</code>. Le message est annoncé automatiquement par les lecteurs d'écran dès son apparition ou sa modification.</td>
+    </tr>
+    <tr>
+      <td><strong>Icône décorative</strong></td>
+      <td>L'icône porte <code>aria-hidden="true"</code> — elle est purement décorative et ne doit pas transmettre d'information unique (la couleur et le texte suffisent).</td>
+    </tr>
+    <tr>
+      <td><strong>Sémantique du texte</strong></td>
+      <td>Le message est rendu dans un <code>&lt;p&gt;</code> — sémantique correcte, compatible avec tous les lecteurs d'écran.</td>
+    </tr>
+    <tr>
+      <td><strong>Liaison avec l'input</strong></td>
+      <td>Utilisé via <code>aria-describedby</code> depuis le champ parent — le message est lu après le label lors de la prise de focus sur l'input. Cette liaison est gérée automatiquement par <code>InputContainer</code>.</td>
+    </tr>
+    <tr>
+      <td><strong>État Disabled</strong></td>
+      <td>En état <code>Disabled</code>, <code>role="alert"</code> n'est pas posé même si <code>status="Error"</code> — un champ désactivé ne doit pas déclencher d'annonce.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Tokens utilisés
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Token CSS</th>
+      <th align="left">Rôle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--spacing-02</code></td><td>Gap entre l'icône et le texte (4px)</td></tr>
+    <tr><td><code>--font-family-text</code></td><td>Famille typographique</td></tr>
+    <tr><td><code>--font-size-14</code></td><td>Taille du texte (14px)</td></tr>
+    <tr><td><code>--font-weight-regular</code></td><td>Graisse du texte</td></tr>
+    <tr><td><code>--text-brand-primary-default</code></td><td>Couleur statut Information</td></tr>
+    <tr><td><code>--text-status-success-default</code></td><td>Couleur statut Success</td></tr>
+    <tr><td><code>--text-status-error-default</code></td><td>Couleur statut Error</td></tr>
+    <tr><td><code>--text-disabled</code></td><td>Couleur état Disabled (tous statuts)</td></tr>
+  </tbody>
+</table>
