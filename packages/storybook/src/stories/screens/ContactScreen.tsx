@@ -2,12 +2,58 @@ import { useState } from 'react';
 import { Button, InputContainer } from '@romainrichardpro/react';
 import styles from './ContactScreen.module.css';
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export function ContactScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const [firstnameError, setFirstnameError] = useState('');
+  const [lastnameError, setLastnameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [subjectError, setSubjectError] = useState('');
+  const [messageError, setMessageError] = useState('');
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const firstname = (formData.get('firstname') as string)?.trim();
+    const lastname = (formData.get('lastname') as string)?.trim();
+    const email = (formData.get('email') as string)?.trim();
+    const subject = (formData.get('subject') as string)?.trim();
+    const message = (formData.get('message') as string)?.trim();
+
+    let hasError = false;
+
+    if (!firstname) {
+      setFirstnameError('Veuillez saisir votre prénom.');
+      hasError = true;
+    } else setFirstnameError('');
+
+    if (!lastname) {
+      setLastnameError('Veuillez saisir votre nom.');
+      hasError = true;
+    } else setLastnameError('');
+
+    if (!email) {
+      setEmailError('Veuillez saisir votre adresse e-mail.');
+      hasError = true;
+    } else if (!EMAIL_REGEX.test(email)) {
+      setEmailError('Veuillez saisir une adresse e-mail valide.');
+      hasError = true;
+    } else setEmailError('');
+
+    if (!subject) {
+      setSubjectError('Veuillez saisir un sujet.');
+      hasError = true;
+    } else setSubjectError('');
+
+    if (!message) {
+      setMessageError('Veuillez saisir votre message.');
+      hasError = true;
+    } else setMessageError('');
+
+    if (hasError) return;
+
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -20,7 +66,7 @@ export function ContactScreen() {
       <div className={styles.page}>
         <div className={styles.wrapper}>
           <span className={styles.brand}>RR</span>
-          <div className={styles.confirmation}>
+          <div className={styles.confirmation} role="status" aria-live="polite">
             <h1 className={styles.confirmationTitle}>Reçu cinq sur cinq.</h1>
             <p className={styles.confirmationSub}>
               Votre message a bien été envoyé. On vous répond sous 24h.
@@ -48,25 +94,103 @@ export function ContactScreen() {
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
           <div className={styles.fieldRow}>
-            <InputContainer label="Prénom" placeholder="Marie" isRequired />
-            <InputContainer label="Nom" placeholder="Dupont" isRequired />
+            <InputContainer
+              label="Prénom"
+              isRequired
+              status={firstnameError ? 'Error' : undefined}
+              withSupportingText={!!firstnameError}
+              supportingText={firstnameError}
+            >
+              <input
+                name="firstname"
+                type="text"
+                className={`${styles.fieldInput}${firstnameError ? ` ${styles.fieldInputError}` : ''}`}
+                placeholder="Marie"
+                autoComplete="given-name"
+                autoFocus
+                onChange={() => {
+                  if (firstnameError) setFirstnameError('');
+                }}
+              />
+            </InputContainer>
+
+            <InputContainer
+              label="Nom"
+              isRequired
+              status={lastnameError ? 'Error' : undefined}
+              withSupportingText={!!lastnameError}
+              supportingText={lastnameError}
+            >
+              <input
+                name="lastname"
+                type="text"
+                className={`${styles.fieldInput}${lastnameError ? ` ${styles.fieldInputError}` : ''}`}
+                placeholder="Dupont"
+                autoComplete="family-name"
+                onChange={() => {
+                  if (lastnameError) setLastnameError('');
+                }}
+              />
+            </InputContainer>
           </div>
 
-          <InputContainer label="Adresse e-mail" placeholder="marie.dupont@email.com" isRequired />
+          <InputContainer
+            label="Adresse e-mail"
+            isRequired
+            status={emailError ? 'Error' : undefined}
+            withSupportingText={!!emailError}
+            supportingText={emailError}
+          >
+            <input
+              name="email"
+              type="email"
+              className={`${styles.fieldInput}${emailError ? ` ${styles.fieldInputError}` : ''}`}
+              placeholder="marie.dupont@email.com"
+              autoComplete="email"
+              onChange={() => {
+                if (emailError) setEmailError('');
+              }}
+            />
+          </InputContainer>
 
           <InputContainer
             label="Sujet"
-            placeholder="Collaboration, question, retour sur le DS…"
             isRequired
-          />
+            status={subjectError ? 'Error' : undefined}
+            withSupportingText={!!subjectError}
+            supportingText={subjectError}
+          >
+            <input
+              name="subject"
+              type="text"
+              className={`${styles.fieldInput}${subjectError ? ` ${styles.fieldInputError}` : ''}`}
+              placeholder="Collaboration, question, retour sur le DS…"
+              onChange={() => {
+                if (subjectError) setSubjectError('');
+              }}
+            />
+          </InputContainer>
 
-          <InputContainer label="Message" isRequired>
-            <div className={styles.textareaWrapper}>
+          <InputContainer
+            label="Message"
+            isRequired
+            status={messageError ? 'Error' : undefined}
+            withSupportingText={!!messageError}
+            supportingText={messageError}
+          >
+            <div
+              className={`${styles.textareaWrapper}${messageError ? ` ${styles.textareaWrapperError}` : ''}`}
+            >
               <textarea
+                name="message"
                 className={styles.textarea}
                 placeholder="Décrivez votre projet ou votre demande en quelques lignes."
                 rows={5}
                 aria-required="true"
+                required
+                onChange={() => {
+                  if (messageError) setMessageError('');
+                }}
               />
             </div>
           </InputContainer>
