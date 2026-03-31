@@ -33,7 +33,7 @@ const meta = {
       control: 'select',
       options: ['Default', 'Disabled'],
       description:
-        "État du composant. `Disabled` applique la couleur `--text-disabled` quelle que soit la valeur de `status`. En pratique, toujours piloté par `InputContainer`.",
+        'État du composant. `Disabled` applique la couleur `--text-disabled` quelle que soit la valeur de `status`. En pratique, toujours piloté par `InputContainer`.',
       table: {
         defaultValue: { summary: 'Default' },
         type: { summary: 'SupportingTextState' },

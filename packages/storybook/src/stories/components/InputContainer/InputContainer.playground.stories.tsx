@@ -55,8 +55,7 @@ const meta = {
     state: {
       control: 'select',
       options: ['Default', 'Hover', 'Active', 'Focus', 'Disabled', 'Read-only'],
-      description:
-        "État visuel du champ. Propagé au label, à l'input et au message d'aide.",
+      description: "État visuel du champ. Propagé au label, à l'input et au message d'aide.",
       table: {
         defaultValue: { summary: 'Default' },
         type: { summary: 'InputContainerState' },
@@ -83,8 +82,7 @@ const meta = {
     },
     supportingText: {
       control: 'text',
-      description:
-        "Texte du message d'aide. Affiché uniquement si `withSupportingText={true}`.",
+      description: "Texte du message d'aide. Affiché uniquement si `withSupportingText={true}`.",
       table: {
         type: { summary: 'string' },
       },

@@ -94,21 +94,39 @@ export const Overview: Story = {
       </span>
 
       {/* Information */}
-      <span style={{ fontSize: '13px', fontFamily: 'sans-serif', color: 'var(--text-neutral-default, #222)' }}>
+      <span
+        style={{
+          fontSize: '13px',
+          fontFamily: 'sans-serif',
+          color: 'var(--text-neutral-default, #222)',
+        }}
+      >
         Information
       </span>
       <SupportingText text="Message d'aide." status="Information" state="Default" />
       <SupportingText text="Message d'aide." status="Information" state="Disabled" />
 
       {/* Success */}
-      <span style={{ fontSize: '13px', fontFamily: 'sans-serif', color: 'var(--text-neutral-default, #222)' }}>
+      <span
+        style={{
+          fontSize: '13px',
+          fontFamily: 'sans-serif',
+          color: 'var(--text-neutral-default, #222)',
+        }}
+      >
         Success
       </span>
       <SupportingText text="Valide." status="Success" state="Default" />
       <SupportingText text="Valide." status="Success" state="Disabled" />
 
       {/* Error */}
-      <span style={{ fontSize: '13px', fontFamily: 'sans-serif', color: 'var(--text-neutral-default, #222)' }}>
+      <span
+        style={{
+          fontSize: '13px',
+          fontFamily: 'sans-serif',
+          color: 'var(--text-neutral-default, #222)',
+        }}
+      >
         Error
       </span>
       <SupportingText text="Invalide." status="Error" state="Default" />
