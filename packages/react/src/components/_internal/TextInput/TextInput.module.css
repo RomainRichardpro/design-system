@@ -49,9 +49,9 @@
 /* ─── Focus ring ──────────────────────────────────────────────────────────── */
 .focusRing {
   position: absolute;
-  inset: -1px;
-  border: var(--border-width-02) solid var(--focus); /* 1.5px */
+  inset: 0;
   border-radius: var(--radius-01); /* 4px */
+  box-shadow: 0 0 0 var(--border-width-02) var(--focus); /* stroke OUTSIDE — Figma strokeAlign=OUTSIDE */
   pointer-events: none;
 }
 
