@@ -20,7 +20,7 @@
   flex: 1;
   min-width: 0;
   border: none;
-  outline: none;
+  outline: none; /* Géré visuellement par .focusRing sur le wrapper */
   background: transparent;
   font-family: var(--font-family-text);
   font-size: var(--font-size-14);
