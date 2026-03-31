@@ -24,6 +24,7 @@
   background: transparent;
   font-family: var(--font-family-text);
   font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
   line-height: 1.4;
   color: var(--text-neutral-default);
   padding: 0;
@@ -49,21 +50,21 @@
 /* ─── Focus ring ──────────────────────────────────────────────────────────── */
 .focusRing {
   position: absolute;
-  inset: -1px;
-  border: var(--border-width-02) solid var(--focus); /* 1.5px */
-  border-radius: var(--radius-01); /* 4px */
+  inset: -1px; /* compense le border du wrapper pour partir du bord extérieur */
+  border-radius: var(--radius-01); /* 4px — aligne avec l'outer corner du wrapper */
+  box-shadow: 0 0 0 var(--border-width-02) var(--focus); /* strokeAlign=OUTSIDE Figma */
   pointer-events: none;
-  display: none;
+  opacity: 0;
 }
 
-/* Focus via interaction clavier réelle */
-.wrapper:focus-within .focusRing {
-  display: block;
-}
-
-/* Focus via prop state="Focus" (Storybook / maquettes) */
+/* Focus via prop (état statique Storybook) */
 .wrapper[data-state='Focus'] .focusRing {
-  display: block;
+  opacity: 1;
+}
+
+/* Focus natif clavier — tous les états sauf Disabled */
+.wrapper:not([data-state='Disabled']):focus-within .focusRing {
+  opacity: 1;
 }
 
 /* ─── État Default / Status Default ──────────────────────────────────────── */
