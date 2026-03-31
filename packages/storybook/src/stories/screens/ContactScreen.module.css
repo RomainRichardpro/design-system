@@ -7,29 +7,11 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-11) var(--spacing-09);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Glow violet — coin supérieur gauche */
-.page::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 70% 50% at -5% -5%,
-    var(--background-brand-secondary-default),
-    transparent
-  );
-  opacity: 0.07;
-  pointer-events: none;
 }
 
 /* ─── Wrapper centré ──────────────────────────────────────────────────────── */
 
 .wrapper {
-  position: relative;
-  z-index: 1;
   width: 100%;
   max-width: 520px;
   display: flex;
@@ -89,6 +71,40 @@
   gap: var(--spacing-05);
 }
 
+/* ─── Field inputs — mirrors DS TextInput ─────────────────────────────────── */
+
+.fieldInput {
+  width: 100%;
+  height: var(--sizes-09);
+  padding: 0 var(--spacing-04);
+  border-radius: var(--radius-01);
+  border: var(--border-width-01) solid var(--border-brand-primary-default);
+  box-sizing: border-box;
+  background: var(--background-neutral-default);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-14);
+  line-height: 1.4;
+  color: var(--text-neutral-default);
+  outline: none;
+  transition: border-color 120ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fieldInput::placeholder {
+  color: var(--text-neutral-alt);
+}
+
+.fieldInput:hover {
+  border-color: var(--border-brand-primary-hover);
+}
+
+.fieldInput:focus-visible {
+  box-shadow: 0 0 0 var(--border-width-02) var(--focus);
+}
+
+.fieldInputError {
+  border-color: var(--border-status-error-default);
+}
+
 /* ─── Textarea — slot InputContainer ──────────────────────────────────────── */
 
 .textareaWrapper {
@@ -98,7 +114,7 @@
   border: var(--border-width-01) solid var(--border-brand-primary-default);
   background: var(--background-neutral-default);
   box-sizing: border-box;
-  transition: border-color 120ms ease;
+  transition: border-color 120ms cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .textareaWrapper:hover {
@@ -107,6 +123,10 @@
 
 .textareaWrapper:focus-within {
   box-shadow: 0 0 0 var(--border-width-02) var(--focus);
+}
+
+.textareaWrapperError {
+  border-color: var(--border-status-error-default);
 }
 
 .textarea {
