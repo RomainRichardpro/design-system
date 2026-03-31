@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Mail } from 'lucide-react';
-import { InputContainer, TextInput } from '@romainrichardpro/react';
+import { InputContainer } from '@romainrichardpro/react';
 
 const meta = {
   title: 'Composants/InputContainer',
@@ -335,14 +335,31 @@ export const SlotPersonnalise: Story = {
   },
   render: (args) => (
     <InputContainer {...args}>
-      <TextInput placeholder="exemple@domaine.fr" icon={Mail} aria-label="Adresse e-mail" />
+      <input
+        type="email"
+        placeholder="exemple@domaine.fr"
+        aria-label="Adresse e-mail"
+        style={{
+          width: '100%',
+          height: 'var(--sizes-09)',
+          padding: '0 var(--spacing-04)',
+          border: 'var(--border-width-01) solid var(--border-brand-primary-default)',
+          borderRadius: 'var(--radius-01)',
+          fontSize: 'var(--font-size-14)',
+          fontFamily: 'var(--font-family-text)',
+          boxSizing: 'border-box',
+          background: 'var(--background-neutral-default)',
+          color: 'var(--text-neutral-default)',
+          outline: 'none',
+        }}
+      />
     </InputContainer>
   ),
   parameters: {
     docs: {
       description: {
         story:
-          "Pattern slot : passer un `TextInput` DS en `children` pour contrôler finement les props de l'input (état, icône, ref…) sans perdre la structure du composant. L'association ARIA (`aria-describedby`, `aria-required`) reste à la charge du slot.",
+          "Pattern slot : passer un `<input>` natif ou tout autre élément en `children` pour contrôler finement le rendu sans perdre la structure du composant (label, supporting text). L'association ARIA (`aria-describedby`, `aria-required`) reste à la charge du slot.",
       },
     },
   },
