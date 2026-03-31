@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/blocks';
+import * as PlaygroundStories from './InputContainer.playground.stories';
+
+<Meta of={PlaygroundStories} name="Usage" />
+
+# Usage — InputContainer
+
+## ✅ À faire
+
+**Toujours associer un label au champ**
+
+Le label est obligatoire pour l'accessibilité. Même si un design sans label est envisagé, utiliser `aria-label` directement sur le slot enfant plutôt que de supprimer le composant.
+
+**Utiliser `isRequired` pour les champs obligatoires**
+
+`isRequired` combine le signal visuel (astérisque rouge) et le signal sémantique (`aria-required`) en une seule prop. Ne pas ajouter manuellement un astérisque dans le label.
+
+```tsx
+// ✅ Correct
+<InputContainer label="E-mail" isRequired withSupportingText supportingText="Champ obligatoire." />
+```
+
+**Associer `withSupportingText` à un message utile**
+
+Le SupportingText doit guider l'utilisateur — format attendu, règle de validation, confirmation. Ne pas l'utiliser pour répéter le label.
+
+**Utiliser `status="Error"` avec un message explicite**
+
+Le statut Error déclenche `aria-invalid` et `role="alert"`. Le message doit indiquer clairement ce qui ne va pas et comment corriger.
+
+```tsx
+// ✅ Correct
+<InputContainer
+  label="E-mail"
+  status="Error"
+  withSupportingText
+  supportingText="Format invalide. Exemple attendu : nom@domaine.fr"
+/>
+```
+
+---
+
+## ❌ À éviter
+
+**Ne pas utiliser `state="Disabled"` pour bloquer temporairement un champ**
+
+Un champ désactivé est exclu du flux de focus et non accessible aux lecteurs d'écran. Préférer la validation inline avec un message d'erreur et le champ actif.
+
+**Ne pas cumuler `status="Error"` et `state="Disabled"`**
+
+Ces deux états sont incompatibles sémantiquement. En état `Disabled`, le statut n'est plus communiqué aux technologies d'assistance.
+
+**Ne pas utiliser le slot `children` sans gérer l'ARIA manuellement**
+
+Quand un nœud custom est passé en `children`, les liaisons `aria-describedby`, `aria-required` et `aria-invalid` ne sont pas propagées automatiquement — elles doivent être ajoutées sur l'élément enfant.
+
+```tsx
+// ⚠️ Attention — ARIA à gérer manuellement
+<InputContainer label="E-mail" withSupportingText supportingText="Aide.">
+  <input aria-describedby="supporting-id" aria-required="true" />
+</InputContainer>
+```
