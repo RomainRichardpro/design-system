@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { SupportingText } from '@romainrichardpro/react';
 
 const meta = {
-  title: 'Composants/SupportingText/Statuses',
+  title: 'Composants/SupportingText/Status',
   component: SupportingText,
   parameters: {
     layout: 'padded',

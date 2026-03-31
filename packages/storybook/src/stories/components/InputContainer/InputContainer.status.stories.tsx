@@ -3,7 +3,7 @@ import { Mail } from 'lucide-react';
 import { InputContainer } from '@romainrichardpro/react';
 
 const meta = {
-  title: 'Composants/InputContainer/Statuses',
+  title: 'Composants/InputContainer/Status',
   component: InputContainer,
   parameters: {
     layout: 'padded',
