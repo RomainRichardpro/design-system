@@ -212,11 +212,11 @@ export const WithCustomInput: Story = {
         aria-label="Adresse e-mail"
         style={{
           width: '100%',
-          height: '32px',
-          padding: '0 8px',
-          border: '1px solid #000',
-          borderRadius: '4px',
-          fontSize: '14px',
+          height: 'var(--sizes-09)',
+          padding: '0 var(--spacing-04)',
+          border: 'var(--border-width-01) solid var(--border-brand-primary-default)',
+          borderRadius: 'var(--radius-01)',
+          fontSize: 'var(--font-size-14)',
           boxSizing: 'border-box',
         }}
       />

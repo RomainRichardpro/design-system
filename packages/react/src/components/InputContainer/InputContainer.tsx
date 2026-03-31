@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useId, forwardRef } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { InputLabel } from '../_internal/InputLabel/InputLabel';
 import { TextInput } from '../_internal/TextInput/TextInput';
@@ -45,61 +45,67 @@ function toSupportingState(state: InputContainerState): SupportingTextState {
   return state === 'Disabled' ? 'Disabled' : 'Default';
 }
 
-export function InputContainer({
-  label,
-  description,
-  withDescription = false,
-  isRequired = false,
-  state = 'Default',
-  status = 'Default',
-  withSupportingText = false,
-  supportingText,
-  placeholder,
-  icon,
-  children,
-  className,
-}: InputContainerProps) {
-  const generatedId = useId();
-  const inputId = generatedId;
-  const supportingId = `${generatedId}-supporting`;
+export const InputContainer = forwardRef<HTMLDivElement, InputContainerProps>(
+  (
+    {
+      label,
+      description,
+      withDescription = false,
+      isRequired = false,
+      state = 'Default',
+      status = 'Default',
+      withSupportingText = false,
+      supportingText,
+      placeholder,
+      icon,
+      children,
+      className,
+    },
+    ref
+  ) => {
+    const generatedId = useId();
+    const inputId = generatedId;
+    const supportingId = `${generatedId}-supporting`;
 
-  const defaultInput = (
-    <TextInput
-      id={inputId}
-      state={state as TextInputState}
-      status={status as TextInputStatus}
-      placeholder={placeholder}
-      icon={icon}
-      aria-required={isRequired || undefined}
-      aria-describedby={withSupportingText ? supportingId : undefined}
-    />
-  );
-
-  return (
-    <div
-      className={[styles.wrapper, className].filter(Boolean).join(' ')}
-      data-component="ds-rr-input-container"
-    >
-      <InputLabel
-        label={label}
-        description={description}
-        withDescription={withDescription}
-        isRequired={isRequired}
-        state={toLabelState(state)}
-        htmlFor={inputId}
+    const defaultInput = (
+      <TextInput
+        id={inputId}
+        state={state as TextInputState}
+        status={status as TextInputStatus}
+        placeholder={placeholder}
+        icon={icon}
+        aria-required={isRequired || undefined}
+        aria-describedby={withSupportingText ? supportingId : undefined}
       />
-      <div className={styles.inputSlot}>{children ?? defaultInput}</div>
-      {withSupportingText && (
-        <div id={supportingId}>
-          <SupportingText
-            text={supportingText}
-            status={toSupportingStatus(status)}
-            state={toSupportingState(state)}
-          />
-        </div>
-      )}
-    </div>
-  );
-}
+    );
+
+    return (
+      <div
+        ref={ref}
+        className={[styles.wrapper, className].filter(Boolean).join(' ')}
+        data-component="ds-rr-input-container"
+      >
+        <InputLabel
+          label={label}
+          description={description}
+          withDescription={withDescription}
+          isRequired={isRequired}
+          state={toLabelState(state)}
+          htmlFor={inputId}
+        />
+        <div className={styles.inputSlot}>{children ?? defaultInput}</div>
+        {withSupportingText && (
+          <div id={supportingId}>
+            <SupportingText
+              text={supportingText}
+              status={toSupportingStatus(status)}
+              state={toSupportingState(state)}
+            />
+          </div>
+        )}
+      </div>
+    );
+  }
+);
 
 InputContainer.displayName = 'InputContainer';

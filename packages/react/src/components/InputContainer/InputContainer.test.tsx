@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { InputContainer } from './InputContainer';
 
@@ -80,6 +81,43 @@ describe('InputContainer — propagation status Error', () => {
   it("l'input a aria-invalid=true quand status=Error", () => {
     render(<InputContainer status="Error" />);
     expect(screen.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
+  });
+});
+
+describe('InputContainer — interactions', () => {
+  it('tab déplace le focus sur le textbox', async () => {
+    const user = userEvent.setup();
+    render(<InputContainer label="Email" />);
+    await user.tab();
+    expect(screen.getByRole('textbox')).toHaveFocus();
+  });
+
+  it("click sur le champ donne le focus à l'input", async () => {
+    const user = userEvent.setup();
+    render(<InputContainer label="Email" />);
+    await user.click(screen.getByRole('textbox'));
+    expect(screen.getByRole('textbox')).toHaveFocus();
+  });
+
+  it('type saisit du texte dans le champ', async () => {
+    const user = userEvent.setup();
+    render(<InputContainer label="Email" />);
+    await user.click(screen.getByRole('textbox'));
+    await user.type(screen.getByRole('textbox'), 'test@example.com');
+    expect(screen.getByRole('textbox')).toHaveValue('test@example.com');
+  });
+
+  it('le focus ring est présent dans le DOM', () => {
+    const { container } = render(<InputContainer label="Email" />);
+    const focusRing = container.querySelector('[aria-hidden="true"]:not(span[class*="icon"])');
+    expect(focusRing).toBeInTheDocument();
+  });
+
+  it('le champ désactivé ne reçoit pas le focus via tab', async () => {
+    const user = userEvent.setup();
+    render(<InputContainer label="Email" state="Disabled" />);
+    await user.tab();
+    expect(screen.getByRole('textbox')).not.toHaveFocus();
   });
 });
 

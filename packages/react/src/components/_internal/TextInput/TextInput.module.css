@@ -20,7 +20,7 @@
   flex: 1;
   min-width: 0;
   border: none;
-  outline: none;
+  outline: none; /* Géré visuellement par .focusRing sur le wrapper */
   background: transparent;
   font-family: var(--font-family-text);
   font-size: var(--font-size-14);
@@ -53,6 +53,17 @@
   border: var(--border-width-02) solid var(--focus); /* 1.5px */
   border-radius: var(--radius-01); /* 4px */
   pointer-events: none;
+  display: none;
+}
+
+/* Focus via interaction clavier réelle */
+.wrapper:focus-within .focusRing {
+  display: block;
+}
+
+/* Focus via prop state="Focus" (Storybook / maquettes) */
+.wrapper[data-state='Focus'] .focusRing {
+  display: block;
 }
 
 /* ─── État Default / Status Default ──────────────────────────────────────── */
