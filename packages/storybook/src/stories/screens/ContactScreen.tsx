@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, InputContainer } from '@romainrichardpro/react';
+import { Button, InputContainer, TextInput } from '@romainrichardpro/react';
 import styles from './ContactScreen.module.css';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -101,10 +101,9 @@ export function ContactScreen() {
               withSupportingText={!!firstnameError}
               supportingText={firstnameError}
             >
-              <input
+              <TextInput
                 name="firstname"
-                type="text"
-                className={`${styles.fieldInput}${firstnameError ? ` ${styles.fieldInputError}` : ''}`}
+                status={firstnameError ? 'Error' : 'Default'}
                 placeholder="Marie"
                 autoComplete="given-name"
                 autoFocus
@@ -121,10 +120,9 @@ export function ContactScreen() {
               withSupportingText={!!lastnameError}
               supportingText={lastnameError}
             >
-              <input
+              <TextInput
                 name="lastname"
-                type="text"
-                className={`${styles.fieldInput}${lastnameError ? ` ${styles.fieldInputError}` : ''}`}
+                status={lastnameError ? 'Error' : 'Default'}
                 placeholder="Dupont"
                 autoComplete="family-name"
                 onChange={() => {
@@ -141,10 +139,10 @@ export function ContactScreen() {
             withSupportingText={!!emailError}
             supportingText={emailError}
           >
-            <input
+            <TextInput
               name="email"
               type="email"
-              className={`${styles.fieldInput}${emailError ? ` ${styles.fieldInputError}` : ''}`}
+              status={emailError ? 'Error' : 'Default'}
               placeholder="marie.dupont@email.com"
               autoComplete="email"
               onChange={() => {
@@ -160,10 +158,9 @@ export function ContactScreen() {
             withSupportingText={!!subjectError}
             supportingText={subjectError}
           >
-            <input
+            <TextInput
               name="subject"
-              type="text"
-              className={`${styles.fieldInput}${subjectError ? ` ${styles.fieldInputError}` : ''}`}
+              status={subjectError ? 'Error' : 'Default'}
               placeholder="Collaboration, question, retour sur le DS…"
               onChange={() => {
                 if (subjectError) setSubjectError('');

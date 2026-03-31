@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Checkbox, InputContainer } from '@romainrichardpro/react';
+import { Button, Checkbox, InputContainer, TextInput } from '@romainrichardpro/react';
 import styles from './LoginScreen.module.css';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -89,10 +89,10 @@ export function LoginScreen() {
                   withSupportingText={!!emailError}
                   supportingText={emailError}
                 >
-                  <input
+                  <TextInput
                     name="email"
                     type="email"
-                    className={`${styles.fieldInput}${emailError ? ` ${styles.fieldInputError}` : ''}`}
+                    status={emailError ? 'Error' : 'Default'}
                     placeholder="jean.dupont@email.com"
                     autoComplete="email"
                     onChange={() => {
@@ -109,20 +109,16 @@ export function LoginScreen() {
                     withSupportingText={!!passwordError}
                     supportingText={passwordError}
                   >
-                    <div
-                      className={`${styles.passwordInputWrapper}${passwordError ? ` ${styles.passwordInputWrapperError}` : ''}`}
-                    >
-                      <input
-                        name="password"
-                        type="password"
-                        className={styles.passwordInputInner}
-                        placeholder="••••••••"
-                        autoComplete="current-password"
-                        onChange={() => {
-                          if (passwordError) setPasswordError('');
-                        }}
-                      />
-                    </div>
+                    <TextInput
+                      name="password"
+                      type="password"
+                      status={passwordError ? 'Error' : 'Default'}
+                      placeholder="••••••••"
+                      autoComplete="current-password"
+                      onChange={() => {
+                        if (passwordError) setPasswordError('');
+                      }}
+                    />
                   </InputContainer>
                   <a href="#forgot" className={styles.forgotLink}>
                     Mot de passe oublié ?

@@ -14,3 +14,9 @@ export type {
   InputContainerState,
   InputContainerStatus,
 } from './components/InputContainer';
+export { TextInput } from './components/_internal/TextInput/TextInput';
+export type {
+  TextInputProps,
+  TextInputState,
+  TextInputStatus,
+} from './components/_internal/TextInput/TextInput';
