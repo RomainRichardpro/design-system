@@ -1,6 +1,6 @@
 # Design System — Romain Richard
 
-Design System personnel open-source, conçu et développé par [Romain Richard](https://github.com/RomainRichardpro), Lead System Designer.
+Design System personnel open-source, conçu et développé par [Romain Richard](https://www.linkedin.com/in/romain-richard-digital/), Lead System Designer.
 
 Figma est la source de vérité. Les tokens et composants sont définis dans Figma, puis implémentés en code et documentés dans Storybook.
 
