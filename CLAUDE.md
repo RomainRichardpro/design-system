@@ -8,15 +8,13 @@ Ne pas modifier sans validation de Romain.
 
 ## 1. Contexte du projet
 
-Design System personnel open-source de Romain Richard.
-Indépendant de tout employeur — portable dans le temps.
+Design System open-source de Romain Richard.
 
 - **GitHub** : https://github.com/RomainRichardpro/design-system
 - **Figma** : fichier `skRy27piDeBGQwD8Bi0EAU` ("POC-NEW-DS")
 - **Licence** : MIT
 
 Romain est **Lead System Designer** (6 ans de design, 2 ans de spécialisation DS).
-Il est aussi Lead System Designer chez Bpifrance depuis février 2025.
 
 ---
 
